@@ -1,0 +1,11 @@
+body {
+    background-color: rgb(220, 255, 220);
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#visualization {
+    margin: 0 auto;
+    width: 1000px;
+    height: 600px;
+}
