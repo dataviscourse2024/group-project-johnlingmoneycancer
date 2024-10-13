@@ -5,22 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DS 4350 - Final Project</title>
     <script src="https://d3js.org/d3.v7.min.js"></script> 
-    <style>
-        img {
-            width: 800px; /* Set the image width */
-            height: auto; /* Maintain aspect ratio */
-            position: absolute; /* Absolute positioning */
-            top: 100px; /* 100px from the top of the page */
-            left: 50px; /* 50px from the left of the page */
-        }
-    </style>
+    <link rel="stylesheet" href="css/vis-style.css">
 </head>
 <body>
     <header>
-        <h1>Human Body Map</h1>
-        <p>Name: John Chen, Michael Molenaar</p>
-        <p>Email: u1364584@utah.edu, __Michael's uMail___</p>
-        <p>UID: u1364584, __Michael's uID___</p>
+        <h1>Exploration of Early-On Set Cancers</h1>
+        <h2>Created by: John Chen, Michael Molenaar</h2>
     </header>
-    <img src="photos/FemaleBodyMap.jpg" alt="Human Body Map" style="float: right; width: 500px;">
+     <!-- Top Image Container -->
+    <div class="image-container">
+        <!-- Lungs Image -->
+        <figure>
+            <a href="javascript:void(0);" onclick="scrollToBottom();">
+                <img src="photos/Lungs.jpg" style="width: 200px; height: auto;" alt="Click to scroll to bottom">
+            </a>
+            <figcaption>Lung Cancer</figcaption>
+        </figure>
+        <!-- Liver Image -->
+        <figure>
+            <a href="javascript:void(0);" onclick="scrollToBottom();">
+                <img src="photos/Liver.jpg" style="width: 200px; height: auto;">
+            </a>
+            <figcaption>Liver Cancer</figcaption>
+        </figure>
+        <!-- Uterus Image -->
+        <figure>
+            <a href="javascript:void(0);" onclick="scrollToBottom();">
+                <img src="photos/Uterus.jpg" style="width: 200px; height: auto;">
+            </a>
+            <figcaption>Uterine Cancer</figcaption>
+        </figure>
+        <!-- Uterus Image -->
+        <figure>
+            <a href="javascript:void(0);" onclick="scrollToBottom();">
+                <img src="photos/Penis.jpg" style="width: 113px; height: auto;">
+            </a>
+            <figcaption>Penile Cancer</figcaption>
+        </figure>
+        <!-- Breast Image -->
+            <figure>
+                <a href="javascript:void(0);" onclick="scrollToBottom();">
+                    <img src="photos/Breast.jpg" style="width: 200px; height: auto;">
+                </a>
+                <figcaption>Breast Cancer</figcaption>
+            </figure>
+    </div>
+    <!-- Bottom Image Container -->
+    <div class="image-container bottom-row">
+        <!-- Skin Cancer Image -->
+        <figure>
+            <a href="javascript:void(0);" onclick="scrollToBottom();">
+                <img src="photos/Skin.jpg" style="width: 200px; height: auto;">
+            </a>
+            <figcaption>Skin Cancer</figcaption>
+        </figure>
+        <!-- Pancreas Image -->
+        <figure>
+            <a href="javascript:void(0);" onclick="scrollToBottom();">
+                <img src="photos/Pancreas.jpg" style="width: 200px; height: auto;">
+            </a>
+            <figcaption>Pancreatic Cancer</figcaption>
+        </figure>
+        <!-- Brain Image -->
+        <figure>
+            <a href="javascript:void(0);" onclick="scrollToBottom();">
+                <img src="photos/Brain.jpg" style="width: 200px; height: auto;">
+            </a>
+            <figcaption>Brain Cancer</figcaption>
+        </figure>
+        <!-- Bone Cancer Image -->
+        <figure>
+            <a href="javascript:void(0);" onclick="scrollToBottom();">
+                <img src="photos/Bones.jpg" style="width: 200px; height: auto;">
+            </a>
+            <figcaption>Bone Cancer</figcaption>
+        </figure>
+        <!-- Colon Cancer Image -->
+        <figure>
+            <a href="javascript:void(0);" onclick="scrollToBottom();">
+                <img src="photos/Colon.jpg" style="width: 200px; height: auto;">
+            </a>
+            <figcaption>Bone Cancer</figcaption>
+        </figure>
+    </div>
+    <!-- Functions to change the HTML elements -->
+    <script src="js/cancer-visualization.js"></script>
 <body>

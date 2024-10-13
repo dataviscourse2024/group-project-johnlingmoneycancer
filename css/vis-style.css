@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'AcreMedium';
+    src: url('fonts/Jonathan Ball - Acre-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: 'AcreMedium', sans-serif;
+    overflow: auto;
+    min-height: 150vh; 
+}
+header {
+    text-align: center; /* Centers text horizontally */
+}
+h1 {
+    font-size: 42px; /* Adjust this value to your desired size */
+}
+h2 {
+    font-size: 18px; /* Adjust this value to your desired size */
+    margin-top: -10px; 
+}
+.image-container {
+    display: flex; /* Align images horizontally within the container */
+    justify-content: center; /* Center the images horizontally */
+    margin-bottom: 40px; /* Add space between containers */
+    gap: 10px;
+    align-items: center; 
+}
+.bottom-row {
+    gap: 0px; /* Narrow the gap between images only in the bottom row */
+}
+figure {
+    text-align: center; /* Centers the caption and image within each figure */
+    margin-top: -10px; 
+}
+figcaption {
+    font-family: 'AcreMedium', sans-serif;
+    font-size: 16px;
+    margin-top: 0px;
+}
