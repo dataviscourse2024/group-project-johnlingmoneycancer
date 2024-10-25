@@ -1,10 +1,9 @@
-<<<<<<< HEAD
  // Select the visualization div and append an SVG element
 const svg = d3.select("#visualization")  // This targets the <div id="visualization"> in your HTML
 .append("svg")
 .attr("width", 1000)
 .attr("height", 600);
-=======
+
 function scrollToBottom() {
     window.scrollTo({
         top: document.body.scrollHeight,
@@ -52,4 +51,4 @@ function doAll(title, content, totalDots, affectedDots) {
         showDescription(title, content, totalDots, affectedDots);
     }, 500);  // Slight delay for scroll (if needed)
 }
->>>>>>> origin/JohnChens-Branch
+
