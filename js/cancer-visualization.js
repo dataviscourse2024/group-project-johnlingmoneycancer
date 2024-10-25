@@ -5,32 +5,43 @@ function scrollToBottom() {
     });
 }
 
-function showDescription(title, content) {
+function showDescription(title, content, totalDots, affectedDots) {
     var description = document.getElementById('description');
     
     // Set the title and content dynamically with separate styling
     description.innerHTML = `<h2 class="title">${title}</h2><p class="content">${content}</p>`;
     
-    // Show the description with a fade-in effect
-    if (description.style.display === 'none' || description.style.display === '') {
-        description.style.display = 'block'; // Make it visible
-        setTimeout(function() {
-            description.style.opacity = '1'; // Gradually increase opacity
-        }, 10); // Small delay to trigger transition
-    } else {
-        description.style.opacity = '0'; // Gradually fade out
-        setTimeout(function() {
-            description.style.display = 'none'; // Fully hide after fade-out
-        }, 1000); // Match delay to CSS transition (1 second)
+    // Ensure the description always shows with the updated content
+    description.style.display = 'block'; // Ensure it is visible
+    setTimeout(function() {
+        description.style.opacity = '1'; // Gradually increase opacity if needed
+    }, 10); // Small delay to trigger transition
+
+    // Call the createDotPopulation function to show the dot visualization
+    createDotPopulation(totalDots, affectedDots);
+}
+
+function createDotPopulation(totalDots, affectedDots) {
+    var container = document.getElementById('dot-container');
+    container.innerHTML = ''; // Clear the container
+
+    // Create the dots¸
+    for (var i = 1; i <= totalDots; i++) {
+        var dot = document.createElement('div');
+        dot.classList.add('dot');
+
+        // Mark the first "affectedDots" as red
+        if (i <= affectedDots) {
+            dot.classList.add('affected');
+        }
+
+        container.appendChild(dot);
     }
 }
 
-
-function doAll(title, content) {
-    scrollToBottom();
-    
-    // Pass title and content to showDescription after scroll
+function doAll(title, content, totalDots, affectedDots) {
+    scrollToBottom();  // Optional: If you want to scroll to the bottom
     setTimeout(function() {
-        showDescription(title, content);
-    }, 500); // Wait for scroll action to nearly complete
+        showDescription(title, content, totalDots, affectedDots);
+    }, 500);  // Slight delay for scroll (if needed)
 }
