@@ -51,7 +51,7 @@ figcaption {
     opacity: 0; /* Fully transparent initially */
     margin-top: 20px;
     text-align: center; /* Center the entire description */
-    transition: opacity 1s ease-in-out; /* Transition for opacity (fade-in/fade-out) */
+    transition: opacity 1s ease-in-out, visibility 1s ease-in-out; /* Smooth transition for both opacity and visibility */
 }
 /* Style for the title */
 #description .title {
@@ -66,4 +66,25 @@ figcaption {
     line-height: 1.5; /* Better line spacing for readability */
     max-width: 600px; /* Optional: to limit the width of the content */
     margin: 0 auto; /* Center the content horizontally */
+}
+#description.show {
+    visibility: visible; /* Make the description visible */
+    opacity: 1; /* Fully visible */
+}
+#dot-container {
+    display: grid;
+    grid-template-columns: repeat(10, 20px); /* 10 dots per row */
+    grid-gap: 5px; /* Space between dots */
+    width: fit-content;
+    margin: 20px auto; /* Center the dot container */
+}
+.dot {
+    width: 20px;
+    height: 20px;
+    background-color: #ccc; /* Default dot color (gray) */
+    border-radius: 50%; /* Make dots round */
+    display: inline-block;
+}
+.dot.affected {
+    background-color: red; /* Color for affected dots */
 }
