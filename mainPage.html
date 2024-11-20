@@ -97,19 +97,53 @@
             <figcaption>Uterine Cancer</figcaption>
         </figure>
     </div>
-    </div>
+
+    <!-- Description -->
+    <p id="description">This is a description.</p>
 
     <!-- Dot Container -->
-    <p id="description">This is a description.</p>
-    <script type="module" src="js/dot-visualization.js"></script>
+    <div id="dot-container"></div>
+
+    <!-- Dot Info -->
+    <div id="dot-container"></div>
+    <div id="dot-info"></div>
+
+    <!-- Filters -->
+    <div id="filters" style="display: none;">
+        <label for="gender-filter">Gender:</label>
+        <select id="gender-filter">
+            <option value="">All</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+
+        <label for="age-filter">Age Group:</label>
+        <select id="age-filter">
+            <option value="">All</option>
+            <option value="20-24 years">20-24 years</option>
+            <option value="25-29 years">25-29 years</option>
+            <option value="30-34 years">30-34 years</option>
+            <option value="35-39 years">35-39 years</option>
+        </select>
+
+        <label for="race-filter">Race:</label>
+        <select id="race-filter">
+            <option value="">All</option>
+            <option value="White">White</option>
+            <option value="Black or African American">Black or African American</option>
+            <option value="Asian or Pacific Islander">Asian or Pacific Islander</option>
+        </select>
+    </div>
 
     <!-- Visualization Container -->
     <div id="visualization"></div>
 
-    <!-- JS files in proper order -->
+    <!-- JS files -->
     <script type="module" src="js/data-loader.js"></script>
-    <script type="module" src="js/chart-maker.js"></script>
     <script type="module" src="js/dot-visualization.js"></script>
-    <script type="module" src="js/cancer-visualization.js"></script> <!-- Main application logic -->
+    <script type="module" src="js/chart-maker.js"></script>
+    <script type="module" src="js/cancer-visualization.js"></script>
 
-    <body>
+</body>
+
+</html>
