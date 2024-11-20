@@ -1,8 +1,8 @@
- // Select the visualization div and append an SVG element
-const svg = d3.select("#visualization")  // This targets the <div id="visualization"> in your HTML
-.append("svg")
-.attr("width", 1000)
-.attr("height", 600);
+// Select the visualization div and append an SVG element
+const svg = d3.select("#visualization")
+    .append("svg")
+    .attr("width", 1000)
+    .attr("height", 600);
 
 function scrollToBottom() {
     window.scrollTo({
@@ -12,43 +12,64 @@ function scrollToBottom() {
 }
 
 function showDescription(title, content, totalDots, affectedDots) {
-    var description = document.getElementById('description');
-    
-    // Set the title and content dynamically with separate styling
+    const description = document.getElementById('description');
     description.innerHTML = `<h2 class="title">${title}</h2><p class="content">${content}</p>`;
-    
-    // Ensure the description always shows with the updated content
-    description.style.display = 'block'; // Ensure it is visible
-    setTimeout(function() {
-        description.style.opacity = '1'; // Gradually increase opacity if needed
-    }, 10); // Small delay to trigger transition
-
-    // Call the createDotPopulation function to show the dot visualization
+    description.style.display = 'block';
+    setTimeout(() => {
+        description.style.opacity = '1';
+    }, 10);
     createDotPopulation(totalDots, affectedDots);
 }
 
 function createDotPopulation(totalDots, affectedDots) {
-    var container = document.getElementById('dot-container');
-    container.innerHTML = ''; // Clear the container
-
-    // Create the dots¸
-    for (var i = 1; i <= totalDots; i++) {
-        var dot = document.createElement('div');
+    const container = document.getElementById('dot-container');
+    container.innerHTML = '';
+    for (let i = 1; i <= totalDots; i++) {
+        const dot = document.createElement('div');
         dot.classList.add('dot');
-
-        // Mark the first "affectedDots" as red
         if (i <= affectedDots) {
             dot.classList.add('affected');
         }
-
         container.appendChild(dot);
     }
 }
 
 function doAll(title, content, totalDots, affectedDots) {
-    scrollToBottom();  // Optional: If you want to scroll to the bottom
-    setTimeout(function() {
+    scrollToBottom();
+    setTimeout(() => {
         showDescription(title, content, totalDots, affectedDots);
-    }, 500);  // Slight delay for scroll (if needed)
+    }, 500);
 }
 
+function drawCancerTrends(cancerType, incidenceData, mortalityData, containerId) {
+    // Same implementation as before
+}
+
+function loadAndVisualize(displayName) {
+    const cancerTypeMapping = {
+        "Brain Cancer": "Brain and Other Nervous System",
+        "Breast Cancer": "Breast",
+        "Colon Cancer": "Colon and Rectum",
+        "Leukemia": "Leukemias",
+        "Liver Cancer": "Liver and Intrahepatic Bile Duct",
+        "Lung Cancer": "Lung and Bronchus",
+        "Non-Hodgkin Lymphoma": "Non-Hodgkin Lymphoma",
+        "Pancreatic Cancer": "Pancreas",
+        "Skin Cancer": "Melanoma of the Skin",
+        "Uterine Cancer": "Cervix Uteri"
+    };
+    const cancerType = cancerTypeMapping[displayName];
+    if (!cancerType) {
+        console.error(`Cancer type "${displayName}" not found.`);
+        return;
+    }
+    loadAllFiles(datasets => {
+        const incidenceData = datasets.incidence.year.filter(d => d["Leading Cancer Sites"] === cancerType);
+        const mortalityData = datasets.mortality.year.filter(d => d["Leading Cancer Sites"] === cancerType);
+        if (incidenceData.length === 0 && mortalityData.length === 0) {
+            console.warn(`No data for cancer type: ${cancerType}`);
+            return;
+        }
+        drawCancerTrends(cancerType, incidenceData, mortalityData, "#visualization");
+    });
+}
