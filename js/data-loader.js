@@ -1,4 +1,4 @@
-function loadAllFiles(callback) {
+export function loadAllFiles(callback) {
     const fileMappings = {
         incidence: { 
             "allGroups": "data/cancer-incidence-csvs/LeadingCancerIncidence-ALLGROUPS.csv",
@@ -30,7 +30,7 @@ function loadAllFiles(callback) {
     });
 }
 
-function loadGroup(groupName, fileMappings) {
+export function loadGroup(groupName, fileMappings) {
     const promises = Object.keys(fileMappings).map(key => {
         return fetch(fileMappings[key])
             .then(response => response.text())
