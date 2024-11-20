@@ -20,8 +20,8 @@ function drawAxes(svg, xScale, yScale, yAxisTitle, height, width, margin) {
     // X-axis title: Year
     svg.append("text")
         .attr("class", "x-axis-title")
-        .attr("x", width / 2) 
-        .attr("y", height + margin.bottom - 10) 
+        .attr("x", width / 2)
+        .attr("y", height + margin.bottom - 10)
         .attr("text-anchor", "middle")
         .style("font-size", "14px")
         .text("Year");
@@ -29,10 +29,10 @@ function drawAxes(svg, xScale, yScale, yAxisTitle, height, width, margin) {
     // Y-axis title: Count
     svg.append("text")
         .attr("class", "y-axis-title")
-        .attr("x", -(height / 2)) 
-        .attr("y", -margin.left + 20) 
+        .attr("x", -(height / 2))
+        .attr("y", -margin.left + 20)
         .attr("text-anchor", "middle")
-        .attr("transform", "rotate(-90)") 
+        .attr("transform", "rotate(-90)")
         .style("font-size", "14px")
         .text(yAxisTitle);
 }
@@ -44,9 +44,6 @@ export function synchronizeCharts(lineData, barData) {
         return;
     }
 
-    // Remove any existing charts
-    d3.select('#line-chart-container').select('svg').remove();
-
     // Draw line chart
     drawLineChart(lineData, '#line-chart-container', clickedPoint => {
         const clickedYear = clickedPoint.year;
@@ -56,15 +53,46 @@ export function synchronizeCharts(lineData, barData) {
     });
 }
 
-
-// Function to draw a line chart
 export function drawLineChart(data, containerId, chartTitle, yAxisTitle, lineColor) {
     const margin = { top: 40, right: 30, bottom: 50, left: 60 };
     const width = 800 - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
 
-    const svg = createSvg(containerId, width, height, margin);
+    // Check if an SVG already exists
+    let svg = d3.select(containerId).select("svg");
 
+    if (svg.empty()) {
+        // If no SVG exists, create one
+        svg = d3.select(containerId)
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+        // Add axes groups for later updates
+        svg.append("g").attr("class", "x-axis").attr("transform", `translate(0, ${height})`);
+        svg.append("g").attr("class", "y-axis");
+        svg.append("text") // Add y-axis label
+            .attr("class", "y-axis-label")
+            .attr("transform", "rotate(-90)")
+            .attr("y", -margin.left + 10)
+            .attr("x", -height / 2)
+            .attr("text-anchor", "middle")
+            .style("font-size", "12px")
+            .text(yAxisTitle);
+
+        // The year text was gone so I just default it, might want to fix it later 
+        svg.append("text")
+            .attr("class", "x-axis-title")
+            .attr("x", width / 2)
+            .attr("y", height + margin.bottom - 10) // Position below the x-axis
+            .attr("text-anchor", "middle")
+            .style("font-size", "12px")
+            .text("Year"); // Default or passed title
+    }
+
+    // Scales
     const x = d3.scaleLinear()
         .domain(d3.extent(data, d => d.year))
         .range([0, width]);
@@ -74,24 +102,58 @@ export function drawLineChart(data, containerId, chartTitle, yAxisTitle, lineCol
         .nice()
         .range([height, 0]);
 
-    drawAxes(svg, x, y, yAxisTitle, height, width, margin);
+    // Update axes
+    svg.select(".x-axis")
+        .transition()
+        .duration(1000)
+        .call(d3.axisBottom(x).tickFormat(d3.format("d")));
 
-    svg.append("path")
-        .datum(data)
+    svg.select(".y-axis")
+        .transition()
+        .duration(1000)
+        .call(d3.axisLeft(y));
+
+    // Line generator
+    const lineGenerator = d3.line()
+        .x(d => x(d.year))
+        .y(d => y(d.value));
+
+    // Bind data to the path (line)
+    let path = svg.selectAll(".line").data([data]);
+
+    // Enter + Update pattern
+    path.enter()
+        .append("path")
+        .attr("class", "line")
         .attr("fill", "none")
         .attr("stroke", lineColor)
         .attr("stroke-width", 1.5)
-        .attr("d", d3.line()
-            .x(d => x(d.year))
-            .y(d => y(d.value))
-        );
+        .attr("d", lineGenerator) // Initial line position
+        .merge(path) // Merge enter and update selections
+        .attr("d", lineGenerator)
+        .attr("stroke-dasharray", function () {
+            // Total length of the line
+            return this.getTotalLength();
+        })
+        .attr("stroke-dashoffset", function () {
+            // Start with the total length (line hidden)
+            return this.getTotalLength();
+        })
+        .transition() // Apply transition to animate the line
+        .duration(1000) // Animation duration (1 seconds)
+        .ease(d3.easeLinear) // Linear easing for smooth drawing
+        .attr("stroke-dashoffset", 0); // Reveal the line progressively
 
-    svg.append("text")
+    // Chart title
+    let title = svg.selectAll(".chart-title").data([chartTitle]);
+
+    title.enter()
+        .append("text")
+        .attr("class", "chart-title")
         .attr("x", width / 2)
         .attr("y", -10)
         .attr("text-anchor", "middle")
         .style("font-size", "16px")
+        .merge(title)
         .text(chartTitle);
 }
-
-
