@@ -9,7 +9,7 @@ function createSvg(containerId, width, height, margin) {
 }
 
 // Function to draw x and y axes and axes titles
-function drawAxes(svg, xScale, yScale, height, width, margin) {
+function drawAxes(svg, xScale, yScale, yAxisTitle, height, width, margin) {
     svg.append("g")
         .attr("transform", `translate(0, ${height})`)
         .call(d3.axisBottom(xScale).tickFormat(d => d));
@@ -34,7 +34,7 @@ function drawAxes(svg, xScale, yScale, height, width, margin) {
         .attr("text-anchor", "middle")
         .attr("transform", "rotate(-90)") 
         .style("font-size", "14px")
-        .text("Count");
+        .text(yAxisTitle);
 }
 
 // Synchronization function between line and bar charts
@@ -58,7 +58,7 @@ export function synchronizeCharts(lineData, barData) {
 
 
 // Function to draw a line chart
-export function drawLineChart(data, containerId, chartTitle, lineColor) {
+export function drawLineChart(data, containerId, chartTitle, yAxisTitle, lineColor) {
     const margin = { top: 40, right: 30, bottom: 50, left: 60 };
     const width = 800 - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
@@ -74,7 +74,7 @@ export function drawLineChart(data, containerId, chartTitle, lineColor) {
         .nice()
         .range([height, 0]);
 
-    drawAxes(svg, x, y, height, width, margin);
+    drawAxes(svg, x, y, yAxisTitle, height, width, margin);
 
     svg.append("path")
         .datum(data)

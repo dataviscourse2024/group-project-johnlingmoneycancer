@@ -93,12 +93,12 @@ function loadAndVisualize(displayName) {
 
         const mortalityChartData = mortalityData.map(d => ({
             year: +d.Year,
-            value: +d.Count
+            value: +d.Deaths
         }));
 
         // Draw separate charts
-        drawLineChart(incidenceChartData, "#incidence-chart-container", "Incidence Over Time", "orange");
-        drawLineChart(mortalityChartData, "#mortality-chart-container", "Mortality Over Time", "red");
+        drawLineChart(incidenceChartData, "#incidence-chart-container", "Incidence Over Time", "Count", "orange");
+        drawLineChart(mortalityChartData, "#mortality-chart-container", "Mortality Over Time", "Deaths", "red");
     });
 }
 
