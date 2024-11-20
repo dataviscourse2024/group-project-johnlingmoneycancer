@@ -26,8 +26,6 @@ export function synchronizeCharts(lineData, barData) {
     }
 
     console.log("Synchronizing charts with filtered data:"); // Debugging
-    console.log("Line Data:", filteredLineData); // Debugging
-    console.log("Bar Data:", filteredBarData);  // Debugging
 
     drawLineChart(lineData, '#line-chart-container', clickedPoint => {
         const clickedYear = clickedPoint.year;
@@ -42,7 +40,10 @@ export function synchronizeCharts(lineData, barData) {
         d3.select('#line-chart-container').select('svg').remove();
         drawLineChart(filteredLineData, '#line-chart-container');
     });
+
+    console.log("Succes synchronizing charts"); // Debugging
 }
+
 
 // Function to draw a line chart
 function drawLineChart(data, containerId, onPointClick = null) {
