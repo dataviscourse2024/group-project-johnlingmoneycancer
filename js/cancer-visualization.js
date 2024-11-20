@@ -106,8 +106,6 @@ function loadAndVisualize(displayName) {
 
 
 
-
-
 function handleVisualizations(cancerType, displayName, description) {
     // Remove "active-cancer" class from all previously active links
     document.querySelectorAll(".active-cancer").forEach(el => el.classList.remove("active-cancer"));
