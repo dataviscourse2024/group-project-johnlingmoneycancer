@@ -12,10 +12,10 @@
 <body>
     <header>
         <h1> Exploring Increased Cancer Rates in Young Adults </h1>
-        <p> Created by John Chen - u1364584 and Michael Molenaar - u0712166</p>
-        <p> Emails: u1364584@utah.edu, u0712166@utah.edu</p>
-        <div id="visualization"></div>
+        <p> Created by John Chen - u1364584 and Michael Molenaar - u0712166 </p>
+        <p> Emails: u1364584@utah.edu, u0712166@utah.edu </p>
     </header>
+
     <!-- Top Image Container -->
     <div class="image-container">
         <!-- Brain Image -->
@@ -29,7 +29,7 @@
         <!-- Breast Image -->
         <figure>
             <a href="javascript:void(0);" onclick="doAll('Breast cancer', 'Breast cancer occurs when cells in the breast tissue grow uncontrollably, often forming lumps or masses that can spread to other areas of the body.', 100, 5);
-            loadandVisualize('Breast Cancer');">
+            loadAndVisualize('Breast Cancer');">
                 <img src="photos/Breast.jpg" style="width: 200px; height: auto;">
             </a>
             <figcaption>Breast Cancer</figcaption>
@@ -37,7 +37,7 @@
         <!-- Colon Image -->
         <figure>
             <a href="javascript:void(0);" onclick="doAll('Colon cancer', 'Colon cancer occurs when cells in the colon grow uncontrollably, often starting as polyps and potentially leading to symptoms like changes in bowel habits and abdominal discomfort.', 100, 5);
-            loadandVisualize('Colon Cancer');">
+            loadAndVisualize('Colon Cancer');">
                 <img src="photos/Colon.jpg" style="width: 200px; height: auto;">
             </a>
             <figcaption>Colon Cancer</figcaption>
@@ -45,7 +45,7 @@
         <!-- Leukemia Image -->
         <figure>
             <a href="javascript:void(0);" onclick="doAll('Penile cancer','Penile cancer occurs when cells in the tissues of the penis grow uncontrollably, often beginning as changes in skin color or texture.', 100, 5);
-            loadandVisualize('Leukemia Cancer');">
+            loadAndVisualize('Leukemia Cancer');">
                 <img src="photos/Penis.jpg" style="width: 113px; height: auto;">
             </a>
             <figcaption>Leukemia Cancer</figcaption>
@@ -64,7 +64,7 @@
         <!-- Liver Image -->
         <figure>
             <a href="javascript:void(0);" onclick="doAll('Liver cancer', 'Liver cancer starts in the liver cells and can cause symptoms like jaundice and abdominal pain as it progresses.', 100, 5);
-            loadandVisualize('Liver Cancer');">
+            loadAndVisualize('Liver Cancer');">
                 <img src="photos/Liver.jpg" style="width: 200px; height: auto;">
             </a>
             <figcaption>Liver Cancer</figcaption>
@@ -88,7 +88,7 @@
         <!-- Skin Cancer Image -->
         <figure>
             <a href="javascript:void(0);" onclick="doAll('Skin cancer', 'Skin cancer occurs when skin cells grow uncontrollably, typically due to UV exposure, and can spread if not treated early.', 100, 5);
-            loadandVisualize('Skin Cancer');">
+            loadAndVisualize('Skin Cancer');">
                 <img src="photos/Skin.jpg" style="width: 200px; height: auto;">
             </a>
             <figcaption>Skin Cancer</figcaption>
@@ -96,17 +96,23 @@
         <!-- Uterus Image -->
         <figure>
             <a href="javascript:void(0);" onclick="doAll('Uterine cancer', 'Uterine cancer occurs when the cells in the lining of the uterus grow uncontrollably, commonly leading to abnormal bleeding and other symptoms.', 100, 5);
-            loadandVisualize('Uterine Cancer');">
+            loadAndVisualize('Uterine Cancer');">
                 <img src="photos/Uterus.jpg" style="width: 200px; height: auto;">
             </a>
             <figcaption>Uterine Cancer</figcaption>
-        </figure>  
+        </figure>
     </div>
+
+    <!-- Dot Container -->
     <p id="description">This is a description.</p>
-    <div id="dot-container"></div>
-    
+    <script type="module" src="js/dot-visualization.js"></script>
+
+    <!-- Visualization Container -->
+    <div id="visualization"></div>
+
     <!-- JS files in proper order -->
     <script src="js/data-loader.js"></script>
     <script src="js/chart-maker.js"></script>
     <script src="js/cancer-visualization.js"></script> <!-- Main application logic -->
+
     <body>
