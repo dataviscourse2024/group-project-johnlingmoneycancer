@@ -8,14 +8,33 @@ function createSvg(containerId, width, height, margin) {
         .attr("transform", `translate(${margin.left}, ${margin.top})`);
 }
 
-// Function to draw x and y axes
-function drawAxes(svg, xScale, yScale, height, width) {
+// Function to draw x and y axes and axes titles
+function drawAxes(svg, xScale, yScale, height, width, margin) {
     svg.append("g")
-    .attr("transform", `translate(0, ${height})`)
-    .call(d3.axisBottom(xScale).tickFormat(d => d));
+        .attr("transform", `translate(0, ${height})`)
+        .call(d3.axisBottom(xScale).tickFormat(d => d));
 
     svg.append("g")
         .call(d3.axisLeft(yScale));
+
+    // X-axis title: Year
+    svg.append("text")
+        .attr("class", "x-axis-title")
+        .attr("x", width / 2) 
+        .attr("y", height + margin.bottom - 10) 
+        .attr("text-anchor", "middle")
+        .style("font-size", "14px")
+        .text("Year");
+
+    // Y-axis title: Count
+    svg.append("text")
+        .attr("class", "y-axis-title")
+        .attr("x", -(height / 2)) 
+        .attr("y", -margin.left + 20) 
+        .attr("text-anchor", "middle")
+        .attr("transform", "rotate(-90)") 
+        .style("font-size", "14px")
+        .text("Count");
 }
 
 // Synchronization function between line and bar charts
@@ -55,7 +74,7 @@ export function drawLineChart(data, containerId, chartTitle, lineColor) {
         .nice()
         .range([height, 0]);
 
-    drawAxes(svg, x, y, height, width);
+    drawAxes(svg, x, y, height, width, margin);
 
     svg.append("path")
         .datum(data)
