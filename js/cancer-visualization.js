@@ -1,5 +1,20 @@
 import { visualizeCancerDots } from './dot-visualization.js';
 import { loadAllFiles } from './data-loader.js';
+import { synchronizeCharts } from './chart-maker.js';
+
+const cancerTypeMapping = {                             // checks if cancer has appropriate image and description
+    "Brain Cancer": "Brain and Other Nervous System",   // check
+    "Breast Cancer": "Breast",                          // check
+    "Colon Cancer": "Colon and Rectum",                 // check
+    "Leukemia": "Leukemias",
+    "Liver Cancer": "Liver",                            // check
+    "Lung Cancer": "Lung and Bronchus",                 // check
+    "Non-Hodgkin Lymphoma": "Non-Hodgkin Lymphoma",
+    "Pancreatic Cancer": "Pancreas",                    // check
+    "Skin Cancer": "Melanoma of the Skin",              // check
+    "Uterine Cancer": "Cervix Uteri"
+};
+
 
 const svgMain = d3.select("#visualization") // Top-level SVG declaration
     .append("svg")
@@ -12,6 +27,7 @@ function scrollToBottom() {
         behavior: 'smooth'
     });
 }
+
 
 // Function to display a description
 function showDescription(title, content) {
@@ -30,28 +46,10 @@ function showDescription(title, content) {
 
 export { showDescription };
 
-function doAll(title, content, totalDots, affectedDots) {
-    scrollToBottom();  // Optional: If you want to scroll to the bottom
-    setTimeout(function () {
-        showDescription(title, content, totalDots, affectedDots);
-    }, 500);  // Slight delay for scroll (if needed)
-}
 
 function loadAndVisualize(displayName) {
-    const cancerTypeMapping = {                             // checks if cancer has appropriate image and description
-        "Brain Cancer": "Brain and Other Nervous System",   // check
-        "Breast Cancer": "Breast",                          // check
-        "Colon Cancer": "Colon and Rectum",                 // check
-        "Leukemia": "Leukemias",            
-        "Liver Cancer": "Liver",                            // check
-        "Lung Cancer": "Lung and Bronchus",                 // check
-        "Non-Hodgkin Lymphoma": "Non-Hodgkin Lymphoma",
-        "Pancreatic Cancer": "Pancreas",                    // check
-        "Skin Cancer": "Melanoma of the Skin",              // check
-        "Uterine Cancer": "Cervix Uteri"
-    };
-
     const cancerType = cancerTypeMapping[displayName];
+
     if (!cancerType) {
         console.error(`Cancer type "${displayName}" not found in the mapping.`);
         return;
@@ -123,6 +121,46 @@ function handleVisualizations(cancerType, displayName, description) {
     }, 500); // delay for dots
 }
 
+
+// Example dataset
+let fullLineData = [];
+let fullBarData = [];
+
+// Function to filter data based on selected filters
+function applyFilters(lineData, barData) {
+    const genderFilter = document.getElementById("gender-filter").value;
+    const ageFilter = document.getElementById("age-filter").value;
+    const raceFilter = document.getElementById("race-filter").value;
+
+    const filteredLineData = lineData.filter(d => {
+        return (!genderFilter || d.gender === genderFilter) &&
+            (!ageFilter || d.ageGroup === ageFilter) &&
+            (!raceFilter || d.race === raceFilter);
+    });
+
+    const filteredBarData = barData.filter(d => {
+        return (!genderFilter || d.gender === genderFilter) &&
+            (!ageFilter || d.ageGroup === ageFilter) &&
+            (!raceFilter || d.race === raceFilter);
+    });
+
+    return { filteredLineData, filteredBarData };
+}
+
+// Function to render charts with applied filters
+function renderCharts() {
+    const { filteredLineData, filteredBarData } = applyFilters(fullLineData, fullBarData);
+
+    // Clear existing charts
+    const lineChartContainer = d3.select('#line-chart-container').select('svg');
+    if (!lineChartContainer.empty()) lineChartContainer.remove();
+
+    const barChartContainer = d3.select('#bar-chart-container').select('svg');
+    if (!barChartContainer.empty()) barChartContainer.remove();
+
+    // Synchronize charts with filtered data
+    synchronizeCharts(filteredLineData, filteredBarData);
+}
 
 // Event listeners for cancer links
 document.addEventListener('DOMContentLoaded', () => {
@@ -200,19 +238,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Event listeners for filters
-document.getElementById("gender-filter").addEventListener("change", () => {
-    const currentCancerType = document.querySelector(".active-cancer").dataset.cancerType;
-    loadAndVisualize(currentCancerType);
+document.addEventListener('DOMContentLoaded', () => {
+    // Add unified event listeners for filters
+    ["gender-filter", "age-filter", "race-filter"].forEach(filterId => {
+        document.getElementById(filterId).addEventListener("change", () => {
+            const currentCancerType = document.querySelector(".active-cancer")?.dataset?.cancerType;
+
+            // If a cancer type is active, update visualizations
+            if (currentCancerType) {
+                loadAndVisualize(currentCancerType); // Update graphs and dots
+            }
+
+            renderCharts(); // Update line and bar charts
+        });
+    });
+
+    // Replace the following with your actual data loading logic
+    fullLineData = [
+        { year: 2000, value: 100, gender: "Male", ageGroup: "20-24 years", race: "White" },
+        { year: 2005, value: 150, gender: "Female", ageGroup: "25-29 years", race: "Black or African American" },
+        // Add more data points
+    ];
+
+    fullBarData = [
+        { category: "Lung Cancer", value: 120, gender: "Male", ageGroup: "20-24 years", race: "White" },
+        { category: "Skin Cancer", value: 90, gender: "Female", ageGroup: "25-29 years", race: "Asian or Pacific Islander" },
+        // Add more data points
+    ];
+
+    renderCharts(); // Initial rendering
 });
 
-document.getElementById("age-filter").addEventListener("change", () => {
-    const currentCancerType = document.querySelector(".active-cancer").dataset.cancerType;
-    loadAndVisualize(currentCancerType);
-});
-
-document.getElementById("race-filter").addEventListener("change", () => {
-    const currentCancerType = document.querySelector(".active-cancer").dataset.cancerType;
-    loadAndVisualize(currentCancerType);
-});
 
