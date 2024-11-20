@@ -101,8 +101,8 @@ function loadAndVisualize(displayName) {
         }));
 
         // Draw separate charts
-        drawLineChart(incidenceChartData, "#incidence-chart-container", "Incidence Over Time", "Count", "orange");
-        drawLineChart(mortalityChartData, "#mortality-chart-container", "Mortality Over Time", "Deaths", "red");
+        drawLineChart(incidenceChartData, "#incidence-chart-container", "Incidence Over Time", "Count", "orange", "Count");
+        drawLineChart(mortalityChartData, "#mortality-chart-container", "Mortality Over Time", "Deaths", "red", "Death");
     });
 }
 
