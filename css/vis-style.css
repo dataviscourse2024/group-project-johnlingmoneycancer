@@ -36,7 +36,7 @@ h2 {
     justify-content: center; /* Centers the images horizontally */
     align-items: flex-start; /* Aligns images to the top */
     gap: 10px; /* Adds space between images */
-    margin-bottom: 20px; /* Adjusts space between containers */
+    margin: 0 auto 20px; /* Centers the container and adds space below */
 }
 
 /* Individual figure styling */
@@ -87,7 +87,7 @@ figcaption {
     margin: 0 auto; /* Centers the content horizontally */
 }
 
-/* Dot container for visualization */
+/* Dot visualization container */
 #dot-container {
     display: grid;
     grid-template-columns: repeat(10, 20px); /* 10 dots per row */
@@ -96,14 +96,32 @@ figcaption {
     margin: 20px auto; /* Center the dot container */
 }
 
+/* Default dot styling */
 .dot {
     width: 20px;
     height: 20px;
-    background-color: #ccc; /* Default dot color (gray) */
-    border-radius: 50%; /* Makes dots round */
+    background-color: #ccc; /* Default (gray) */
+    border-radius: 50%; /* Makes dots circular */
     display: inline-block;
+    transition: background-color 0.3s ease-in-out;
 }
 
+/* Affected dot styling */
 .dot.affected {
-    background-color: red; /* Color for affected dots */
+    background-color: red; /* Red for affected dots */
 }
+
+/* Filled dot animation */
+.dot.fill {
+    background-color: green; /* Final color after animation */
+}
+
+@keyframes fill-animation {
+    from {
+        background-color: gray; /* Start color */
+    }
+    to {
+        background-color: red; /* End color for affected dots */
+    }
+}
+
