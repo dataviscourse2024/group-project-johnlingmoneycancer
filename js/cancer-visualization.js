@@ -56,44 +56,43 @@ function loadAndVisualize(displayName) {
     }
 
     // Filters
-    const genderFilter = document.getElementById("gender-filter").value;
-    const ageFilter = document.getElementById("age-filter").value;
-    const raceFilter = document.getElementById("race-filter").value;
+    const filters = {
+        gender: document.getElementById("gender-filter").value,
+        age: document.getElementById("age-filter").value,
+        race: document.getElementById("race-filter").value
+    };
 
     // Load datasets and filter by cancer type and filters
     loadAllFiles(datasets => {
-        let incidenceData = datasets.incidence.year.filter(d => d["Leading Cancer Sites"] === cancerType);
-        let mortalityData = datasets.mortality.year.filter(d => d["Leading Cancer Sites"] === cancerType);
+        // Select dataset based on filter presence
+        const selectedKey =
+            filters.gender
+                ? "sex"
+                : filters.age
+                    ? "combinedAges"
+                    : filters.race
+                        ? "race"
+                        : "allGroups";
 
-        // Apply gender filter
-        if (genderFilter) {
-            incidenceData = incidenceData.filter(d => d.Sex === genderFilter);
-            mortalityData = mortalityData.filter(d => d.Sex === genderFilter);
-        }
+        let incidenceData = datasets.incidence[selectedKey].filter(d => d["Leading Cancer Sites"] === cancerType);
+        let mortalityData = datasets.mortality[selectedKey].filter(d => d["Leading Cancer Sites"] === cancerType);
 
-        // Apply age filter
-        if (ageFilter) {
-            incidenceData = incidenceData.filter(d => d["Age Groups"] === ageFilter);
-            mortalityData = mortalityData.filter(d => d["Age Groups"] === ageFilter);
-        }
 
-        // Apply race filter
-        if (raceFilter) {
-            incidenceData = incidenceData.filter(d => d.Race === raceFilter);
-            mortalityData = mortalityData.filter(d => d.Race === raceFilter);
-        }
+        // Apply filters to the selected dataset
+        incidenceData = applyFiltersToDataset(incidenceData, filters);
+        mortalityData = applyFiltersToDataset(mortalityData, filters);
 
         if (incidenceData.length === 0 && mortalityData.length === 0) {
             console.warn(`No data found for cancer type: ${cancerType} with the selected filters.`);
             return;
         }
 
-        // Draw trends in the visualization container
-        // drawCancerTrends(cancerType, incidenceData, mortalityData, "#visualization");
+
     });
 }
 
 function handleVisualizations(cancerType, displayName, description) {
+    // Remove "active-cancer" class from all previously active links
     document.querySelectorAll(".active-cancer").forEach(el => el.classList.remove("active-cancer"));
 
     // Add "active-cancer" to the clicked link
@@ -103,8 +102,16 @@ function handleVisualizations(cancerType, displayName, description) {
         linkElement.dataset.cancerType = cancerType;
     }
 
-    // Show filters and load visualizations
-    document.getElementById("filters").classList.remove("hidden");
+    // Show filters and charts
+    const elementsToShow = ["filters", "line-chart-container", "bar-chart-container", "visualization"];
+    elementsToShow.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.classList.add("show"); // Add the show class for smooth transition
+        } else {
+            console.warn(`Element with ID "${id}" not found.`); // Debugging log
+        }
+    });
 
     // Show description
     showDescription(displayName, description);
@@ -117,46 +124,39 @@ function handleVisualizations(cancerType, displayName, description) {
 
         setTimeout(() => {
             loadAndVisualize(displayName);
-        }, 2000); // delay for grphs
-    }, 500); // delay for dots
+        }, 1500); // Adjusted delay for graphs
+    }, 500); // Delay for dots
 }
+
 
 
 // Example dataset
 let fullLineData = [];
 let fullBarData = [];
 
-// Function to filter data based on selected filters
-function applyFilters(lineData, barData) {
-    const genderFilter = document.getElementById("gender-filter").value;
-    const ageFilter = document.getElementById("age-filter").value;
-    const raceFilter = document.getElementById("race-filter").value;
-
-    const filteredLineData = lineData.filter(d => {
-        return (!genderFilter || d.gender === genderFilter) &&
-            (!ageFilter || d.ageGroup === ageFilter) &&
-            (!raceFilter || d.race === raceFilter);
+// Function to apply filters to the dataset
+function applyFiltersToDataset(dataset, filters) {
+    return dataset.filter(d => {
+        return (!filters.gender || d.Sex === filters.gender) &&
+            (!filters.age || d["Age Groups"] === filters.age) &&
+            (!filters.race || d.Race === filters.race);
     });
-
-    const filteredBarData = barData.filter(d => {
-        return (!genderFilter || d.gender === genderFilter) &&
-            (!ageFilter || d.ageGroup === ageFilter) &&
-            (!raceFilter || d.race === raceFilter);
-    });
-
-    return { filteredLineData, filteredBarData };
 }
 
 // Function to render charts with applied filters
 function renderCharts() {
-    const { filteredLineData, filteredBarData } = applyFilters(fullLineData, fullBarData);
+    const filters = {
+        gender: document.getElementById("gender-filter").value || null,
+        age: document.getElementById("age-filter").value || null,
+        race: document.getElementById("race-filter").value || null
+    };
+
+    const filteredLineData = applyFiltersToDataset(fullLineData, filters);
+    const filteredBarData = applyFiltersToDataset(fullBarData, filters);
 
     // Clear existing charts
-    const lineChartContainer = d3.select('#line-chart-container').select('svg');
-    if (!lineChartContainer.empty()) lineChartContainer.remove();
-
-    const barChartContainer = d3.select('#bar-chart-container').select('svg');
-    if (!barChartContainer.empty()) barChartContainer.remove();
+    d3.select('#line-chart-container').select('svg').remove();
+    d3.select('#bar-chart-container').select('svg').remove();
 
     // Synchronize charts with filtered data
     synchronizeCharts(filteredLineData, filteredBarData);
@@ -239,34 +239,21 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Add unified event listeners for filters
     ["gender-filter", "age-filter", "race-filter"].forEach(filterId => {
-        document.getElementById(filterId).addEventListener("change", () => {
-            const currentCancerType = document.querySelector(".active-cancer")?.dataset?.cancerType;
+        const filterElement = document.getElementById(filterId);
+        if (filterElement) {
+            filterElement.addEventListener("change", () => {
+                const currentCancerType = document.querySelector(".active-cancer")?.dataset?.cancerType;
 
-            // If a cancer type is active, update visualizations
-            if (currentCancerType) {
-                loadAndVisualize(currentCancerType); // Update graphs and dots
-            }
-
-            renderCharts(); // Update line and bar charts
-        });
+                // Update graphs and dots
+                if (currentCancerType) loadAndVisualize(currentCancerType);
+                renderCharts();
+            });
+        }
     });
 
-    // Replace the following with your actual data loading logic
-    fullLineData = [
-        { year: 2000, value: 100, gender: "Male", ageGroup: "20-24 years", race: "White" },
-        { year: 2005, value: 150, gender: "Female", ageGroup: "25-29 years", race: "Black or African American" },
-        // Add more data points
-    ];
-
-    fullBarData = [
-        { category: "Lung Cancer", value: 120, gender: "Male", ageGroup: "20-24 years", race: "White" },
-        { category: "Skin Cancer", value: 90, gender: "Female", ageGroup: "25-29 years", race: "Asian or Pacific Islander" },
-        // Add more data points
-    ];
-
-    renderCharts(); // Initial rendering
+    // Initial rendering
+    renderCharts();
 });
 
 
