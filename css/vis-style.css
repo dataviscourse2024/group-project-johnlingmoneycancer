@@ -1,51 +1,68 @@
-@font-face {
-    font-family: 'AcreMedium';
-    src: url('fonts/Jonathan Ball - Acre-Medium.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
+/* General body styling */
 body {
     font-family: 'AcreMedium', sans-serif;
     overflow: auto;
-    min-height: 150vh; 
+    margin: 0; /* Removes default browser margins */
+    padding: 0; /* Removes default browser padding */
+    min-height: 100vh; 
 }
+
+/* Header styling */
 header {
     text-align: center; /* Centers text horizontally */
+    margin-bottom: 20px; /* Reduces space below the header */
+    padding: 10px; /* Adds some padding for aesthetics */
 }
+
 h1 {
     font-size: 42px; /* Adjust this value to your desired size */
 }
+
 h2 {
     font-size: 18px; /* Adjust this value to your desired size */
     margin-top: -10px; 
 }
+
+/* Visualization container */
+#visualization {
+    height: auto; /* Allows the height to adjust dynamically */
+    margin-bottom: 10px; /* Minimizes space below the visualization */
+}
+
+/* Image container styling */
 .image-container {
     display: flex; /* Align images horizontally within the container */
-    justify-content: center; /* Center the images horizontally */
-    margin-bottom: 40px; /* Add space between containers */
-    gap: 10px;
-    align-items: center; 
+    flex-wrap: wrap; /* Allows images to wrap to the next row if needed */
+    justify-content: center; /* Centers the images horizontally */
+    align-items: flex-start; /* Aligns images to the top */
+    gap: 10px; /* Adds space between images */
+    margin: 0 auto 20px; /* Centers the container and adds space below */
 }
-.bottom-row {
-    gap: 0px; /* Narrow the gap between images only in the bottom row */
-}
+
+/* Individual figure styling */
 figure {
     text-align: center; /* Centers the caption and image within each figure */
-    margin-top: -10px; 
+    margin: 10px 0; /* Adjusts vertical spacing for better alignment */
 }
+
 figcaption {
     font-family: 'AcreMedium', sans-serif;
     font-size: 16px;
-    margin-top: 0px;
+    margin-top: 5px; /* Adds a little space between the image and caption */
 }
+
+/* Styling for images */
 .image-container img {
     transition: transform 0.3s ease; /* Smooth transition for the hover effect */
-    cursor: pointer; /* Makes it act like a button */
+    cursor: pointer; /* Makes the image act like a button */
     background-color: transparent;
 }
+
 .image-container img:hover {
     transform: scale(1.1); /* Increases the size by 10% on hover */
 }
+
+/* Description section */
 #description {
     display: none; /* Initially hidden */
     opacity: 0; /* Fully transparent initially */
@@ -53,24 +70,24 @@ figcaption {
     text-align: center; /* Center the entire description */
     transition: opacity 1s ease-in-out, visibility 1s ease-in-out; /* Smooth transition for both opacity and visibility */
 }
-/* Style for the title */
+
+/* Title styling for description */
 #description .title {
     font-size: 28px; /* Larger font size for the title */
     font-weight: bold; /* Make the title bold */
     text-decoration: underline; /* Underline the title */
-    margin-bottom: 10px; /* Add some space between the title and content */
+    margin-bottom: 10px; /* Adds space between the title and content */
 }
-/* Style for the content/description */
+
+/* Content styling for description */
 #description .content {
     font-size: 18px; /* Smaller font size for the description */
     line-height: 1.5; /* Better line spacing for readability */
-    max-width: 600px; /* Optional: to limit the width of the content */
-    margin: 0 auto; /* Center the content horizontally */
+    max-width: 600px; /* Limits the width of the content */
+    margin: 0 auto; /* Centers the content horizontally */
 }
-#description.show {
-    visibility: visible; /* Make the description visible */
-    opacity: 1; /* Fully visible */
-}
+
+/* Dot visualization container */
 #dot-container {
     display: grid;
     grid-template-columns: repeat(10, 20px); /* 10 dots per row */
@@ -78,13 +95,70 @@ figcaption {
     width: fit-content;
     margin: 20px auto; /* Center the dot container */
 }
+
+/* Default dot styling */
 .dot {
     width: 20px;
     height: 20px;
-    background-color: #ccc; /* Default dot color (gray) */
-    border-radius: 50%; /* Make dots round */
+    background-color: #ccc; /* Default (gray) */
+    border-radius: 50%; /* Makes dots circular */
     display: inline-block;
+    transition: background-color 0.3s ease-in-out;
 }
+
+/* Affected dot styling */
 .dot.affected {
-    background-color: red; /* Color for affected dots */
+    background-color: red; /* Red for affected dots */
+}
+
+.dot.fill {
+    animation: fill-animation 0.5s ease-in-out forwards;
+}
+
+@keyframes fill-animation {
+    from {
+        background-color: gray; /* Start color */
+    }
+    to {
+        background-color: red; /* End color for affected dots */
+    }
+}
+
+/* Dot information section */
+#dot-info {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    display: none; /* Initially hidden */
+    opacity: 0;    /* For fade-in effect */
+    transition: opacity 0.5s ease-in-out;
+}
+
+#dot-info .info-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#dot-info .info-content {
+    font-style: italic;
+}
+
+/* Filter section */
+#filters {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+#filters {
+    display: none; /* Hidden by default */
+    opacity: 0;    /* Invisible */
+    transition: opacity 0.5s ease-in-out; /* Smooth fade-in */
+}
+
+#filters.show {
+    display: block; /* Make it visible */
+    opacity: 1;     /* Fully visible */
 }

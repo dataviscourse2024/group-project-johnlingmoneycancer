@@ -1,98 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cancer in Young Adults Visualization</title>
-    <script src="https://d3js.org/d3.v7.min.js"></script> 
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="css/vis-style.css">
 </head>
+
 <body>
     <header>
         <h1> Exploring Increased Cancer Rates in Young Adults </h1>
-        <p> Created by John Chen - u1364584 and Michael Molenaar - u0712166</p>
-        <p> Emails: u1364584@utah.edu, u0712166@utah.edu</p>
-        <div id="visualization"></div>
-        <script src="js/cancer-visualization.js"></script>
+        <p> Created by John Chen - u1364584 and Michael Molenaar - u0712166 </p>
+        <p> Emails: u1364584@utah.edu, u0712166@utah.edu </p>
     </header>
-     <!-- Top Image Container -->
+
+    <!-- Top Image Container -->
     <div class="image-container">
-        <!-- Lungs Image -->
+        <!-- Brain Cancer -->
         <figure>
-            <a href="javascript:void(0);" onclick="doAll('Lung Cancer', 'A disease where abnormal cells in the lungs grow uncontrollably, often caused by smoking, but it can affect non-smokers too.', 100, 5);">
-                <img src="photos/Lungs.jpg" style="width: 200px; height: auto;">
-            </a>
-            <figcaption>Lung Cancer</figcaption>
-        </figure>
-        <!-- Liver Image -->
-        <figure>
-            <a href="javascript:void(0);" onclick="doAll('Liver Cancer', 'Liver cancer starts in the liver cells and can cause symptoms like jaundice and abdominal pain as it progresses.');">
-                <img src="photos/Liver.jpg" style="width: 200px; height: auto;">
-            </a>
-            <figcaption>Liver Cancer</figcaption>
-        </figure>
-        <!-- Uterus Image -->
-        <figure>
-            <a href="javascript:void(0);" onclick="doAll('Uterine cancer', 'Uterine cancer occurs when the cells in the lining of the uterus grow uncontrollably, commonly leading to abnormal bleeding and other symptoms.');">
-                <img src="photos/Uterus.jpg" style="width: 200px; height: auto;">
-            </a>
-            <figcaption>Uterine Cancer</figcaption>
-        </figure>
-        <!-- Uterus Image -->
-        <figure>
-            <a href="javascript:void(0);" onclick="doAll('Penile cancer','Penile cancer occurs when cells in the tissues of the penis grow uncontrollably, often beginning as changes in skin color or texture.');">
-                <img src="photos/Penis.jpg" style="width: 113px; height: auto;">
-            </a>
-            <figcaption>Penile Cancer</figcaption>
-        </figure>
-        <!-- Breast Image -->
-            <figure>
-                <a href="javascript:void(0);" onclick="doAll('Breast cancer', 'Breast cancer occurs when cells in the breast tissue grow uncontrollably, often forming lumps or masses that can spread to other areas of the body.');">
-                    <img src="photos/Breast.jpg" style="width: 200px; height: auto;">
-                </a>
-                <figcaption>Breast Cancer</figcaption>
-            </figure>
-    </div>
-    <!-- Bottom Image Container -->
-    <div class="image-container bottom-row">
-        <!-- Skin Cancer Image -->
-        <figure>
-            <a href="javascript:void(0);" onclick="doAll('Skin cancer', 'Skin cancer occurs when skin cells grow uncontrollably, typically due to UV exposure, and can spread if not treated early.');">
-                <img src="photos/Skin.jpg" style="width: 200px; height: auto;">
-            </a>
-            <figcaption>Skin Cancer</figcaption>
-        </figure>
-        <!-- Pancreas Image -->
-        <figure>
-            <a href="javascript:void(0);" onclick="doAll('Pancreatic cancer', 'Pancreatic cancer occurs when cells in the pancreas grow uncontrollably, often without early symptoms, making it one of the deadliest cancers.');">
-                <img src="photos/Pancreas.jpg" style="width: 200px; height: auto;">
-            </a>
-            <figcaption>Pancreatic Cancer</figcaption>
-        </figure>
-        <!-- Brain Image -->
-        <figure>
-            <a href="javascript:void(0);" onclick="doAll('Brain cancer', 'Brain cancer occurs when cells in the brain grow uncontrollably, disrupting brain function and causing neurological symptoms.');">
+            <a href="javascript:void(0);" id="brain-cancer-link">
                 <img src="photos/Brain.jpg" style="width: 200px; height: auto;">
             </a>
             <figcaption>Brain Cancer</figcaption>
         </figure>
-        <!-- Bone Cancer Image -->
+
+        <!-- Breast Cancer -->
         <figure>
-            <a href="javascript:void(0);" onclick="doAll('Bone cancer', 'Bone cancer occurs when abnormal cells grow uncontrollably in the bones, weakening the bone structure and causing pain.');">
-                <img src="photos/Bones.jpg" style="width: 200px; height: auto;">
+            <a href="javascript:void(0);" id="breast-cancer-link">
+                <img src="photos/Breast.jpg" style="width: 200px; height: auto;">
             </a>
-            <figcaption>Bone Cancer</figcaption>
+            <figcaption>Breast Cancer</figcaption>
         </figure>
-        <!-- Colon Cancer Image -->
+
+        <!-- Colon Cancer -->
         <figure>
-            <a href="javascript:void(0);" onclick="doAll('Colon cancer', 'Colon cancer occurs when cells in the colon grow uncontrollably, often starting as polyps and potentially leading to symptoms like changes in bowel habits and abdominal discomfort.');">
+            <a href="javascript:void(0);" id="colon-cancer-link">
                 <img src="photos/Colon.jpg" style="width: 200px; height: auto;">
+            </a>
+            <figcaption>Colon Cancer</figcaption>
+        </figure>
+
+        <!-- Leukemia -->
+        <figure>
+            <a href="javascript:void(0);" id="leukemia-cancer-link">
+                <img src="photos/Penis.jpg" style="width: 200px; height: auto;">
+            </a>
+            <figcaption>Leukemia Cancer</figcaption>
+        </figure>
+
+        <!-- Lung Cancer -->
+        <figure>
+            <a href="javascript:void(0);" id="lung-cancer-link">
+                <img src="photos/Lungs.jpg" style="width: 200px; height: auto;">
+            </a>
+            <figcaption>Lung Cancer</figcaption>
+        </figure>
+    </div>
+
+    <!-- Bottom Image Container -->
+    <div class="image-container bottom-row">
+        <!-- Liver Image -->
+        <figure>
+            <a href="javascript:void(0);" id="liver-cancer-link">
+                <img src="photos/Liver.jpg" style="width: 200px; height: auto;">
+            </a>
+            <figcaption>Liver Cancer</figcaption>
+        </figure>
+        <!-- Non-Hodgkin Lymphoma Image -->
+        <figure>
+            <a href="javascript:void(0);" id="lymphoma-cancer-link">
+                <img src="photos/Pancreas.jpg" style="width: 200px; height: auto;">
+            </a>
+            <figcaption>Non-Hodgkin Lymphoma</figcaption>
+        </figure>
+        <!-- Pancreatic Image -->
+        <figure>
+            <a href="javascript:void(0);" id="pancreatic-cancer-link">
+                <img src="photos/Pancreas.jpg" style="width: 200px; height: auto;">
             </a>
             <figcaption>Pancreatic Cancer</figcaption>
         </figure>
+        <!-- Skin Cancer Image -->
+        <figure>
+            <a href="javascript:void(0);" id="skin-cancer-link">
+                <img src="photos/Skin.jpg" style="width: 200px; height: auto;">
+            </a>
+            <figcaption>Skin Cancer</figcaption>
+        </figure>
+        <!-- Uterine Image -->
+        <figure>
+            <a href="javascript:void(0);" id="uterine-cancer-link">
+                <img src="photos/Uterus.jpg" style="width: 200px; height: auto;">
+            </a>
+            <figcaption>Uterine Cancer</figcaption>
+        </figure>
     </div>
+
+    <!-- Description -->
     <p id="description">This is a description.</p>
+
+    <!-- Dot Container -->
     <div id="dot-container"></div>
-    <!-- Functions to change the HTML elements -->
-    <script src="js/cancer-visualization.js"></script>
-<body>
+
+    <!-- Dot Info -->
+    <div id="dot-container"></div>
+    <div id="dot-info"></div>
+
+    <!-- Filters -->
+    <div id="filters" style="display: none;">
+        <label for="gender-filter">Gender:</label>
+        <select id="gender-filter">
+            <option value="">All</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+
+        <label for="age-filter">Age Group:</label>
+        <select id="age-filter">
+            <option value="">All</option>
+            <option value="20-24 years">20-24 years</option>
+            <option value="25-29 years">25-29 years</option>
+            <option value="30-34 years">30-34 years</option>
+            <option value="35-39 years">35-39 years</option>
+        </select>
+
+        <label for="race-filter">Race:</label>
+        <select id="race-filter">
+            <option value="">All</option>
+            <option value="White">White</option>
+            <option value="Black or African American">Black or African American</option>
+            <option value="Asian or Pacific Islander">Asian or Pacific Islander</option>
+        </select>
+    </div>
+
+    <!-- Visualization Container -->
+    <div id="visualization"></div>
+
+    <!-- JS files -->
+    <script type="module" src="js/data-loader.js"></script>
+    <script type="module" src="js/dot-visualization.js"></script>
+    <script type="module" src="js/chart-maker.js"></script>
+    <script type="module" src="js/cancer-visualization.js"></script>
+
+</body>
+
+</html>
