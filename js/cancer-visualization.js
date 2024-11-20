@@ -31,7 +31,7 @@ function scrollToBottom() {
 
 
 // Function to display a description
-function showDescription(title, content) {
+export function showDescription(title, content) {
     const description = document.getElementById('description');
     if (!description) {
         console.error("#description element not found.");
@@ -44,8 +44,6 @@ function showDescription(title, content) {
     description.style.display = 'block';
     setTimeout(() => (description.style.opacity = 1), 10);
 }
-
-export { showDescription };
 
 
 function loadAndVisualize(displayName) {
@@ -73,10 +71,10 @@ function loadAndVisualize(displayName) {
                     ? "combinedAges"
                     : filters.race
                         ? "race"
-                        : "year";
+                        : "year"; // default
 
-        let incidenceData = datasets.incidence[selectedKey].filter(d => d["Leading Cancer Sites"] === cancerType);
-        let mortalityData = datasets.mortality[selectedKey].filter(d => d["Leading Cancer Sites"] === cancerType);
+        let incidenceData = datasets.incidence[selectedKey]?.filter(d => d["Leading Cancer Sites"] === cancerType);
+        let mortalityData = datasets.mortality[selectedKey]?.filter(d => d["Leading Cancer Sites"] === cancerType);
 
         // Apply filters to the selected dataset
         incidenceData = applyFiltersToDataset(incidenceData, filters);
@@ -95,12 +93,12 @@ function loadAndVisualize(displayName) {
 
         const mortalityChartData = mortalityData.map(d => ({
             year: +d.Year,
-            value: +d.Count
+            value: +d.Deaths
         }));
 
         // Draw separate charts
-        drawLineChart(incidenceChartData, "#incidence-chart-container", "Incidence Over Time", "steelblue");
-        drawLineChart(mortalityChartData, "#mortality-chart-container", "Mortality Over Time", "red");
+        drawLineChart(incidenceChartData, "#incidence-chart-container", "Incidence Over Time", "Count", "orange");
+        drawLineChart(mortalityChartData, "#mortality-chart-container", "Mortality Over Time", "Deaths", "red");
     });
 }
 
@@ -159,12 +157,18 @@ let fullBarData = [];
 
 // Function to apply filters to the dataset
 function applyFiltersToDataset(dataset, filters) {
+    if (!dataset || dataset.length === 0) return [];
+
     return dataset.filter(d => {
-        return (!filters.gender || d.Sex === filters.gender) &&
-            (!filters.age || d["Age Groups"] === filters.age) &&
-            (!filters.race || d.Race === filters.race);
+        const filterConditions = [
+            !filters.gender || d.Sex === filters.gender,
+            !filters.age || d["Age Groups"] === filters.age,
+            !filters.race || d.Race === filters.race
+        ];
+        return filterConditions.every(Boolean); // Apply all valid filters
     });
 }
+
 
 // Function to render charts with applied filters
 function renderCharts() {
