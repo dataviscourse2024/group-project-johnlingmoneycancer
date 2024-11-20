@@ -156,14 +156,18 @@ figcaption {
 /* Line and Mortality Chart Section */
 #line-bar-container {
     display: flex;
-    justify-content: space-between;
-    gap: 2%; /* Consistent spacing between the two charts */
+    justify-content: space-between; /* Space out charts evenly */
+    align-items: flex-start; /* Align charts to the top */
+    gap: 0px; /* Control spacing between charts */
+    flex-wrap: nowrap; /* Prevent charts from stacking */
+    margin: 0 auto; /* Center the container */
+    max-width: 100%; /* Ensure it doesn't exceed the viewport */
 }
 
 #incidence-chart-container,
 #mortality-chart-container {
-    width: 48%; /* Each chart takes up 48% of the container width */
-    height: 400px;
+    width: 47%; /* Each chart takes up 45% of the container width */
+    height: 400px; /* Maintain consistent height */
     display: none; /* Hidden by default */
     opacity: 0; /* Fade-in effect */
     transition: opacity 0.5s ease; /* Smooth fade-in animation */
@@ -174,6 +178,20 @@ figcaption {
     display: block;
     opacity: 1; /* Fully visible */
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #line-bar-container {
+        flex-direction: column; /* Stack charts vertically */
+        gap: 10px; /* spacing between stacked charts */
+    }
+
+    #incidence-chart-container,
+    #mortality-chart-container {
+        width: 100%; /* Full width for stacked layout */
+    }
+}
+
 
 /* Visualization container (dot chart) */
 #visualization {
@@ -188,16 +206,4 @@ figcaption {
     opacity: 1; /* Fully visible */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    #line-bar-container {
-        flex-direction: column; /* Stack charts vertically on small screens */
-        gap: 20px; /* Add spacing between stacked charts */
-    }
-
-    #incidence-chart-container,
-    #mortality-chart-container {
-        width: 100%; /* Full width for stacked layout */
-    }
-}
 
