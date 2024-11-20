@@ -21,104 +21,75 @@ function drawAxes(svg, xScale, yScale, height, width) {
 // Synchronization function between line and bar charts
 export function synchronizeCharts(lineData, barData) {
     if (!lineData || !barData) {
-        console.error("Line or bar data missing.");  // debug error
+        console.error("Line or bar data missing."); // Debug error
         return;
     }
 
-    console.log("Synchronizing charts with filtered data:"); // Debugging
+    // Remove any existing charts
+    d3.select('#line-chart-container').select('svg').remove();
 
+    // Draw line chart
     drawLineChart(lineData, '#line-chart-container', clickedPoint => {
         const clickedYear = clickedPoint.year;
         const filteredBarData = barData.filter(d => d.year === clickedYear);
         d3.select('#bar-chart-container').select('svg').remove();
         drawBarChart(filteredBarData, '#bar-chart-container');
     });
-
-    drawBarChart(barData, '#bar-chart-container', clickedBar => {
-        const clickedCategory = clickedBar.category;
-        const filteredLineData = lineData.filter(d => d.category === clickedCategory);
-        d3.select('#line-chart-container').select('svg').remove();
-        drawLineChart(filteredLineData, '#line-chart-container');
-    });
-
-    console.log("Succes synchronizing charts"); // Debugging
 }
 
 
 // Function to draw a line chart
-function drawLineChart(data, containerId, onPointClick = null) {
-    const margin = { top: 20, right: 30, bottom: 40, left: 60 };
-    const width = 400 - margin.left - margin.right;
-    const height = 300 - margin.top - margin.bottom;
+export function drawLineChart(data, containerId, chartTitle, lineColor) {
+    const margin = { top: 40, right: 30, bottom: 50, left: 60 };
+    const width = 800 - margin.left - margin.right;
+    const height = 400 - margin.top - margin.bottom;
 
-    const svg = createSvg(containerId, width, height, margin);
+    // Create SVG
+    const svg = d3.select(containerId)
+        .html("") // Clear existing chart
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-    const xScale = d3.scaleLinear()
-        .domain(d3.extent(data, d => +d.year))
+    // Define scales
+    const x = d3.scaleLinear()
+        .domain(d3.extent(data, d => d.year))
         .range([0, width]);
 
-    const yScale = d3.scaleLinear()
-        .domain([0, d3.max(data, d => +d.value)])
+    const y = d3.scaleLinear()
+        .domain([0, d3.max(data, d => d.value)])
         .nice()
         .range([height, 0]);
 
-    drawAxes(svg, xScale, yScale, height, width);
+    // Draw X and Y axes
+    svg.append("g")
+        .attr("transform", `translate(0, ${height})`)
+        .call(d3.axisBottom(x).tickFormat(d3.format("d")));
 
+    svg.append("g")
+        .call(d3.axisLeft(y));
+
+    // Draw the line
     const line = d3.line()
-        .x(d => xScale(+d.year))
-        .y(d => yScale(+d.value));
+        .x(d => x(d.year))
+        .y(d => y(d.value));
 
     svg.append("path")
         .datum(data)
         .attr("fill", "none")
-        .attr("stroke", "steelblue")
+        .attr("stroke", lineColor)
         .attr("stroke-width", 1.5)
         .attr("d", line);
 
-    // if (onPointClick) {
-    //     svg.selectAll(".point")
-    //         .data(data)
-    //         .enter()
-    //         .append("circle")
-    //         .attr("class", "point")
-    //         .attr("cx", d => xScale(+d.year))
-    //         .attr("cy", d => yScale(+d.value))
-    //         .attr("r", 4)
-    //         .attr("fill", "red")
-    //         .on("click", onPointClick);
-    // }
+    // Add chart title
+    svg.append("text")
+        .attr("x", width / 2)
+        .attr("y", -10)
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .text(chartTitle);
 }
 
-// Function to draw a bar chart
-function drawBarChart(data, containerId, onBarClick = null) {
-    const margin = { top: 20, right: 30, bottom: 40, left: 60 };
-    const width = 400 - margin.left - margin.right;
-    const height = 300 - margin.top - margin.bottom;
-
-    const svg = createSvg(containerId, width, height, margin);
-
-    const xScale = d3.scaleBand()
-        .domain(data.map(d => d.category))
-        .range([0, width])
-        .padding(0.2);
-
-    const yScale = d3.scaleLinear()
-        .domain([0, d3.max(data, d => +d.value)])
-        .nice()
-        .range([height, 0]);
-
-    drawAxes(svg, xScale, yScale, height, width);
-
-    svg.selectAll(".bar")
-        .data(data)
-        .enter()
-        .append("rect")
-        .attr("class", "bar")
-        .attr("x", d => xScale(d.category))
-        .attr("y", d => yScale(+d.value))
-        .attr("width", xScale.bandwidth())
-        .attr("height", d => height - yScale(+d.value))
-        .attr("fill", "orange")
-        .on("click", onBarClick);
-}
 

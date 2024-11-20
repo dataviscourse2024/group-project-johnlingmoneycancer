@@ -1,6 +1,7 @@
 import { visualizeCancerDots } from './dot-visualization.js';
 import { loadAllFiles } from './data-loader.js';
 import { synchronizeCharts } from './chart-maker.js';
+import { drawLineChart } from './chart-maker.js';
 
 const cancerTypeMapping = {                             // checks if cancer has appropriate image and description
     "Brain Cancer": "Brain and Other Nervous System",   // check
@@ -72,11 +73,10 @@ function loadAndVisualize(displayName) {
                     ? "combinedAges"
                     : filters.race
                         ? "race"
-                        : "allGroups";
+                        : "year";
 
         let incidenceData = datasets.incidence[selectedKey].filter(d => d["Leading Cancer Sites"] === cancerType);
         let mortalityData = datasets.mortality[selectedKey].filter(d => d["Leading Cancer Sites"] === cancerType);
-
 
         // Apply filters to the selected dataset
         incidenceData = applyFiltersToDataset(incidenceData, filters);
@@ -87,9 +87,26 @@ function loadAndVisualize(displayName) {
             return;
         }
 
+        // Prepare data for charts
+        const incidenceChartData = incidenceData.map(d => ({
+            year: +d.Year,
+            value: +d.Count
+        }));
 
+        const mortalityChartData = mortalityData.map(d => ({
+            year: +d.Year,
+            value: +d.Count
+        }));
+
+        // Draw separate charts
+        drawLineChart(incidenceChartData, "#incidence-chart-container", "Incidence Over Time", "steelblue");
+        drawLineChart(mortalityChartData, "#mortality-chart-container", "Mortality Over Time", "red");
     });
 }
+
+
+
+
 
 function handleVisualizations(cancerType, displayName, description) {
     // Remove "active-cancer" class from all previously active links
@@ -103,13 +120,16 @@ function handleVisualizations(cancerType, displayName, description) {
     }
 
     // Show filters and charts
-    const elementsToShow = ["filters", "line-chart-container", "bar-chart-container", "visualization"];
+    const elementsToShow = ["filters", "incidence-chart-container", "mortality-chart-container", "visualization"];
+    const missingElements = elementsToShow.filter(id => !document.getElementById(id));
+    if (missingElements.length > 0) {
+        console.warn(`Missing elements with IDs: ${missingElements.join(", ")}`);
+    }
+
     elementsToShow.forEach(id => {
         const element = document.getElementById(id);
         if (element) {
             element.classList.add("show"); // Add the show class for smooth transition
-        } else {
-            console.warn(`Element with ID "${id}" not found.`); // Debugging log
         }
     });
 
@@ -119,14 +139,19 @@ function handleVisualizations(cancerType, displayName, description) {
     // Load and visualize the graphs
     setTimeout(() => {
         loadAllFiles(datasets => {
-            visualizeCancerDots(cancerType, datasets.incidence.all);
+            if (!datasets || !datasets.incidence || !datasets.incidence.all) {
+                console.error("Datasets are not loaded or malformed.");
+                return;
+            }
+            visualizeCancerDots(cancerType, datasets.incidence.all); // Dot visualization
         });
 
         setTimeout(() => {
-            loadAndVisualize(displayName);
+            loadAndVisualize(displayName); // Load graphs
         }, 1500); // Adjusted delay for graphs
     }, 500); // Delay for dots
 }
+
 
 
 
