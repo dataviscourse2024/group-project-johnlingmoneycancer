@@ -111,9 +111,8 @@ figcaption {
     background-color: red; /* Red for affected dots */
 }
 
-/* Filled dot animation */
 .dot.fill {
-    background-color: green; /* Final color after animation */
+    animation: fill-animation 0.5s ease-in-out forwards;
 }
 
 @keyframes fill-animation {
@@ -125,3 +124,41 @@ figcaption {
     }
 }
 
+/* Dot information section */
+#dot-info {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    display: none; /* Initially hidden */
+    opacity: 0;    /* For fade-in effect */
+    transition: opacity 0.5s ease-in-out;
+}
+
+#dot-info .info-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#dot-info .info-content {
+    font-style: italic;
+}
+
+/* Filter section */
+#filters {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+#filters {
+    display: none; /* Hidden by default */
+    opacity: 0;    /* Invisible */
+    transition: opacity 0.5s ease-in-out; /* Smooth fade-in */
+}
+
+#filters.show {
+    display: block; /* Make it visible */
+    opacity: 1;     /* Fully visible */
+}
