@@ -26,7 +26,7 @@ function calculateIncidence(cancerType) {
         "Brain Cancer": 3.5,
         "Breast Cancer": 43.3,
         "Colon Cancer": 4.0,
-        "Leukemia Cancer": 5.0,
+        "Leukemia": 5.0,
         "Liver Cancer": 1.5,
         "Lung Cancer": 1.2,
         "Non-Hodgkin Lymphoma": 7.0,
@@ -36,7 +36,7 @@ function calculateIncidence(cancerType) {
     };
 
     // Return the incidence rate or default to 0 if not found
-    return incidenceRatesPer100k[cancerType] || 0;
+    return incidenceRatesPer100k[cancerType];
 }
 
 function createDotVisualization(totalDots, affectedDots) {

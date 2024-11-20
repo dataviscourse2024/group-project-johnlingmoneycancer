@@ -42,7 +42,7 @@ function loadAndVisualize(displayName) {
         "Brain Cancer": "Brain and Other Nervous System",   // check
         "Breast Cancer": "Breast",                          // check
         "Colon Cancer": "Colon and Rectum",                 // check
-        "Leukemia Cancer": "Leukemias",            
+        "Leukemia": "Leukemias",            
         "Liver Cancer": "Liver",                            // check
         "Lung Cancer": "Lung and Bronchus",                 // check
         "Non-Hodgkin Lymphoma": "Non-Hodgkin Lymphoma",
@@ -129,13 +129,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const cancerLinks = [
         {
             id: 'brain-cancer-link',
-            cancerType: 'Brain and Other Nervous System',
+            cancerType: 'Brain Cancer',
             displayName: 'Brain Cancer',
             description: 'Brain cancer occurs when cells in the brain grow uncontrollably, disrupting brain function and causing neurological symptoms.'
         },
         {
             id: 'breast-cancer-link',
-            cancerType: 'Breast',
+            cancerType: 'Breast Cancer',
             displayName: 'Breast Cancer',
             description: 'Breast cancer occurs when cells in the breast tissue grow uncontrollably, often forming lumps or masses that can spread to other areas of the body.'
         },
@@ -147,8 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 'leukemia-cancer-link',
-            cancerType: 'Leukemia Cancer',
-            displayName: 'Leukemia Cancer',
+            cancerType: 'Leukemia',
+            displayName: 'Leukemia',
             description: 'Leukemia cancer occurs when blood-forming tissues produce abnormal blood cells, impacting overall health.'
         },
         {
