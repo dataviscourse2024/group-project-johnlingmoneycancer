@@ -162,3 +162,14 @@ figcaption {
     display: block; /* Make it visible */
     opacity: 1;     /* Fully visible */
 }
+
+/* Line and bar chart section */
+#line-bar-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#line-chart-container, #bar-chart-container {
+    width: 48%;
+    height: 400px;
+}
