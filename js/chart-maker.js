@@ -219,7 +219,6 @@ export function drawLineChart(data, containerId, chartTitle, yAxisTitle, lineCol
             .attr("x", x(closestPoint.year))
             .attr("y", y(closestPoint.value))
             .text(`Year: ${closestPoint.year}, ${yLabel}: ${closestPoint.value}`)
-            .text("color", )
             .style("opacity", 1);
     }
 
