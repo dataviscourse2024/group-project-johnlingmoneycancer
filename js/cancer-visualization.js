@@ -7,13 +7,13 @@ const cancerTypeMapping = {                             // checks if cancer has 
     "Brain Cancer": "Brain and Other Nervous System",   // check
     "Breast Cancer": "Breast",                          // check
     "Colon Cancer": "Colon and Rectum",                 // check
-    "Leukemia": "Leukemias",
+    "Leukemia": "Leukemias",                            // check
     "Liver Cancer": "Liver",                            // check
     "Lung Cancer": "Lung and Bronchus",                 // check
-    "Non-Hodgkin Lymphoma": "Non-Hodgkin Lymphoma",
+    "Non-Hodgkin Lymphoma": "Non-Hodgkin Lymphoma",     // check
     "Pancreatic Cancer": "Pancreas",                    // check
     "Skin Cancer": "Melanoma of the Skin",              // check
-    "Uterine Cancer": "Cervix Uteri"                    // check
+    "Uterine Cancer": "Cervix Uteri"                    // check maybe???
 };
 
 
@@ -21,14 +21,6 @@ const svgMain = d3.select("#visualization") // Top-level SVG declaration
     .append("svg")
     .attr("width", 1000)
     .attr("height", 600);
-
-function scrollToBottom() {
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth'
-    });
-}
-
 
 // Function to display a description
 export function showDescription(title, content) {
@@ -53,6 +45,10 @@ function loadAndVisualize(displayName) {
         console.error(`Cancer type "${displayName}" not found in the mapping.`);
         return;
     }
+
+    // Clear existing charts
+    d3.select("#incidence-chart-container").html("");
+    d3.select("#mortality-chart-container").html("");
 
     // Filters
     const filters = {
@@ -97,8 +93,8 @@ function loadAndVisualize(displayName) {
         }));
 
         // Draw separate charts
-        drawLineChart(incidenceChartData, "#incidence-chart-container", "Incidence Over Time", "Count", "orange");
-        drawLineChart(mortalityChartData, "#mortality-chart-container", "Mortality Over Time", "Deaths", "red");
+        drawLineChart(incidenceChartData, "#incidence-chart-container", "Incidence Over Time", "Count", "orange", "Count");
+        drawLineChart(mortalityChartData, "#mortality-chart-container", "Mortality Over Time", "Deaths", "red", "Death");
     });
 }
 
@@ -149,8 +145,6 @@ function handleVisualizations(cancerType, displayName, description) {
 }
 
 
-
-
 // Example dataset
 let fullLineData = [];
 let fullBarData = [];
@@ -180,10 +174,6 @@ function renderCharts() {
 
     const filteredLineData = applyFiltersToDataset(fullLineData, filters);
     const filteredBarData = applyFiltersToDataset(fullBarData, filters);
-
-    // Clear existing charts
-    d3.select('#line-chart-container').select('svg').remove();
-    d3.select('#bar-chart-container').select('svg').remove();
 
     // Synchronize charts with filtered data
     synchronizeCharts(filteredLineData, filteredBarData);
