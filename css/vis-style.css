@@ -168,35 +168,41 @@ figcaption {
 }
 
 #dropdown-menu-container {
-    display: none; /* Hidden by default */
-    margin-top: 20px; /* Space between description and dropdown */
-    text-align: center; /* Center the dropdown menu contents */
-    background-color: white; /* Optional: Background color */
-    border: 1px solid #ccc; /* Optional: Border for visibility */
-    padding: 15px; /* Optional: Padding for better appearance */
-    border-radius: 8px; /* Optional: Rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
-    width: fit-content; /* Automatically adjust to content width */
-    margin-left: auto; /* Center horizontally */
-    margin-right: auto; /* Center horizontally */
-    margin-bottom: 40px;
+    /* Box Model */
+    display: none; 
+    margin: 20px auto 40px auto; 
+    padding: 15px; 
+    width: fit-content; 
+
+    /* Border & Outline */
+    border: 1px solid #ccc;
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    /* Background */
+    background-color: white; 
+
+    /* Typography */
+    text-align: center; 
 }
+
 /* Line and Mortality Chart Section */
 #line-chart-container {
     display: flex;
-    justify-content: space-between; /* Space out charts evenly */
-    align-items: flex-start; /* Align charts to the top */
-    gap: 10px; /* Reduce spacing between charts */
-    flex-wrap: nowrap; /* Prevent charts from stacking */
-    margin: 0 auto; /* Center the container */
-    max-width: 100%; /* Ensure it doesn't exceed the viewport */
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px; 
+    flex-wrap: nowrap; 
+    max-width: 100%; 
+    margin: 0 auto; 
 }
 
 #incidence-chart-container,
 #mortality-chart-container {
-    width: 50%; /* Each chart takes up 50% of the container width */
-    height: 400px; /* Maintain consistent height */
-    display: none; /* Hidden by default */
+    width: 50%; 
+    height: 400px; 
+    display: none; 
+    margin-left: 30px;
     opacity: 0; /* Fade-in effect */
     transition: opacity 0.2s ease; /* Smooth fade-in animation */
 }
@@ -210,9 +216,9 @@ figcaption {
 /* Responsive Design: Medium screens (800px and smaller) */
 @media (max-width: 800px) {
     #line-chart-container {
-        flex-wrap: wrap; /* Allow charts to stack when space is limited */
-        justify-content: center; /* Center the charts in the container */
-        gap: 10px; /* Reduce spacing between stacked charts */
+        flex-wrap: wrap; 
+        justify-content: center; 
+        gap: 10px; /* Spacing when charts are stacked */
     }
 
     #incidence-chart-container,
