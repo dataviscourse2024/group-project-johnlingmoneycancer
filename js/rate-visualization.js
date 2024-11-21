@@ -1,5 +1,4 @@
 import { loadAllFiles } from './data-loader.js';
-import { showDescription } from './cancer-visualization.js';
 
 let loadedDataset = null;
 
@@ -57,7 +56,7 @@ function createRateVisualization(rate, containerId, iconPath) {
     // Title for the rate visualization
     const rateTitle = document.createElement("div");
     rateTitle.className = "rate-title";
-    rateTitle.innerHTML = `${containerId.includes("incidence") ? "Incidence" : "Mortality"} Rate: ${rate} per 100,000<br><small>Each icon represents 1,000 people.</small>`;
+    rateTitle.innerHTML = `${containerId.includes("incidence") ? "Incidence" : "Mortality"} Rate: ${rate} per 100,000<br>`;
     container.appendChild(rateTitle);
 
     // Number of icons to display
@@ -109,6 +108,6 @@ export function visualizeCancerRates(cancerType) {
     const mortalityRate = calculateMortality(cancerType);
 
     // Create visualizations for incidence and mortality rates
-    createRateVisualization(incidenceRate, "rate-visualization-incidence", "photos/blue-person-symbol.png");
+    createRateVisualization(incidenceRate, "rate-visualization-incidence", "photos/orange-person-symbol.png");
     createRateVisualization(mortalityRate, "rate-visualization-mortality", "photos/red-person-symbol.png");
 }
