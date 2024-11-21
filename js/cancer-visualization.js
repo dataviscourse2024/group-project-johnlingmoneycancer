@@ -13,7 +13,7 @@ const cancerTypeMapping = {                             // checks if cancer has 
     "Non-Hodgkin Lymphoma": "Non-Hodgkin Lymphoma",
     "Pancreatic Cancer": "Pancreas",                    // check
     "Skin Cancer": "Melanoma of the Skin",              // check
-    "Uterine Cancer": "Cervix Uteri"
+    "Uterine Cancer": "Cervix Uteri"                    // check
 };
 
 
