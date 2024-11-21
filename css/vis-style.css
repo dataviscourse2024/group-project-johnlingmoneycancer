@@ -2,35 +2,90 @@
 body {
     font-family: 'AcreMedium', sans-serif;
     overflow: auto;
-    margin: 0; /* Removes default browser margins */
-    padding: 0; /* Removes default browser padding */
+    margin: 0;
+    padding: 0;
     min-height: 100vh; 
 }
 
 /* Header styling */
 header {
-    text-align: center; /* Centers text horizontally */
-    margin-bottom: 20px; /* Reduces space below the header */
-    padding: 10px; /* Adds some padding for aesthetics */
+    text-align: center; 
+    background-image: url('../photos/Translational-Research-Banner.avif');
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 20px; 
+    padding: 10px; 
+}
+
+/* Header styling */
+header {
+    text-align: center;
+    background-image: url('../photos/Translational-Research-Banner.avif');
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 20px;
+    padding: 10px;
 }
 
 h1 {
-    font-size: 42px; /* Adjust this value to your desired size */
+    font-size: 42px;
+    background-color: rgba(255, 255, 255, 0.4);
+    display: inline-block; 
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px; 
 }
 
-h2 {
-    font-size: 18px; /* Adjust this value to your desired size */
-    margin-top: -10px; 
+h3 {
+    font-size: 14px; 
+    margin: 5px auto; 
+    width: 20%; 
+    background-color: rgba(255, 255, 255, 0.4);
+    display: block; 
+    padding: 5px 10px;
+    border-radius: 8px;
+    text-align: center; 
+}
+
+/* Introduction Section Styling */
+#introduction-container {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9; 
+    border-radius: 8px; 
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    max-width: 800px; 
+    font-family: 'AcreMedium', sans-serif;
+}
+
+#introduction-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333; 
+}
+
+#introduction-container p {
+    font-size: 16px;
+    line-height: 1.6; 
+    color: #555;
+}
+
+/* Stacked Area Chart Section */
+#stacked-area-chart-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
 }
 
 /* Image container styling */
 .image-container {
-    display: flex; /* Align images horizontally within the container */
-    flex-wrap: wrap; /* Allows images to wrap to the next row if needed */
-    justify-content: center; /* Centers the images horizontally */
-    align-items: flex-start; /* Aligns images to the top */
-    gap: 10px; /* Adds space between images */
-    margin: 0 auto 20px; /* Centers the container and adds space below */
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: flex-start; 
+    gap: 10px; 
+    margin: 0 auto 20px; 
 }
 
 /* Individual figure styling */
@@ -226,8 +281,4 @@ figcaption {
     opacity: 1; /* Fully visible */
 }
 
-#stacked-area-chart-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-}
+
