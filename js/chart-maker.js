@@ -85,6 +85,8 @@ export function drawLineChart(data, containerId, chartTitle, yAxisTitle, lineCol
         .nice()
         .range([height, 0]);
 
+    drawAxes(svg, x, y, yAxisTitle, height, width, margin);
+
     // Update Y-Axis with animation
     svg.selectAll(".y-axis")
         .data([null]) // Use a single dummy datum to maintain consistency
@@ -185,6 +187,11 @@ export function drawLineChart(data, containerId, chartTitle, yAxisTitle, lineCol
         const [mouseX] = d3.pointer(event, svg.node());
         const xValue = x.invert(mouseX);
 
+        if (!data || data.length === 0) {
+            console.warn("No data available for tooltips.");
+            return;
+        }
+        
         const closestPoint = data.reduce((prev, curr) => (
             Math.abs(curr.year - xValue) < Math.abs(prev.year - xValue) ? curr : prev
         ));
