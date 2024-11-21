@@ -182,15 +182,24 @@ figcaption {
 /* Responsive Design */
 @media (max-width: 768px) {
     #line-bar-container {
-        flex-direction: column; /* Stack charts vertically */
+        flex-direction: column;
         gap: 10px; /* spacing between stacked charts */
     }
 
     #incidence-chart-container,
     #mortality-chart-container {
-        width: 100%; /* Full width for stacked layout */
+        width: 100%;
     }
 }
+
+/* Age Group Pyramid Section */
+#age-group-pyramid-container {
+    margin: 20px auto;
+    width: 100%;
+    text-align: center;
+}
+
+
 
 
 /* Visualization container (dot chart) */
