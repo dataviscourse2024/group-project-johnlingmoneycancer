@@ -72,10 +72,17 @@ h3 {
 }
 
 /* Stacked Area Chart Section */
-#stacked-area-chart-container {
+#charts-container {
     display: flex;
-    justify-content: left;
+    justify-content: space-between; /* Adjust space between charts */
+    align-items: flex-start; /* Align charts at the same vertical level */
+    gap: 20px; /* Add spacing between the charts */
     margin: 20px 0;
+}
+#incident-stacked-area-chart-container,
+#mortality-stacked-area-chart-container {
+    flex: 1; /* Allow both charts to take equal width */
+    max-width: 48%; /* Optional: Control max width for each chart */
 }
 
 /* Exploration section */

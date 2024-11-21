@@ -109,6 +109,6 @@ export function visualizeCancerRates(cancerType) {
     const mortalityRate = calculateMortality(cancerType);
 
     // Create visualizations for incidence and mortality rates
-    createRateVisualization(incidenceRate, "rate-visualization-incidence", "photos/blue-person-symbol.png");
-    createRateVisualization(mortalityRate, "rate-visualization-mortality", "photos/red-person-symbol.png");
+    createRateVisualization(incidenceRate, "rate-visualization-incidence", "photos/black-person-symbol.png");
+    createRateVisualization(mortalityRate, "rate-visualization-mortality", "photos/black-person-symbol.png");
 }

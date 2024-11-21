@@ -1,7 +1,7 @@
-export function drawStackedAreaChart(structuredData, containerId) {
-    const margin = { top: 40, right: 30, bottom: 50, left: 60 };
-    const width = 700 - margin.left - margin.right;
-    const height = 400 - margin.top - margin.bottom;
+export function drawMortalityStackedBarChart(structuredData, containerId) {
+    const margin = { top: 40, right: 150, bottom: 50, left: 60 };
+    const width = 650 - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
 
     // Define the list of cancer sites to keep
     const selectedCancerSites = [
@@ -19,16 +19,16 @@ export function drawStackedAreaChart(structuredData, containerId) {
 
     // Define a custom color palette for each cancer site
     const colorPalette = {
-        "Brain and Other Nervous System": "#1f77b4", // Blue
-        "Breast": "#ff7f0e", // Orange
-        "Cervix Uteri": "#2ca02c", // Green
-        "Colon and Rectum": "#d62728", // Red
-        "Leukemias": "#9467bd", // Purple
-        "Liver": "#8c564b", // Brown
-        "Lung and Bronchus": "#e377c2", // Pink
-        "Melanoma of the Skin": "#7f7f7f", // Gray
-        "Non-Hodgkin Lymphoma": "#bcbd22", // Olive
-        "Pancreas": "#17becf" // Cyan
+        "Brain and Other Nervous System": "#1f77b4",
+        "Breast": "#ff7f0e",
+        "Cervix Uteri": "#2ca02c",
+        "Colon and Rectum": "#d62728",
+        "Leukemias": "#9467bd",
+        "Liver": "#8c564b",
+        "Lung and Bronchus": "#e377c2",
+        "Melanoma of the Skin": "#7f7f7f",
+        "Non-Hodgkin Lymphoma": "#bcbd22",
+        "Pancreas": "#17becf"
     };
 
     // Filter structuredData to include only the selected cancer sites
@@ -48,8 +48,6 @@ export function drawStackedAreaChart(structuredData, containerId) {
         return row;
     });
 
-    console.log("Filtered Chart Data:", chartData);
-
     // Extract cancer sites
     const cancerSites = selectedCancerSites;
 
@@ -68,10 +66,11 @@ export function drawStackedAreaChart(structuredData, containerId) {
         .append("g")
         .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-    const x = d3.scalePoint()
-        .domain(ageGroups) // Age groups as categories
-        .range([0, width]) // Use full width of the chart
-        .padding(0);
+    // X-axis scale (Age Groups)
+    const x = d3.scaleBand()
+        .domain(ageGroups)
+        .range([0, width])
+        .padding(0.1); // Add padding between bars
 
     // Y-axis scale (Counts)
     const y = d3.scaleLinear()
@@ -79,20 +78,21 @@ export function drawStackedAreaChart(structuredData, containerId) {
         .nice()
         .range([height, 0]);
 
-    // Draw the areas
-    const area = d3.area()
-        .x(d => x(d.data.ageGroup))
-        .y0(d => y(d[0]))
-        .y1(d => y(d[1]));
-
+    // Draw the bars
     svg.selectAll(".layer")
         .data(layers)
         .enter()
-        .append("path")
+        .append("g")
         .attr("class", "layer")
-        .attr("d", area)
         .style("fill", d => colorPalette[d.key]) // Assign color based on cancer type
-        .style("opacity", 0.8);
+        .selectAll("rect")
+        .data(d => d)
+        .enter()
+        .append("rect")
+        .attr("x", d => x(d.data.ageGroup))
+        .attr("y", d => y(d[1]))
+        .attr("height", d => y(d[0]) - y(d[1]))
+        .attr("width", x.bandwidth());
 
     // Add X-axis
     svg.append("g")
@@ -109,35 +109,26 @@ export function drawStackedAreaChart(structuredData, containerId) {
         .attr("y", -10)
         .attr("text-anchor", "middle")
         .style("font-size", "16px")
-        .style("font-weight", "bold") // Make the text bold
-        .text("Cancer Incidence by Age Group");
+        .style("font-weight", "bold")
+        .text("Cancer Mortality by Age Group");
 
-    // Add annotations for each cancer type
-    const annotationGroup = svg.append("g")
-        .attr("class", "annotations");
+    // Add legend
+    const legend = svg.append("g")
+        .attr("transform", `translate(${width + 20}, 0)`);
 
-    layers.forEach(layer => {
-        const cancerType = layer.key;
+    selectedCancerSites.forEach((site, i) => {
+        const legendRow = legend.append("g")
+            .attr("transform", `translate(0, ${i * 20})`);
 
-        // Calculate the midpoint of the layer for annotation
-        const lastPoint = layer[layer.length - 1];
-        const midY = (lastPoint[0] + lastPoint[1]) / 2; // Midpoint between stack layers
+        legendRow.append("rect")
+            .attr("width", 15)
+            .attr("height", 15)
+            .attr("fill", colorPalette[site]);
 
-        // Add a line pointing to the area
-        annotationGroup.append("line")
-            .attr("x1", width) // Start at the right edge of the chart
-            .attr("y1", y(midY)) // Align with the middle of the layer
-            .attr("x2", width + 50) // Offset to the right for the label
-            .attr("y2", y(midY)) // Keep the y-coordinate aligned
-            .style("stroke", "black");
-
-        // Add a label for the cancer type
-        annotationGroup.append("text")
-            .attr("x", width + 55) 
-            .attr("y", y(midY))
+        legendRow.append("text")
+            .attr("x", 20)
+            .attr("y", 12)
             .style("font-size", "12px")
-            .style("font-weight", "bold")
-            .style("fill", "black") 
-            .text(cancerType);
+            .text(site);
     });
 }

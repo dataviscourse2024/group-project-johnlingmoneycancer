@@ -1,6 +1,6 @@
-import { drawStackedAreaChart } from './stacked-area-chart.js';
+import { drawIncidentStackedBarChart } from './incident-stacked-area-chart.js';
+import { drawMortalityStackedBarChart } from './mortality-stacked-area-chart.js';
 import { visualizeCancerRates } from './rate-visualization.js';
-import { loadAllFiles } from './data-loader.js';
 import { loadAllGroups } from './data-loader.js';
 import { drawLineChart } from './chart-maker.js';
 
@@ -22,7 +22,6 @@ const svgMain = d3.select("#visualization") // Top-level SVG declaration
     .attr("width", 1000)
     .attr("height", 600);
 
-
 // Function to draw the stacked area chart
 document.addEventListener("DOMContentLoaded", () => {
     d3.csv("data/cancer-incidence-csvs/LeadingCancerIncidence-ALLGROUPS.csv").then(data => {
@@ -43,7 +42,30 @@ document.addEventListener("DOMContentLoaded", () => {
             })
         );
 
-        drawStackedAreaChart(structuredData, "#stacked-area-chart-container");
+        drawIncidentStackedBarChart(structuredData, "#incident-stacked-area-chart-container");
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    d3.csv("data/cancer-mortality-csvs/LeadingCancerMortality-ALLGROUPS.csv").then(data => {
+        // Parse and structure the data
+        const structuredData = Array.from(
+            d3.group(
+                data,
+                d => d["Leading Cancer Sites"] // Group by Cancer Sites
+            ),
+            ([cancerSite, entries]) => ({
+                cancerSite, // Cancer site name
+                ageGroups: entries.reduce((acc, entry) => {
+                    const ageGroup = entry["Age Group Code"];
+                    const count = +entry.Deaths; // Convert count to number
+                    acc[ageGroup] = (acc[ageGroup] || 0) + count; // Sum counts for the same age group
+                    return acc;
+                }, {}) // Reduce into a nested object with Age Groups and Counts
+            })
+        );
+
+        drawMortalityStackedBarChart(structuredData, "#mortality-stacked-area-chart-container");
     });
 });
 
