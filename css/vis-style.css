@@ -242,81 +242,51 @@ figcaption {
     }
 }
 
-/* Dot visualization section */
-#dot-visualization-section {
-    display: none; /* Initially hidden */
-    opacity: 0; /* Fully transparent initially */
-    transition: opacity 0.5s ease; /* Smooth fade-in */
-    margin: 30px auto;
+/* Rate visualization container */
+#rate-visualization-container {
+    display: flex; 
+    justify-content: center; 
+    gap: 40px; 
+    margin-top: 30px; 
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+/* Individual rate block (incidence/mortality) */
+.rate-block {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
     text-align: center;
+    max-width: 250px; 
 }
 
-#dot-visualization-section.show {
-    display: block; /* Make it visible */
-    opacity: 1; /* Fully opaque */
+/* Title for each block */
+.rate-title {
+    font-size: 18px; 
+    font-weight: bold; 
+    margin-bottom: 15px; 
 }
 
-#dot-visualization-section h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-#dot-container {
+/* Grid for icons */
+.rate-grid {
     display: grid;
-    grid-template-columns: repeat(10, 20px); /* 10 dots per row */
-    grid-gap: 5px; /* Space between dots */
-    width: fit-content;
-    margin: 20px auto; /* Center the dot container */
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); 
+    gap: 8px; 
+    justify-content: center; 
 }
 
-/* Default dot styling */
-.dot {
-    width: 20px;
-    height: 20px;
-    background-color: #ccc; /* Default (gray) */
-    border-radius: 50%; /* Makes dots circular */
-    display: inline-block;
-    transition: background-color 0.3s ease-in-out;
+/* Individual icons */
+.rate-icon {
+    width: 40px !important; /* Adjust icon size */
+    height: 40px !important;
+    object-fit: contain; /* Ensure icons scale without distortion */
 }
 
-/* Affected dot styling */
-.dot.affected {
-    background-color: red; /* Red for affected dots */
-}
 
-.dot.fill {
-    animation: fill-animation 0.5s ease-in-out forwards;
-}
-
-@keyframes fill-animation {
-    from {
-        background-color: gray; /* Start color */
-    }
-    to {
-        background-color: red; /* End color for affected dots */
-    }
-}
-
-/* Dot information section */
-#dot-info {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #333;
-    display: none; /* Initially hidden */
-    opacity: 0;    /* For fade-in effect */
-    transition: opacity 0.5s ease-in-out;
-}
-
-#dot-info .info-title {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-#dot-info .info-content {
-    font-style: italic;
-    margin-bottom: 30px;
+/* No data message */
+.no-data-icon {
+    font-size: 16px;
+    color: gray;
 }
 
 
