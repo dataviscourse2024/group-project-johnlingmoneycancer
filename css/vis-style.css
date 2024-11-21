@@ -74,7 +74,7 @@ h3 {
 /* Stacked Area Chart Section */
 #stacked-area-chart-container {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     margin: 20px 0;
 }
 
@@ -264,9 +264,6 @@ figcaption {
     width: 100%;
     text-align: center;
 }
-
-
-
 
 /* Visualization container (dot chart) */
 #visualization {
