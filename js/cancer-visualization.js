@@ -44,16 +44,6 @@ const svgMain = d3.select("#visualization") // Top-level SVG declaration
         
             drawStackedAreaChart(structuredData, "#stacked-area-chart-container");
         });
-    
-        // Hide the stacked area chart when a picture button is clicked
-        document.querySelectorAll(".image-container a").forEach(button => {
-            button.addEventListener("click", () => {
-                const chartContainer = document.getElementById("stacked-area-chart-container");
-                if (chartContainer) {
-                    chartContainer.style.display = "none"; // Hide the chart
-                }
-            });
-        });
     });
     
 
