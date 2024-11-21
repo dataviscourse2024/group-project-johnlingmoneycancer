@@ -56,6 +56,7 @@ h3 {
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     max-width: 800px;
+    margin-bottom: 40px;
     font-family: 'AcreMedium', sans-serif;
 }
 
@@ -71,13 +72,19 @@ h3 {
     color: #555;
 }
 
+#bar-chart-title {
+    text-align: center;
+    margin: 30px 30px;
+    margin-top: 50px;
+}
+
 /* Stacked Area Chart Section */
 #charts-container {
     display: flex;
     justify-content: space-between; /* Adjust space between charts */
     align-items: flex-start; /* Align charts at the same vertical level */
-    gap: 20px; /* Add spacing between the charts */
-    margin: 20px 0;
+    gap: 40px; /* Add spacing between the charts */
+    margin-left: 20px !important;
 }
 #incident-stacked-area-chart-container,
 #mortality-stacked-area-chart-container {
@@ -99,6 +106,7 @@ h3 {
     /* Matches your site's font */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     /* Subtle shadow for depth */
+    margin-top: 100px;
 }
 
 #exploration-text h2 {
@@ -160,7 +168,6 @@ figcaption {
     background: linear-gradient(to bottom, #8ebef4, #ffffff);
     margin-top: 50px;
     text-align: center;
-    /* Center the entire description */
     transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
     /* Smooth transition for both opacity and visibility */
     padding: 40px 40px;
@@ -228,16 +235,16 @@ figcaption {
     align-items: flex-start;
     gap: 10px;
     flex-wrap: nowrap;
-    max-width: 100%;
+    max-width: 90%;
     margin: 0 auto;
 }
 
 #incidence-chart-container,
 #mortality-chart-container {
-    width: 50%;
+    width: 90%;
     height: 400px;
     display: none;
-    margin-left: 30px;
+    margin-left: 5px;
     opacity: 0;
     /* Fade-in effect */
     transition: opacity 0.2s ease;
@@ -252,7 +259,7 @@ figcaption {
 }
 
 /* Responsive Design: Medium screens (800px and smaller) */
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     #line-chart-container {
         flex-wrap: wrap;
         justify-content: center;
