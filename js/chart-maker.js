@@ -10,26 +10,38 @@ function createSvg(containerId, width, height, margin) {
 
 // Function to draw x and y axes and axes titles
 function drawAxes(svg, xScale, yScale, yAxisTitle, height, width, margin) {
-    svg.append("g")
-        .attr("transform", `translate(0, ${height})`)
+    // Draw x-axis
+    let xAxis = svg.select(".x-axis");
+    if (xAxis.empty()) {
+        xAxis = svg.append("g").attr("class", "x-axis");
+    }
+    xAxis.attr("transform", `translate(0, ${height})`)
         .call(d3.axisBottom(xScale).tickFormat(d => d));
 
-    svg.append("g")
-        .call(d3.axisLeft(yScale));
+    // Draw y-axis
+    let yAxis = svg.select(".y-axis");
+    if (yAxis.empty()) {
+        yAxis = svg.append("g").attr("class", "y-axis");
+    }
+    yAxis.call(d3.axisLeft(yScale));
 
-    // X-axis title: Year
-    svg.append("text")
-        .attr("class", "x-axis-title")
-        .attr("x", width / 2)
+    // X-axis title
+    let xAxisTitle = svg.select(".x-axis-title");
+    if (xAxisTitle.empty()) {
+        xAxisTitle = svg.append("text").attr("class", "x-axis-title");
+    }
+    xAxisTitle.attr("x", width / 2)
         .attr("y", height + margin.bottom - 10)
         .attr("text-anchor", "middle")
         .style("font-size", "14px")
         .text("Year");
 
-    // Y-axis title: Count
-    svg.append("text")
-        .attr("class", "y-axis-title")
-        .attr("x", -(height / 2))
+    // Y-axis title
+    let yAxisTitleElement = svg.select(".y-axis-title");
+    if (yAxisTitleElement.empty()) {
+        yAxisTitleElement = svg.append("text").attr("class", "y-axis-title");
+    }
+    yAxisTitleElement.attr("x", -(height / 2))
         .attr("y", -margin.left + 20)
         .attr("text-anchor", "middle")
         .attr("transform", "rotate(-90)")

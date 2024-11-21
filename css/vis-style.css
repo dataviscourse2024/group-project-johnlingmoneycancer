@@ -153,7 +153,98 @@ figcaption {
     margin: 0 auto; /* Centers the content horizontally */
 }
 
+#filters {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px; /* Space between filters and the graphs */
+}
+
+#filters select {
+    padding: 5px;
+    font-size: 16px;
+}
+
+#dropdown-menu-container {
+    display: none; /* Hidden by default */
+    margin-top: 20px; /* Space between description and dropdown */
+    text-align: center; /* Center the dropdown menu contents */
+    background-color: white; /* Optional: Background color */
+    border: 1px solid #ccc; /* Optional: Border for visibility */
+    padding: 15px; /* Optional: Padding for better appearance */
+    border-radius: 8px; /* Optional: Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+    width: fit-content; /* Automatically adjust to content width */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+}
+/* Line and Mortality Chart Section */
+/* Line and Mortality Chart Section */
+#line-chart-container {
+    display: flex;
+    justify-content: space-between; /* Space out charts evenly */
+    align-items: flex-start; /* Align charts to the top */
+    gap: 10px; /* Reduce spacing between charts */
+    flex-wrap: nowrap; /* Prevent charts from stacking */
+    margin: 0 auto; /* Center the container */
+    max-width: 100%; /* Ensure it doesn't exceed the viewport */
+}
+
+#incidence-chart-container,
+#mortality-chart-container {
+    width: 50%; /* Each chart takes up 50% of the container width */
+    height: 400px; /* Maintain consistent height */
+    display: none; /* Hidden by default */
+    opacity: 0; /* Fade-in effect */
+    transition: opacity 0.5s ease; /* Smooth fade-in animation */
+}
+
+#incidence-chart-container.show,
+#mortality-chart-container.show {
+    display: block;
+    opacity: 1; /* Fully visible */
+}
+
+/* Responsive Design: Medium screens (800px and smaller) */
+@media (max-width: 800px) {
+    #line-chart-container {
+        flex-wrap: wrap; /* Allow charts to stack when space is limited */
+        justify-content: center; /* Center the charts in the container */
+        gap: 10px; /* Reduce spacing between stacked charts */
+    }
+
+    #incidence-chart-container,
+    #mortality-chart-container {
+        width: 45%; /* Reduce width for smaller screens */
+        height: 350px; /* Slightly smaller height for better fit */
+    }
+}
+
+/* Responsive Design: Small screens (600px and smaller) */
+@media (max-width: 600px) {
+    #line-chart-container {
+        flex-direction: column; /* Stack charts vertically */
+        gap: 15px; /* Add more space between stacked charts */
+    }
+
+    #incidence-chart-container,
+    #mortality-chart-container {
+        width: 90%; /* Use most of the screen width */
+        height: 300px; /* Further reduce height for small screens */
+    }
+}
+
 /* Dot visualization section */
+#dot-visualization-section {
+    margin: 30px auto;
+    text-align: center;
+}
+
+#dot-visualization-section h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
 #dot-container {
     display: grid;
     grid-template-columns: repeat(10, 20px); /* 10 dots per row */
@@ -212,87 +303,6 @@ figcaption {
     margin-bottom: 30px;
 }
 
-#filters {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 20px; /* Space between filters and the graphs */
-}
-
-#filters select {
-    padding: 5px;
-    font-size: 16px;
-}
-
-#dropdown-menu-container {
-    display: none; /* Hidden by default */
-    margin-top: 20px; /* Space between description and dropdown */
-    text-align: center; /* Center the dropdown menu contents */
-    background-color: white; /* Optional: Background color */
-    border: 1px solid #ccc; /* Optional: Border for visibility */
-    padding: 15px; /* Optional: Padding for better appearance */
-    border-radius: 8px; /* Optional: Rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
-    width: fit-content; /* Automatically adjust to content width */
-    margin-left: auto; /* Center horizontally */
-    margin-right: auto; /* Center horizontally */
-}
-/* Line and Mortality Chart Section */
-/* Line and Mortality Chart Section */
-#line-bar-container {
-    display: flex;
-    justify-content: space-between; /* Space out charts evenly */
-    align-items: flex-start; /* Align charts to the top */
-    gap: 10px; /* Reduce spacing between charts */
-    flex-wrap: nowrap; /* Prevent charts from stacking */
-    margin: 0 auto; /* Center the container */
-    max-width: 100%; /* Ensure it doesn't exceed the viewport */
-}
-
-#incidence-chart-container,
-#mortality-chart-container {
-    width: 50%; /* Each chart takes up 50% of the container width */
-    height: 400px; /* Maintain consistent height */
-    display: none; /* Hidden by default */
-    opacity: 0; /* Fade-in effect */
-    transition: opacity 0.5s ease; /* Smooth fade-in animation */
-}
-
-#incidence-chart-container.show,
-#mortality-chart-container.show {
-    display: block;
-    opacity: 1; /* Fully visible */
-}
-
-/* Responsive Design: Medium screens (800px and smaller) */
-@media (max-width: 800px) {
-    #line-bar-container {
-        flex-wrap: wrap; /* Allow charts to stack when space is limited */
-        justify-content: center; /* Center the charts in the container */
-        gap: 10px; /* Reduce spacing between stacked charts */
-    }
-
-    #incidence-chart-container,
-    #mortality-chart-container {
-        width: 45%; /* Reduce width for smaller screens */
-        height: 350px; /* Slightly smaller height for better fit */
-    }
-}
-
-/* Responsive Design: Small screens (600px and smaller) */
-@media (max-width: 600px) {
-    #line-bar-container {
-        flex-direction: column; /* Stack charts vertically */
-        gap: 15px; /* Add more space between stacked charts */
-    }
-
-    #incidence-chart-container,
-    #mortality-chart-container {
-        width: 90%; /* Use most of the screen width */
-        height: 300px; /* Further reduce height for small screens */
-    }
-}
-
 
 /* Age Group Pyramid Section */
 #age-group-pyramid-container {
@@ -300,7 +310,6 @@ figcaption {
     width: 100%;
     text-align: center;
 }
-
 
 
 
