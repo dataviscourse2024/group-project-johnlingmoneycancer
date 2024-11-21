@@ -160,6 +160,9 @@ function loadAndVisualize(displayName) {
 }
 
 function handleVisualizations(cancerType, displayName, description) {
+    // Reset filters when a new cancer type is selected
+    resetFilters();
+    
     // Remove "active-cancer" class from all previously active links
     document.querySelectorAll(".active-cancer").forEach(el => el.classList.remove("active-cancer"));
 
@@ -211,7 +214,10 @@ let fullBarData = [];
 
 // Function to apply filters to the dataset
 function applyFiltersToDataset(dataset, filters) {
-    if (!dataset || dataset.length === 0) return [];
+    if (!dataset || dataset.length === 0) {
+        console.warn("Dataset is empty or undefined.");
+        return [];
+    }
 
     return dataset.filter(d => {
         const filterConditions = [
@@ -221,6 +227,19 @@ function applyFiltersToDataset(dataset, filters) {
         ];
         return filterConditions.every(Boolean); // Apply all valid filters
     });
+}
+
+// Function to reset filters
+function resetFilters() {
+    // Get all filter elements
+    const genderFilter = document.getElementById("gender-filter");
+    const ageFilter = document.getElementById("age-filter");
+    const raceFilter = document.getElementById("race-filter");
+
+    // Reset each filter to its default value
+    if (genderFilter) genderFilter.value = "All"; // Default to "All" or the first option
+    if (ageFilter) ageFilter.value = "All"; // Default to "All" or the first option
+    if (raceFilter) raceFilter.value = "All"; // Default to "All" or the first option
 }
 
 function aggregateDataByYear(data, valueKey) {

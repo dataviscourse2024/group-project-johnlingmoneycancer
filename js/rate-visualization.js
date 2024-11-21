@@ -43,7 +43,7 @@ function calculateMortality(cancerType) {
 }
 
 // Helper function to create rate visualizations
-function createRateVisualization(rate, containerId, iconPath) {
+function createRateVisualization(rate, containerId, iconPath, halfIconPath) {
     const container = document.getElementById(containerId);
     if (!container) {
         console.error(`Container with ID "${containerId}" not found.`);
@@ -61,19 +61,29 @@ function createRateVisualization(rate, containerId, iconPath) {
 
     // Number of icons to display
     const numIcons = Math.floor(rate); // !currently rounds down!
+    const hasHalfIcon = rate % 1 > 0;
 
     // Icon container for layout
     const iconContainer = document.createElement("div");
     iconContainer.className = "icon-container";
     container.appendChild(iconContainer);
 
-    // Append the appropriate number of icons
+    // Append full icons
     for (let i = 0; i < numIcons; i++) {
         const icon = document.createElement("img");
         icon.src = iconPath;
-        icon.alt = "Rate Icon";
-        icon.className = "rate-icon";
+        icon.alt = "Full Icon";
+        icon.className = "full-icon";
         iconContainer.appendChild(icon);
+    }
+
+    // Append half icon if applicable
+    if (hasHalfIcon) {
+        const halfIcon = document.createElement("img");
+        halfIcon.src = halfIconPath;
+        halfIcon.alt = "Half Icon";
+        halfIcon.className = "half-icon";
+        iconContainer.appendChild(halfIcon);
     }
 }
 
@@ -108,6 +118,6 @@ export function visualizeCancerRates(cancerType) {
     const mortalityRate = calculateMortality(cancerType);
 
     // Create visualizations for incidence and mortality rates
-    createRateVisualization(incidenceRate, "rate-visualization-incidence", "photos/orange-person-symbol.png");
-    createRateVisualization(mortalityRate, "rate-visualization-mortality", "photos/red-person-symbol.png");
+    createRateVisualization(incidenceRate, "rate-visualization-incidence", "photos/orange-person-symbol.png", "photos/half-orange-person-symbol.png");
+    createRateVisualization(mortalityRate, "rate-visualization-mortality", "photos/red-person-symbol.png", "photos/half-red-person-symbol.png");
 }

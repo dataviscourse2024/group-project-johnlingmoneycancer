@@ -4,17 +4,17 @@ body {
     overflow: auto;
     margin: 0;
     padding: 0;
-    min-height: 100vh; 
+    min-height: 100vh;
 }
 
 /* Header styling */
 header {
-    text-align: center; 
+    text-align: center;
     background-image: url('../photos/Translational-Research-Banner.avif');
     background-size: cover;
     background-position: center;
-    margin-bottom: 20px; 
-    padding: 10px; 
+    margin-bottom: 20px;
+    padding: 10px;
 }
 
 /* Header styling */
@@ -30,44 +30,44 @@ header {
 h1 {
     font-size: 42px;
     background-color: rgba(255, 255, 255, 0.4);
-    display: inline-block; 
+    display: inline-block;
     padding: 10px 15px;
     border-radius: 8px;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
 
 h3 {
-    font-size: 14px; 
-    margin: 5px auto; 
-    width: 20%; 
+    font-size: 14px;
+    margin: 5px auto;
+    width: 20%;
     background-color: rgba(255, 255, 255, 0.4);
-    display: block; 
+    display: block;
     padding: 5px 10px;
     border-radius: 8px;
-    text-align: center; 
+    text-align: center;
 }
 
 /* Introduction Section Styling */
 #introduction-container {
     margin: 20px auto;
     padding: 20px;
-    background-color: #f9f9f9; 
-    border-radius: 8px; 
+    background-color: #f9f9f9;
+    border-radius: 8px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    max-width: 800px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
     font-family: 'AcreMedium', sans-serif;
 }
 
 #introduction-container h2 {
     font-size: 24px;
     margin-bottom: 10px;
-    color: #333; 
+    color: #333;
 }
 
 #introduction-container p {
     font-size: 16px;
-    line-height: 1.6; 
+    line-height: 1.6;
     color: #555;
 }
 
@@ -87,79 +87,107 @@ h3 {
 
 /* Exploration section */
 #exploration-text {
-    text-align: center; /* Centers the text */
-    margin: 50px auto; /* Adds vertical spacing */
-    padding: 10px 20px; /* Adds space around the text */
-    max-width: 800px; /* Restricts the width of the section */
-    font-family: 'AcreMedium', sans-serif; /* Matches your site's font */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-align: center;
+    /* Centers the text */
+    margin: 50px auto;
+    /* Adds vertical spacing */
+    padding: 10px 20px;
+    /* Adds space around the text */
+    max-width: 800px;
+    /* Restricts the width of the section */
+    font-family: 'AcreMedium', sans-serif;
+    /* Matches your site's font */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
 }
 
 #exploration-text h2 {
-    font-size: 20px; /* Adjust font size as needed */
-    font-weight: bold; /* Makes the text stand out */
-    color: #333; /* Darker text color for contrast */
-    margin: 0; /* Removes default margin */
+    font-size: 20px;
+    /* Adjust font size as needed */
+    font-weight: bold;
+    /* Makes the text stand out */
+    color: #333;
+    /* Darker text color for contrast */
+    margin: 0;
+    /* Removes default margin */
 }
 
 /* Image container styling */
 .image-container {
-    display: flex; 
+    display: flex;
     flex-wrap: wrap;
-    justify-content: center; 
-    align-items: flex-start; 
-    gap: 10px; 
-    margin: 0 auto 20px; 
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0 auto 20px;
 }
 
 /* Individual figure styling */
 figure {
-    text-align: center; /* Centers the caption and image within each figure */
-    margin: 10px 0; /* Adjusts vertical spacing for better alignment */
+    text-align: center;
+    /* Centers the caption and image within each figure */
+    margin: 10px 0;
+    /* Adjusts vertical spacing for better alignment */
 }
 
 figcaption {
     font-family: 'AcreMedium', sans-serif;
     font-size: 16px;
-    margin-top: 5px; /* Adds a little space between the image and caption */
+    margin-top: 5px;
+    /* Adds a little space between the image and caption */
 }
 
 /* Styling for images */
 .image-container img {
-    transition: transform 0.3s ease; /* Smooth transition for the hover effect */
-    cursor: pointer; /* Makes the image act like a button */
+    transition: transform 0.3s ease;
+    /* Smooth transition for the hover effect */
+    cursor: pointer;
+    /* Makes the image act like a button */
     background-color: transparent;
 }
 
 .image-container img:hover {
-    transform: scale(1.1); /* Increases the size by 10% on hover */
+    transform: scale(1.1);
+    /* Increases the size by 10% on hover */
 }
 
 /* Description section */
 #description {
-    display: none; /* Initially hidden */
-    opacity: 0; /* Fully transparent initially */
+    display: none;
+    /* Initially hidden */
+    opacity: 0;
+    /* Fully transparent initially */
     background: linear-gradient(to bottom, #8ebef4, #ffffff);
     margin-top: 50px;
-    text-align: center; /* Center the entire description */
-    transition: opacity 1s ease-in-out, visibility 1s ease-in-out; /* Smooth transition for both opacity and visibility */
+    text-align: center;
+    /* Center the entire description */
+    transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+    /* Smooth transition for both opacity and visibility */
     padding: 40px 40px;
 }
 
 /* Title styling for description */
 #description .title {
-    font-size: 28px; /* Larger font size for the title */
-    font-weight: bold; /* Make the title bold */
-    text-decoration: underline; /* Underline the title */
-    margin-bottom: 20px; /* Adds space between the title and content */
+    font-size: 28px;
+    /* Larger font size for the title */
+    font-weight: bold;
+    /* Make the title bold */
+    text-decoration: underline;
+    /* Underline the title */
+    margin-bottom: 20px;
+    /* Adds space between the title and content */
 }
 
 /* Content styling for description */
 #description .content {
-    font-size: 18px; /* Smaller font size for the description */
-    line-height: 1.5; /* Better line spacing for readability */
-    max-width: 600px; /* Limits the width of the content */
-    margin: 0 auto; /* Centers the content horizontally */
+    font-size: 18px;
+    /* Smaller font size for the description */
+    line-height: 1.5;
+    /* Better line spacing for readability */
+    max-width: 600px;
+    /* Limits the width of the content */
+    margin: 0 auto;
+    /* Centers the content horizontally */
 }
 
 #filters {
@@ -176,21 +204,21 @@ figcaption {
 
 #dropdown-menu-container {
     /* Box Model */
-    display: none; 
-    margin: 20px auto 40px auto; 
-    padding: 15px; 
-    width: fit-content; 
+    display: none;
+    margin: 20px auto 40px auto;
+    padding: 15px;
+    width: fit-content;
 
     /* Border & Outline */
     border: 1px solid #ccc;
-    border-radius: 8px; 
+    border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
     /* Background */
-    background-color: white; 
+    background-color: white;
 
     /* Typography */
-    text-align: center; 
+    text-align: center;
 }
 
 /* Line and Mortality Chart Section */
@@ -198,104 +226,122 @@ figcaption {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 10px; 
-    flex-wrap: nowrap; 
-    max-width: 100%; 
-    margin: 0 auto; 
+    gap: 10px;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 #incidence-chart-container,
 #mortality-chart-container {
-    width: 50%; 
-    height: 400px; 
-    display: none; 
+    width: 50%;
+    height: 400px;
+    display: none;
     margin-left: 30px;
-    opacity: 0; /* Fade-in effect */
-    transition: opacity 0.2s ease; /* Smooth fade-in animation */
+    opacity: 0;
+    /* Fade-in effect */
+    transition: opacity 0.2s ease;
+    /* Smooth fade-in animation */
 }
 
 #incidence-chart-container.show,
 #mortality-chart-container.show {
     display: block;
-    opacity: 1; /* Fully visible */
+    opacity: 1;
+    /* Fully visible */
 }
 
 /* Responsive Design: Medium screens (800px and smaller) */
 @media (max-width: 800px) {
     #line-chart-container {
-        flex-wrap: wrap; 
-        justify-content: center; 
-        gap: 10px; /* Spacing when charts are stacked */
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        /* Spacing when charts are stacked */
     }
 
     #incidence-chart-container,
     #mortality-chart-container {
-        width: 45%; /* Reduce width for smaller screens */
-        height: 350px; /* Slightly smaller height for better fit */
+        width: 45%;
+        /* Reduce width for smaller screens */
+        height: 350px;
+        /* Slightly smaller height for better fit */
     }
 }
 
 /* Responsive Design: Small screens (600px and smaller) */
 @media (max-width: 600px) {
     #line-chart-container {
-        flex-direction: column; /* Stack charts vertically */
-        gap: 15px; /* Add more space between stacked charts */
+        flex-direction: column;
+        /* Stack charts vertically */
+        gap: 15px;
+        /* Add more space between stacked charts */
     }
 
     #incidence-chart-container,
     #mortality-chart-container {
-        width: 90%; /* Use most of the screen width */
-        height: 300px; /* Further reduce height for small screens */
+        width: 90%;
+        /* Use most of the screen width */
+        height: 300px;
+        /* Further reduce height for small screens */
     }
 }
 
 /* Rate visualization container */
 #rate-visualization-container {
-    display: flex; 
-    justify-content: center; 
-    gap: 40px; 
-    margin-top: 30px; 
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    /* Allow wrapping on smaller screens */
 }
 
 /* Individual rate block (incidence/mortality) */
 .rate-block {
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    max-width: 250px; 
+    max-width: 250px;
 }
 
 /* Title for each block */
 .rate-title {
-    font-size: 18px; 
-    font-weight: bold; 
-    margin-bottom: 15px; 
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
 /* Grid for icons */
 .rate-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); 
-    gap: 8px; 
-    justify-content: center; 
+    grid-template-columns: repeat(5, 40px);
+    /* 5 columns with 60px width each */
+    gap: 5px;
+    justify-content: center;
 }
 
 /* Individual icons */
-.rate-icon {
-    width: 40px !important; /* Adjust icon size */
-    height: 40px !important;
-    object-fit: contain; /* Ensure icons scale without distortion */
+.full-icon {
+    width: 70px !important;
+    /* Adjust icon size */
+    height: 73px !important;
+    object-fit: contain;
+    /* Ensure icons scale without distortion */
 }
 
+.half-icon {
+    width: 75px !important;
+    height: 75px !important;
+    object-fit: contain;
+}
 
 /* No data message */
 .no-data-icon {
     font-size: 16px;
     color: gray;
 }
-
 
 /* Age Group Pyramid Section */
 #age-group-pyramid-container {
@@ -306,15 +352,18 @@ figcaption {
 
 /* Visualization container (dot chart) */
 #visualization {
-    margin-bottom: 10px; /* Add space below the visualization */
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.5s ease; /* Fade-in effect */
-    height: auto; /* Adjust height dynamically */
+    margin-bottom: 10px;
+    /* Add space below the visualization */
+    opacity: 0;
+    /* Initially hidden */
+    transition: opacity 0.5s ease;
+    /* Fade-in effect */
+    height: auto;
+    /* Adjust height dynamically */
 }
 
 #visualization.show {
     display: block;
-    opacity: 1; /* Fully visible */
+    opacity: 1;
+    /* Fully visible */
 }
-
-
