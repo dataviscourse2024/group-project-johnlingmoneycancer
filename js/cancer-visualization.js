@@ -16,7 +16,6 @@ const cancerTypeMapping = {                             // checks if cancer has 
     "Uterine Cancer": "Cervix Uteri"                    // check maybe???
 };
 
-
 const svgMain = d3.select("#visualization") // Top-level SVG declaration
     .append("svg")
     .attr("width", 1000)
@@ -36,7 +35,6 @@ export function showDescription(title, content) {
     description.style.display = 'block';
     setTimeout(() => (description.style.opacity = 1), 10);
 }
-
 
 function loadAndVisualize(displayName) {
     const cancerType = cancerTypeMapping[displayName];
@@ -98,8 +96,6 @@ function loadAndVisualize(displayName) {
     });
 }
 
-
-
 function handleVisualizations(cancerType, displayName, description) {
     // Remove "active-cancer" class from all previously active links
     document.querySelectorAll(".active-cancer").forEach(el => el.classList.remove("active-cancer"));
@@ -143,7 +139,6 @@ function handleVisualizations(cancerType, displayName, description) {
         }, 1500); // Adjusted delay for graphs
     }, 500); // Delay for dots
 }
-
 
 // Example dataset
 let fullLineData = [];
