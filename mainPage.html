@@ -101,22 +101,15 @@
     <!-- Description -->
     <p id="description">This is a description.</p>
 
-    <!-- Dot Container -->
-    <div id="dot-container"></div>
-
-    <!-- Dot Info -->
-    <div id="dot-container"></div>
-    <div id="dot-info"></div>
-
     <!-- Filters -->
-    <section id="filters" class="hidden">
+    <div id="dropdown-menu-container" style="display: none;">
         <label for="gender-filter">Gender:</label>
         <select id="gender-filter">
             <option value="">All</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
         </select>
-    
+
         <label for="age-filter">Age Group:</label>
         <select id="age-filter">
             <option value="">All</option>
@@ -125,7 +118,7 @@
             <option value="30-34 years">30-34 years</option>
             <option value="35-39 years">35-39 years</option>
         </select>
-    
+
         <label for="race-filter">Race:</label>
         <select id="race-filter">
             <option value="">All</option>
@@ -133,7 +126,17 @@
             <option value="Black or African American">Black or African American</option>
             <option value="Asian or Pacific Islander">Asian or Pacific Islander</option>
         </select>
-    </section>
+    </div>
+
+    <!-- stacked-area-chart-containe-->
+    <div id="stacked-area-chart-container"></div>
+
+    <!-- Dot Container -->
+    <div id="dot-container"></div>
+
+    <!-- Dot Info -->
+    <div id="dot-container"></div>
+    <div id="dot-info"></div>
 
     <!-- Line Charts Container -->
     <div id="line-bar-container">
@@ -149,6 +152,7 @@
     <script type="module" src="js/dot-visualization.js"></script>
     <script type="module" src="js/chart-maker.js"></script>
     <script type="module" src="js/cancer-visualization.js"></script>
+    <script type="module" src="js/stacked-area-chart.js"></script>
 
 </body>
 

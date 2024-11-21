@@ -1,3 +1,4 @@
+import { drawStackedAreaChart } from './stacked-area-chart.js';
 import { visualizeCancerDots } from './dot-visualization.js';
 import { loadAllFiles } from './data-loader.js';
 import { synchronizeCharts } from './chart-maker.js';
@@ -13,13 +14,48 @@ const cancerTypeMapping = {                             // checks if cancer has 
     "Non-Hodgkin Lymphoma": "Non-Hodgkin Lymphoma",     // check
     "Pancreatic Cancer": "Pancreas",                    // check
     "Skin Cancer": "Melanoma of the Skin",              // check
-    "Uterine Cancer": "Cervix Uteri"                    // check maybe???
+    "Uterine Cancer": "Cervix Uteri"                    // check 
 };
 
 const svgMain = d3.select("#visualization") // Top-level SVG declaration
     .append("svg")
     .attr("width", 1000)
     .attr("height", 600);
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+        d3.csv("data/cancer-incidence-csvs/LeadingCancerIncidence-ALLGROUPS.csv").then(data => {
+            // Parse and structure the data
+            const structuredData = Array.from(
+                d3.group(
+                    data, 
+                    d => d["Leading Cancer Sites"] // Group by Cancer Sites
+                ),
+                ([cancerSite, entries]) => ({
+                    cancerSite, // Cancer site name
+                    ageGroups: entries.reduce((acc, entry) => {
+                        const ageGroup = entry["Age Groups Code"];
+                        const count = +entry.Count; // Convert count to number
+                        acc[ageGroup] = (acc[ageGroup] || 0) + count; // Sum counts for the same age group
+                        return acc;
+                    }, {}) // Reduce into a nested object with Age Groups and Counts
+                })
+            );
+        
+            drawStackedAreaChart(structuredData, "#stacked-area-chart-container");
+        });
+    
+        // Hide the stacked area chart when a picture button is clicked
+        document.querySelectorAll(".image-container a").forEach(button => {
+            button.addEventListener("click", () => {
+                const chartContainer = document.getElementById("stacked-area-chart-container");
+                if (chartContainer) {
+                    chartContainer.style.display = "none"; // Hide the chart
+                }
+            });
+        });
+    });
+    
 
 // Function to display a description
 export function showDescription(title, content) {
@@ -158,7 +194,6 @@ function applyFiltersToDataset(dataset, filters) {
     });
 }
 
-
 // Function to render charts with applied filters
 function renderCharts() {
     const filters = {
@@ -239,6 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
+
     // Loop through each link and attach the event listener
     cancerLinks.forEach(link => {
         const element = document.getElementById(link.id);
@@ -256,7 +292,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (filterElement) {
             filterElement.addEventListener("change", () => {
                 const currentCancerType = document.querySelector(".active-cancer")?.dataset?.cancerType;
-
                 // Update graphs and dots
                 if (currentCancerType) loadAndVisualize(currentCancerType);
                 renderCharts();
@@ -268,4 +303,13 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCharts();
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const dropdownContainer = document.getElementById("dropdown-menu-container");
 
+    // Add event listeners to all image buttons
+    document.querySelectorAll(".image-container a").forEach(button => {
+        button.addEventListener("click", () => {
+            dropdownContainer.style.display = "block"; // Always show
+        });
+    });
+});

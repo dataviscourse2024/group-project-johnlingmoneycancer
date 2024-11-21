@@ -151,8 +151,19 @@ figcaption {
     padding: 5px;
     font-size: 16px;
 }
-
-
+#dropdown-menu-container {
+    display: none; /* Hidden by default */
+    margin-top: 20px; /* Space between description and dropdown */
+    text-align: center; /* Center the dropdown menu contents */
+    background-color: white; /* Optional: Background color */
+    border: 1px solid #ccc; /* Optional: Border for visibility */
+    padding: 15px; /* Optional: Padding for better appearance */
+    border-radius: 8px; /* Optional: Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+    width: fit-content; /* Automatically adjust to content width */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+}
 /* Line and Mortality Chart Section */
 #line-bar-container {
     display: flex;
@@ -206,4 +217,8 @@ figcaption {
     opacity: 1; /* Fully visible */
 }
 
-
+#stacked-area-chart-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
