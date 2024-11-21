@@ -1,5 +1,5 @@
 import { drawStackedAreaChart } from './stacked-area-chart.js';
-import { visualizeCancerDots } from './dot-visualization.js';
+import { visualizeCancerRates } from './rate-visualization.js';
 import { loadAllFiles } from './data-loader.js';
 import { loadAllGroups } from './data-loader.js';
 import { drawLineChart } from './chart-maker.js';
@@ -62,66 +62,6 @@ export function showDescription(title, content) {
     setTimeout(() => (description.style.opacity = 1), 10);
 }
 
-// function loadAndVisualize(displayName) {
-//     const cancerType = cancerTypeMapping[displayName];
-
-//     if (!cancerType) {
-//         console.error(`Cancer type "${displayName}" not found in the mapping.`);
-//         return;
-//     }
-
-//     // Clear existing charts
-//     d3.select("#incidence-chart-container").html("");
-//     d3.select("#mortality-chart-container").html("");
-
-//     // Filters
-//     const filters = {
-//         gender: document.getElementById("gender-filter").value,
-//         age: document.getElementById("age-filter").value,
-//         race: document.getElementById("race-filter").value
-//     };
-
-//     // Load datasets and filter by cancer type and filters
-//     loadAllFiles(datasets => {
-//         // Select dataset based on filter presence
-//         const selectedKey =
-//             filters.gender
-//                 ? "sex"
-//                 : filters.age
-//                     ? "combinedAges"
-//                     : filters.race
-//                         ? "race"
-//                         : "year"; // default
-
-//         let incidenceData = datasets.incidence[selectedKey]?.filter(d => d["Leading Cancer Sites"] === cancerType);
-//         let mortalityData = datasets.mortality[selectedKey]?.filter(d => d["Leading Cancer Sites"] === cancerType);
-
-//         // Apply filters to the selected dataset
-//         incidenceData = applyFiltersToDataset(incidenceData, filters);
-//         mortalityData = applyFiltersToDataset(mortalityData, filters);
-
-//         if (incidenceData.length === 0 && mortalityData.length === 0) {
-//             console.warn(`No data found for cancer type: ${cancerType} with the selected filters.`);
-//             return;
-//         }
-
-//         // Prepare data for charts
-//         const incidenceChartData = incidenceData.map(d => ({
-//             year: +d.Year,
-//             value: +d.Count
-//         }));
-
-//         const mortalityChartData = mortalityData.map(d => ({
-//             year: +d.Year,
-//             value: +d.Deaths
-//         }));
-
-//         // Draw separate charts
-//         drawLineChart(incidenceChartData, "#incidence-chart-container", "Incidence Over Time", "Count", "orange", "Count");
-//         drawLineChart(mortalityChartData, "#mortality-chart-container", "Mortality Over Time", "Deaths", "red", "Death");
-//     });
-// }
-
 // Function to load and visualize the graphs
 function loadAndVisualize(displayName) {
     const cancerType = cancerTypeMapping[displayName];
@@ -169,9 +109,9 @@ function loadAndVisualize(displayName) {
             return;
         }
 
-         // Aggregate data by year 
-         const incidenceChartData = aggregateDataByYear(filteredIncidenceData, "Count");
-         const mortalityChartData = aggregateDataByYear(filteredMortalityData, "Deaths");
+        // Aggregate data by year 
+        const incidenceChartData = aggregateDataByYear(filteredIncidenceData, "Count");
+        const mortalityChartData = aggregateDataByYear(filteredMortalityData, "Deaths");
 
         // Draw charts
         drawLineChart(incidenceChartData, "#incidence-chart-container", "Incidence Over Time", "Count", "orange", "Count");
@@ -225,21 +165,22 @@ function handleVisualizations(cancerType, displayName, description) {
     // Show description
     showDescription(displayName, description);
 
-    // Load and visualize the graphs
-    setTimeout(() => {
-        loadAllFiles(datasets => {
-            // console.log("Loaded datasets:", datasets);
-            // if (!datasets || !datasets.incidence || !datasets.incidence.all) {
-            //     console.error("Datasets are not loaded or malformed.");
-            //     return;
-            // }
-            visualizeCancerDots(cancerType, datasets.incidence.all); // Dot visualization
-        });
+    // Clear existing content
+    d3.select("#rate-visualization-container").html("");
+    // Visualize rates
+    visualizeCancerRates(cancerType);
 
-        setTimeout(() => {
-            loadAndVisualize(displayName); // Load graphs
-        }, 500); // Adjusted delay for graphs
-    }, 500); // Delay for dots
+    // Load and visualize the graphs
+    // console.log("Loaded datasets:", datasets);
+    // if (!datasets || !datasets.incidence || !datasets.incidence.all) {
+    //     console.error("Datasets are not loaded or malformed.");
+    //     return;
+    // }
+
+    setTimeout(() => {
+        loadAndVisualize(displayName); // Load graphs
+    }, 500); // Adjusted delay for graphs
+    // Delay for rates
 }
 
 // Example dataset
@@ -351,30 +292,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     ["gender-filter", "age-filter", "race-filter"].forEach(filterId => {
-//         const filterElement = document.getElementById(filterId);
-//         if (filterElement) {
-//             filterElement.addEventListener("change", () => {
-//                 const currentCancerType = document.querySelector(".active-cancer")?.dataset?.cancerType;
-//                 // Update graphs and dots
-//                 if (currentCancerType) loadAndVisualize(currentCancerType);
-//                 renderCharts();
-//             });
-//         }
-//     });
-
-//     // Initial rendering
-//     renderCharts();
-// });
-
 document.addEventListener('DOMContentLoaded', () => {
     ["gender-filter", "age-filter", "race-filter"].forEach(filterId => {
         const filterElement = document.getElementById(filterId);
         if (filterElement) {
             filterElement.addEventListener("change", () => {
                 const currentCancerType = document.querySelector(".active-cancer")?.dataset?.cancerType;
-                // Update graphs and dots
+                // Update rates and graphs
                 if (currentCancerType) loadAndVisualize(currentCancerType);
             });
         }
@@ -392,3 +316,20 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+const container = document.getElementById("rate-visualization-container");
+if (!container) {
+    // Dynamically create the container if it doesn't exist
+    const mainContainer = document.createElement("div");
+    mainContainer.id = "rate-visualization-container";
+    document.body.appendChild(mainContainer);
+
+    // Add child containers
+    const incidenceContainer = document.createElement("div");
+    incidenceContainer.id = "rate-visualization-incidence";
+    mainContainer.appendChild(incidenceContainer);
+
+    const mortalityContainer = document.createElement("div");
+    mortalityContainer.id = "rate-visualization-mortality";
+    mainContainer.appendChild(mortalityContainer);
+}

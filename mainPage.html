@@ -121,6 +121,13 @@
     <!-- Description -->
     <p id="description">This is a description.</p>
 
+    <!-- Rate Visualization Container -->
+    <div id="rate-visualization-container" style="margin: 30px auto; text-align: center;">
+        <!-- Individual containers for incidence and mortality -->
+        <div id="rate-visualization-incidence"></div>
+        <div id="rate-visualization-mortality"></div>
+    </div>
+
     <!-- Filters -->
     <div id="dropdown-menu-container" style="display: none;">
         <label for="gender-filter">Gender:</label>
@@ -168,14 +175,6 @@
         <div id="mortality-chart-container"></div>
     </div>
 
-
-    <!-- Dot Visualization Section -->
-    <div id="dot-visualization-section">
-        <h2>Dot Visualization</h2>
-        <div id="dot-container"></div>
-        <div id="dot-info"></div>
-    </div>
-
     <!-- Age Group Pyramid Container -->
     <div id="age-group-pyramid-container"></div>
 
@@ -187,7 +186,7 @@
     <script type="module" src="js/stacked-area-chart.js"></script>
     <script type="module" src="js/chart-maker.js"></script>
     <script type="module" src="js/cancer-visualization.js"></script>
-    <script type="module" src="js/dot-visualization.js"></script>
+    <script type="module" src="js/rate-visualization.js"></script>
 
 
 </body>
