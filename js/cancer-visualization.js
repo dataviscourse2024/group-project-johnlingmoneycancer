@@ -13,7 +13,7 @@ const cancerTypeMapping = {                             // checks if cancer has 
     "Non-Hodgkin Lymphoma": "Non-Hodgkin Lymphoma",     // check
     "Pancreatic Cancer": "Pancreas",                    // check
     "Skin Cancer": "Melanoma of the Skin",              // check
-    "Uterine Cancer": "Cervix Uteri"                    
+    "Uterine Cancer": "Cervix Uteri"                    // check maybe???
 };
 
 
@@ -21,14 +21,6 @@ const svgMain = d3.select("#visualization") // Top-level SVG declaration
     .append("svg")
     .attr("width", 1000)
     .attr("height", 600);
-
-function scrollToBottom() {
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth'
-    });
-}
-
 
 // Function to display a description
 export function showDescription(title, content) {

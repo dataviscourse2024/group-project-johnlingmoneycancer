@@ -219,7 +219,9 @@ export function drawLineChart(data, containerId, chartTitle, yAxisTitle, lineCol
             .attr("x", x(closestPoint.year))
             .attr("y", y(closestPoint.value))
             .text(`Year: ${closestPoint.year}, ${yLabel}: ${closestPoint.value}`)
-            .style("opacity", 1);
+            .style("opacity", 1)
+            .style("font-size", "12px")
+            .style("text-anchor", "end");
     }
 
     function onMouseOut() {
