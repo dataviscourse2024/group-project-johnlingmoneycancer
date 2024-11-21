@@ -1,7 +1,6 @@
 import { drawStackedAreaChart } from './stacked-area-chart.js';
 import { visualizeCancerDots } from './dot-visualization.js';
 import { loadAllFiles } from './data-loader.js';
-import { synchronizeCharts } from './chart-maker.js';
 import { drawLineChart } from './chart-maker.js';
 
 const cancerTypeMapping = {                             // checks if cancer has appropriate image and description
@@ -194,10 +193,11 @@ function renderCharts() {
     };
 
     const filteredLineData = applyFiltersToDataset(fullLineData, filters);
-    const filteredBarData = applyFiltersToDataset(fullBarData, filters);
 
-    // Synchronize charts with filtered data
-    synchronizeCharts(filteredLineData, filteredBarData);
+    // Render line charts
+    if (filteredLineData.length > 0) {
+        drawLineChart(filteredLineData, "#incidence-chart-container", "Incidence Over Time", "Count", "orange", "Count");
+    }
 }
 
 // Event listeners for cancer links
