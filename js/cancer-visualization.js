@@ -1,6 +1,7 @@
 import { drawStackedAreaChart } from './stacked-area-chart.js';
 import { visualizeCancerDots } from './dot-visualization.js';
 import { loadAllFiles } from './data-loader.js';
+import { loadAllGroups } from './data-loader.js';
 import { drawLineChart } from './chart-maker.js';
 
 const cancerTypeMapping = {                             // checks if cancer has appropriate image and description
@@ -22,29 +23,29 @@ const svgMain = d3.select("#visualization") // Top-level SVG declaration
     .attr("height", 600);
 
 
-    document.addEventListener("DOMContentLoaded", () => {
-        d3.csv("data/cancer-incidence-csvs/LeadingCancerIncidence-ALLGROUPS.csv").then(data => {
-            // Parse and structure the data
-            const structuredData = Array.from(
-                d3.group(
-                    data, 
-                    d => d["Leading Cancer Sites"] // Group by Cancer Sites
-                ),
-                ([cancerSite, entries]) => ({
-                    cancerSite, // Cancer site name
-                    ageGroups: entries.reduce((acc, entry) => {
-                        const ageGroup = entry["Age Groups Code"];
-                        const count = +entry.Count; // Convert count to number
-                        acc[ageGroup] = (acc[ageGroup] || 0) + count; // Sum counts for the same age group
-                        return acc;
-                    }, {}) // Reduce into a nested object with Age Groups and Counts
-                })
-            );
-        
-            drawStackedAreaChart(structuredData, "#stacked-area-chart-container");
-        });
+// Function to draw the stacked area chart
+document.addEventListener("DOMContentLoaded", () => {
+    d3.csv("data/cancer-incidence-csvs/LeadingCancerIncidence-ALLGROUPS.csv").then(data => {
+        // Parse and structure the data
+        const structuredData = Array.from(
+            d3.group(
+                data,
+                d => d["Leading Cancer Sites"] // Group by Cancer Sites
+            ),
+            ([cancerSite, entries]) => ({
+                cancerSite, // Cancer site name
+                ageGroups: entries.reduce((acc, entry) => {
+                    const ageGroup = entry["Age Groups Code"];
+                    const count = +entry.Count; // Convert count to number
+                    acc[ageGroup] = (acc[ageGroup] || 0) + count; // Sum counts for the same age group
+                    return acc;
+                }, {}) // Reduce into a nested object with Age Groups and Counts
+            })
+        );
+
+        drawStackedAreaChart(structuredData, "#stacked-area-chart-container");
     });
-    
+});
 
 // Function to display a description
 export function showDescription(title, content) {
@@ -61,6 +62,67 @@ export function showDescription(title, content) {
     setTimeout(() => (description.style.opacity = 1), 10);
 }
 
+// function loadAndVisualize(displayName) {
+//     const cancerType = cancerTypeMapping[displayName];
+
+//     if (!cancerType) {
+//         console.error(`Cancer type "${displayName}" not found in the mapping.`);
+//         return;
+//     }
+
+//     // Clear existing charts
+//     d3.select("#incidence-chart-container").html("");
+//     d3.select("#mortality-chart-container").html("");
+
+//     // Filters
+//     const filters = {
+//         gender: document.getElementById("gender-filter").value,
+//         age: document.getElementById("age-filter").value,
+//         race: document.getElementById("race-filter").value
+//     };
+
+//     // Load datasets and filter by cancer type and filters
+//     loadAllFiles(datasets => {
+//         // Select dataset based on filter presence
+//         const selectedKey =
+//             filters.gender
+//                 ? "sex"
+//                 : filters.age
+//                     ? "combinedAges"
+//                     : filters.race
+//                         ? "race"
+//                         : "year"; // default
+
+//         let incidenceData = datasets.incidence[selectedKey]?.filter(d => d["Leading Cancer Sites"] === cancerType);
+//         let mortalityData = datasets.mortality[selectedKey]?.filter(d => d["Leading Cancer Sites"] === cancerType);
+
+//         // Apply filters to the selected dataset
+//         incidenceData = applyFiltersToDataset(incidenceData, filters);
+//         mortalityData = applyFiltersToDataset(mortalityData, filters);
+
+//         if (incidenceData.length === 0 && mortalityData.length === 0) {
+//             console.warn(`No data found for cancer type: ${cancerType} with the selected filters.`);
+//             return;
+//         }
+
+//         // Prepare data for charts
+//         const incidenceChartData = incidenceData.map(d => ({
+//             year: +d.Year,
+//             value: +d.Count
+//         }));
+
+//         const mortalityChartData = mortalityData.map(d => ({
+//             year: +d.Year,
+//             value: +d.Deaths
+//         }));
+
+//         // Draw separate charts
+//         drawLineChart(incidenceChartData, "#incidence-chart-container", "Incidence Over Time", "Count", "orange", "Count");
+//         drawLineChart(mortalityChartData, "#mortality-chart-container", "Mortality Over Time", "Deaths", "red", "Death");
+//     });
+// }
+
+// Function to load and visualize the graphs
 function loadAndVisualize(displayName) {
     const cancerType = cancerTypeMapping[displayName];
 
@@ -69,55 +131,69 @@ function loadAndVisualize(displayName) {
         return;
     }
 
-    // Clear existing charts
+    // Clear existing charts and add in no data message 
     d3.select("#incidence-chart-container").html("");
     d3.select("#mortality-chart-container").html("");
+    document.getElementById("no-data-message").style.display = "none"; // Hide message by default
+    document.getElementById("incidence-no-data-message").style.display = "none";
+    document.getElementById("mortality-no-data-message").style.display = "none";
 
-    // Filters
+    // Get selected filters
     const filters = {
-        gender: document.getElementById("gender-filter").value,
-        age: document.getElementById("age-filter").value,
-        race: document.getElementById("race-filter").value
+        gender: document.getElementById("gender-filter").value || null,
+        age: document.getElementById("age-filter").value || null,
+        race: document.getElementById("race-filter").value || null
     };
 
-    // Load datasets and filter by cancer type and filters
-    loadAllFiles(datasets => {
-        // Select dataset based on filter presence
-        const selectedKey =
-            filters.gender
-                ? "sex"
-                : filters.age
-                    ? "combinedAges"
-                    : filters.race
-                        ? "race"
-                        : "year"; // default
-
-        let incidenceData = datasets.incidence[selectedKey]?.filter(d => d["Leading Cancer Sites"] === cancerType);
-        let mortalityData = datasets.mortality[selectedKey]?.filter(d => d["Leading Cancer Sites"] === cancerType);
-
-        // Apply filters to the selected dataset
-        incidenceData = applyFiltersToDataset(incidenceData, filters);
-        mortalityData = applyFiltersToDataset(mortalityData, filters);
-
-        if (incidenceData.length === 0 && mortalityData.length === 0) {
-            console.warn(`No data found for cancer type: ${cancerType} with the selected filters.`);
+    // Load ALLGROUPS datasets for filtering
+    loadAllGroups(allGroupsData => {
+        if (!allGroupsData.incidence || !allGroupsData.mortality) {
+            console.error("ALLGROUPS dataset not loaded correctly.");
             return;
         }
 
-        // Prepare data for charts
-        const incidenceChartData = incidenceData.map(d => ({
-            year: +d.Year,
-            value: +d.Count
-        }));
+        console.log("ALLGROUPS Data Loaded:", allGroupsData);
 
-        const mortalityChartData = mortalityData.map(d => ({
-            year: +d.Year,
-            value: +d.Deaths
-        }));
+        // Filter data for the selected cancer type
+        let filteredIncidenceData = allGroupsData.incidence.filter(d => d["Leading Cancer Sites"] === cancerType);
+        let filteredMortalityData = allGroupsData.mortality.filter(d => d["Leading Cancer Sites"] === cancerType);
 
-        // Draw separate charts
+        // Apply filters
+        filteredIncidenceData = applyFiltersToDataset(filteredIncidenceData, filters);
+        filteredMortalityData = applyFiltersToDataset(filteredMortalityData, filters);
+
+        // If data isn't available, show no data message
+        if (filteredIncidenceData.length === 0 && filteredMortalityData.length === 0) {
+            console.warn(`No data found for cancer type: ${cancerType} with the selected filters.`);
+            document.getElementById("no-data-message").style.display = "block"; // Show message
+            return;
+        }
+
+         // Aggregate data by year 
+         const incidenceChartData = aggregateDataByYear(filteredIncidenceData, "Count");
+         const mortalityChartData = aggregateDataByYear(filteredMortalityData, "Deaths");
+
+        // Draw charts
         drawLineChart(incidenceChartData, "#incidence-chart-container", "Incidence Over Time", "Count", "orange", "Count");
-        drawLineChart(mortalityChartData, "#mortality-chart-container", "Mortality Over Time", "Deaths", "red", "Death");
+        drawLineChart(mortalityChartData, "#mortality-chart-container", "Mortality Over Time", "Deaths", "red", "Deaths");
+
+        // If data isn't available for incident chart, show no data message
+        if (filteredIncidenceData.length === 0) {
+            console.warn(`No data found for Incidence chart for cancer type: ${cancerType} with the selected filters.`);
+            document.getElementById("incidence-no-data-message").style.display = "block"; // Show message
+        } else {
+            const incidenceChartData = aggregateDataByYear(filteredIncidenceData, "Count");
+            drawLineChart(incidenceChartData, "#incidence-chart-container", "Incidence Over Time", "Count", "orange", "Count");
+        }
+
+        // If data isn't available for mortality chart, show no data message
+        if (filteredMortalityData.length === 0) {
+            console.warn(`No data found for Mortality chart for cancer type: ${cancerType} with the selected filters.`);
+            document.getElementById("mortality-no-data-message").style.display = "block"; // Show message
+        } else {
+            const mortalityChartData = aggregateDataByYear(filteredMortalityData, "Deaths");
+            drawLineChart(mortalityChartData, "#mortality-chart-container", "Mortality Over Time", "Deaths", "red", "Deaths");
+        }
     });
 }
 
@@ -176,28 +252,26 @@ function applyFiltersToDataset(dataset, filters) {
 
     return dataset.filter(d => {
         const filterConditions = [
-            !filters.gender || d.Sex === filters.gender,
-            !filters.age || d["Age Groups"] === filters.age,
-            !filters.race || d.Race === filters.race
+            !filters.gender || d.Sex === filters.gender,     // Match gender if selected
+            !filters.age || d["Age Groups"] === filters.age, // Match age if selected
+            !filters.race || d.Race === filters.race         // Match race if selected
         ];
         return filterConditions.every(Boolean); // Apply all valid filters
     });
 }
 
-// Function to render charts with applied filters
-function renderCharts() {
-    const filters = {
-        gender: document.getElementById("gender-filter").value || null,
-        age: document.getElementById("age-filter").value || null,
-        race: document.getElementById("race-filter").value || null
-    };
+function aggregateDataByYear(data, valueKey) {
+    const aggregatedData = d3.rollups(
+        data,
+        entries => d3.sum(entries, d => +d[valueKey]),
+        d => +d.Year
+    );
 
-    const filteredLineData = applyFiltersToDataset(fullLineData, filters);
-
-    // Render line charts
-    if (filteredLineData.length > 0) {
-        drawLineChart(filteredLineData, "#incidence-chart-container", "Incidence Over Time", "Count", "orange", "Count");
-    }
+    // Convert the aggregated data into the format required for the chart
+    return aggregatedData.map(([year, value]) => ({
+        year,
+        value
+    }));
 }
 
 // Event listeners for cancer links
@@ -277,6 +351,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// document.addEventListener('DOMContentLoaded', () => {
+//     ["gender-filter", "age-filter", "race-filter"].forEach(filterId => {
+//         const filterElement = document.getElementById(filterId);
+//         if (filterElement) {
+//             filterElement.addEventListener("change", () => {
+//                 const currentCancerType = document.querySelector(".active-cancer")?.dataset?.cancerType;
+//                 // Update graphs and dots
+//                 if (currentCancerType) loadAndVisualize(currentCancerType);
+//                 renderCharts();
+//             });
+//         }
+//     });
+
+//     // Initial rendering
+//     renderCharts();
+// });
+
 document.addEventListener('DOMContentLoaded', () => {
     ["gender-filter", "age-filter", "race-filter"].forEach(filterId => {
         const filterElement = document.getElementById(filterId);
@@ -285,14 +376,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const currentCancerType = document.querySelector(".active-cancer")?.dataset?.cancerType;
                 // Update graphs and dots
                 if (currentCancerType) loadAndVisualize(currentCancerType);
-                renderCharts();
             });
         }
     });
-
-    // Initial rendering
-    renderCharts();
 });
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const dropdownContainer = document.getElementById("dropdown-menu-container");

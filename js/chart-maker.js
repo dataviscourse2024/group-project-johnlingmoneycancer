@@ -68,12 +68,12 @@ export function drawLineChart(data, containerId, chartTitle, yAxisTitle, lineCol
             .append("g")
             .attr("transform", `translate(${margin.left}, ${margin.top})`)
             .style("opacity", 0);
-    }
 
-    // Fade in the chart container
-    svg.transition()
-        .duration(700) // duration of the transition
-        .style("opacity", 1);
+        // Fade in the chart container
+        svg.transition()
+            .duration(700) // Duration of the transition
+            .style("opacity", 1);
+    }
 
     // Scales
     const x = d3.scaleLinear()
@@ -83,19 +83,40 @@ export function drawLineChart(data, containerId, chartTitle, yAxisTitle, lineCol
     const y = d3.scaleLinear()
         .domain([0, d3.max(data, d => d.value)])
         .nice()
-        .range([height, 0]);;
+        .range([height, 0]);
 
-    drawAxes(svg, x, y, yAxisTitle, height, width, margin);
+    // Update Y-Axis with animation
+    svg.selectAll(".y-axis")
+        .data([null]) // Use a single dummy datum to maintain consistency
+        .join(
+            enter => enter.append("g")
+                .attr("class", "y-axis")
+                .call(d3.axisLeft(y))
+                .call(g => g.selectAll(".tick").attr("opacity", 0)) // Initial hidden ticks
+                .call(g => g.transition().duration(1000).call(d3.axisLeft(y))), // Animate ticks
+            update => update
+                .transition()
+                .duration(1000)
+                .call(d3.axisLeft(y)), // Animate updated ticks
+        );
+
+    // Draw x-axis (no animation needed)
+    let xAxis = svg.select(".x-axis");
+    if (xAxis.empty()) {
+        xAxis = svg.append("g")
+            .attr("class", "x-axis")
+            .attr("transform", `translate(0, ${height})`)
+            .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+    }
 
     // Line generator
     const lineGenerator = d3.line()
         .x(d => x(d.year))
         .y(d => y(d.value));
 
-    // Bind data to the path (line)
+    // Bind data to the trendline
     let path = svg.selectAll(".line").data([data]);
 
-    // Enter + Update pattern
     path.enter()
         .append("path")
         .attr("class", "line")
@@ -103,24 +124,21 @@ export function drawLineChart(data, containerId, chartTitle, yAxisTitle, lineCol
         .attr("stroke", lineColor)
         .attr("stroke-width", 1.5)
         .attr("d", lineGenerator) // Initial line position
-        .merge(path) // Merge enter and update selections
-        .attr("d", lineGenerator)
         .attr("stroke-dasharray", function () {
-            // Total length of the line
-            return this.getTotalLength();
+            return this.getTotalLength(); // Compute line length
         })
         .attr("stroke-dashoffset", function () {
-            // Start with the total length (line hidden)
-            return this.getTotalLength();
+            return this.getTotalLength(); // Start hidden
         })
-        .transition() // Apply transition to animate the line
-        .duration(1000) // Animation duration (1 seconds)
-        .ease(d3.easeLinear) // Linear easing for smooth drawing
-        .attr("stroke-dashoffset", 0); // Reveal the line progressively
+        .merge(path) // Enter + Update
+        .transition() // Animate
+        .duration(1000)
+        .ease(d3.easeLinear)
+        .attr("d", lineGenerator) // Update line
+        .attr("stroke-dashoffset", 0); // Reveal line progressively
 
     // Chart title
     let title = svg.selectAll(".chart-title").data([chartTitle]);
-
     title.enter()
         .append("text")
         .attr("class", "chart-title")
@@ -130,16 +148,6 @@ export function drawLineChart(data, containerId, chartTitle, yAxisTitle, lineCol
         .style("font-size", "16px")
         .merge(title)
         .text(chartTitle);
-
-    svg.append("path")
-        .datum(data)
-        .attr("fill", "none")
-        .attr("stroke", lineColor)
-        .attr("stroke-width", 1.5)
-        .attr("d", d3.line()
-            .x(d => x(d.year))
-            .y(d => y(d.value))
-        );
 
     // Add the hover line and tooltip functionality here
     if (svg.select(".hover-line").empty()) {
