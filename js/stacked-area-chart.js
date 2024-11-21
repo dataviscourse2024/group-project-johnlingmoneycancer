@@ -1,21 +1,40 @@
 export function drawStackedAreaChart(structuredData, containerId) {
     const margin = { top: 40, right: 30, bottom: 50, left: 60 };
-    const width = 1200 - margin.left - margin.right;
-    const height = 600 - margin.top - margin.bottom;
+    const width = 1000 - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
+
+    // Define the list of cancer sites to keep
+    const selectedCancerSites = [
+        "Brain and Other Nervous System",
+        "Breast",
+        "Cervix Uteri",
+        "Colon and Rectum",
+        "Leukemias",
+        "Liver",
+        "Lung and Bronchus",
+        "Melanoma of the Skin",
+        "Non-Hodgkin Lymphoma",
+        "Pancreas"
+    ];
+
+    // Filter structuredData to include only the selected cancer sites
+    const filteredData = structuredData.filter(d => selectedCancerSites.includes(d.cancerSite));
 
     // Extract unique age groups
     const ageGroups = Array.from(
-        new Set(structuredData.flatMap(d => Object.keys(d.ageGroups)))
+        new Set(filteredData.flatMap(d => Object.keys(d.ageGroups)))
     );
 
-    // Process structuredData into a format usable by D3
+    // Process filteredData into a format usable by D3
     const chartData = ageGroups.map(ageGroup => {
         const row = { ageGroup }; // Start with the age group
-        structuredData.forEach(d => {
+        filteredData.forEach(d => {
             row[d.cancerSite] = d.ageGroups[ageGroup] || 0; // Default to 0 if no data for that age group
         });
         return row;
     });
+
+    console.log("Filtered Chart Data:", chartData);
 
     console.log("Processed Data for Chart:", chartData);
 
@@ -37,11 +56,10 @@ export function drawStackedAreaChart(structuredData, containerId) {
         .append("g")
         .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-    // X-axis scale (Age Groups)
-    const x = d3.scaleBand()
-        .domain(ageGroups)
-        .range([0, width])
-        .padding(0.1);
+    const x = d3.scalePoint()
+        .domain(ageGroups) // Age groups as categories
+        .range([0, width]) // Use full width of the chart
+        .padding(0);
 
     // Y-axis scale (Counts)
     const y = d3.scaleLinear()
