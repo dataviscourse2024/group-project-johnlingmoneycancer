@@ -23,7 +23,7 @@ function drawAxes(svg, xScale, yScale, yAxisTitle, height, width, margin) {
         .attr("x", width / 2)
         .attr("y", height + margin.bottom - 10)
         .attr("text-anchor", "middle")
-        .style("font-size", "12px")
+        .style("font-size", "14px")
         .text("Year");
 
     // Y-axis title: Count
@@ -68,20 +68,14 @@ export function drawLineChart(data, containerId, chartTitle, yAxisTitle, lineCol
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
-            .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
-        // Add axes groups for later updates
-        svg.append("g").attr("class", "x-axis").attr("transform", `translate(0, ${height})`);
-        svg.append("g").attr("class", "y-axis");
-        svg.append("text") // Add y-axis label
-            .attr("class", "y-axis-label")
-            .attr("transform", "rotate(-90)")
-            .attr("y", -margin.left + 10)
-            .attr("x", -height / 2)
-            .attr("text-anchor", "middle")
-            .style("font-size", "12px")
-            .text(yAxisTitle);
+            .attr("transform", `translate(${margin.left}, ${margin.top})`)
+            .style("opacity", 0);
     }
+
+    // Fade in the chart container
+    svg.transition()
+        .duration(700) // duration of the transition
+        .style("opacity", 1);
 
     // Scales
     const x = d3.scaleLinear()
@@ -103,6 +97,8 @@ export function drawLineChart(data, containerId, chartTitle, yAxisTitle, lineCol
         .transition()
         .duration(1000)
         .call(d3.axisLeft(y));
+
+    drawAxes(svg, x, y, yAxisTitle, height, width, margin);
 
     // Line generator
     const lineGenerator = d3.line()

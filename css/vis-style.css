@@ -78,6 +78,23 @@ h3 {
     margin: 20px 0;
 }
 
+/* Exploration section */
+#exploration-text {
+    text-align: center; /* Centers the text */
+    margin: 50px auto; /* Adds vertical spacing */
+    padding: 10px 20px; /* Adds space around the text */
+    max-width: 800px; /* Restricts the width of the section */
+    font-family: 'AcreMedium', sans-serif; /* Matches your site's font */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+#exploration-text h2 {
+    font-size: 20px; /* Adjust font size as needed */
+    font-weight: bold; /* Makes the text stand out */
+    color: #333; /* Darker text color for contrast */
+    margin: 0; /* Removes default margin */
+}
+
 /* Image container styling */
 .image-container {
     display: flex; 
@@ -206,6 +223,7 @@ figcaption {
     padding: 5px;
     font-size: 16px;
 }
+
 #dropdown-menu-container {
     display: none; /* Hidden by default */
     margin-top: 20px; /* Space between description and dropdown */
@@ -220,11 +238,12 @@ figcaption {
     margin-right: auto; /* Center horizontally */
 }
 /* Line and Mortality Chart Section */
+/* Line and Mortality Chart Section */
 #line-bar-container {
     display: flex;
     justify-content: space-between; /* Space out charts evenly */
     align-items: flex-start; /* Align charts to the top */
-    gap: 0px; /* Control spacing between charts */
+    gap: 10px; /* Reduce spacing between charts */
     flex-wrap: nowrap; /* Prevent charts from stacking */
     margin: 0 auto; /* Center the container */
     max-width: 100%; /* Ensure it doesn't exceed the viewport */
@@ -232,7 +251,7 @@ figcaption {
 
 #incidence-chart-container,
 #mortality-chart-container {
-    width: 47%; /* Each chart takes up 45% of the container width */
+    width: 50%; /* Each chart takes up 50% of the container width */
     height: 400px; /* Maintain consistent height */
     display: none; /* Hidden by default */
     opacity: 0; /* Fade-in effect */
@@ -245,18 +264,35 @@ figcaption {
     opacity: 1; /* Fully visible */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Responsive Design: Medium screens (800px and smaller) */
+@media (max-width: 800px) {
     #line-bar-container {
-        flex-direction: column;
-        gap: 10px; /* spacing between stacked charts */
+        flex-wrap: wrap; /* Allow charts to stack when space is limited */
+        justify-content: center; /* Center the charts in the container */
+        gap: 10px; /* Reduce spacing between stacked charts */
     }
 
     #incidence-chart-container,
     #mortality-chart-container {
-        width: 100%;
+        width: 45%; /* Reduce width for smaller screens */
+        height: 350px; /* Slightly smaller height for better fit */
     }
 }
+
+/* Responsive Design: Small screens (600px and smaller) */
+@media (max-width: 600px) {
+    #line-bar-container {
+        flex-direction: column; /* Stack charts vertically */
+        gap: 15px; /* Add more space between stacked charts */
+    }
+
+    #incidence-chart-container,
+    #mortality-chart-container {
+        width: 90%; /* Use most of the screen width */
+        height: 300px; /* Further reduce height for small screens */
+    }
+}
+
 
 /* Age Group Pyramid Section */
 #age-group-pyramid-container {
