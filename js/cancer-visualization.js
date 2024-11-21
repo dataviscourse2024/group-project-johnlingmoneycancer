@@ -153,16 +153,17 @@ function handleVisualizations(cancerType, displayName, description) {
     // Load and visualize the graphs
     setTimeout(() => {
         loadAllFiles(datasets => {
-            if (!datasets || !datasets.incidence || !datasets.incidence.all) {
-                console.error("Datasets are not loaded or malformed.");
-                return;
-            }
+            // console.log("Loaded datasets:", datasets);
+            // if (!datasets || !datasets.incidence || !datasets.incidence.all) {
+            //     console.error("Datasets are not loaded or malformed.");
+            //     return;
+            // }
             visualizeCancerDots(cancerType, datasets.incidence.all); // Dot visualization
         });
 
         setTimeout(() => {
             loadAndVisualize(displayName); // Load graphs
-        }, 1500); // Adjusted delay for graphs
+        }, 500); // Adjusted delay for graphs
     }, 500); // Delay for dots
 }
 

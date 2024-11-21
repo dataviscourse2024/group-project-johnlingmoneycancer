@@ -57,18 +57,14 @@ export function synchronizeCharts(lineData, barData) {
     }
 
     // Draw line chart
-    drawLineChart(lineData, '#line-chart-container', clickedPoint => {
-        const clickedYear = clickedPoint.year;
-        const filteredBarData = barData.filter(d => d.year === clickedYear);
-        d3.select('#bar-chart-container').select('svg').remove();
-        drawBarChart(filteredBarData, '#bar-chart-container');
-    });
+    drawLineChart(lineData, '#line-chart-container');
 }
 
 export function drawLineChart(data, containerId, chartTitle, yAxisTitle, lineColor, yLabel) {
     const margin = { top: 40, right: 30, bottom: 50, left: 60 };
     const width = 800 - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
+
 
     // Check if an SVG already exists
     let svg = d3.select(containerId).select("svg");
@@ -97,18 +93,7 @@ export function drawLineChart(data, containerId, chartTitle, yAxisTitle, lineCol
     const y = d3.scaleLinear()
         .domain([0, d3.max(data, d => d.value)])
         .nice()
-        .range([height, 0]);
-
-    // Update axes
-    svg.select(".x-axis")
-        .transition()
-        .duration(1000)
-        .call(d3.axisBottom(x).tickFormat(d3.format("d")));
-
-    svg.select(".y-axis")
-        .transition()
-        .duration(1000)
-        .call(d3.axisLeft(y));
+        .range([height, 0]);;
 
     drawAxes(svg, x, y, yAxisTitle, height, width, margin);
 
@@ -183,18 +168,6 @@ export function drawLineChart(data, containerId, chartTitle, yAxisTitle, lineCol
             .attr("text-anchor", "middle")
             .attr("dy", "-0.5em")
             .style("opacity", 0); // Initially hidden
-    }
-
-    // Create an overlay for mouse events
-    if (svg.select(".overlay").empty()) {
-        svg.append("rect")
-            .attr("class", "overlay")
-            .attr("width", width)
-            .attr("height", height)
-            .attr("fill", "none")
-            .attr("pointer-events", "all")
-            .on("mousemove", onMouseMove)
-            .on("mouseout", onMouseOut);
     }
 
     // Create an overlay for mouse events

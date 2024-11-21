@@ -132,9 +132,11 @@ figcaption {
 #description {
     display: none; /* Initially hidden */
     opacity: 0; /* Fully transparent initially */
-    margin-top: 20px;
+    background: linear-gradient(to bottom, #8ebef4, #ffffff);
+    margin-top: 50px;
     text-align: center; /* Center the entire description */
     transition: opacity 1s ease-in-out, visibility 1s ease-in-out; /* Smooth transition for both opacity and visibility */
+    padding: 40px 40px;
 }
 
 /* Title styling for description */
@@ -142,7 +144,7 @@ figcaption {
     font-size: 28px; /* Larger font size for the title */
     font-weight: bold; /* Make the title bold */
     text-decoration: underline; /* Underline the title */
-    margin-bottom: 10px; /* Adds space between the title and content */
+    margin-bottom: 20px; /* Adds space between the title and content */
 }
 
 /* Content styling for description */
@@ -157,7 +159,7 @@ figcaption {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-bottom: 20px; /* Space between filters and the graphs */
+    margin-bottom: 40px;
 }
 
 #filters select {
@@ -177,8 +179,8 @@ figcaption {
     width: fit-content; /* Automatically adjust to content width */
     margin-left: auto; /* Center horizontally */
     margin-right: auto; /* Center horizontally */
+    margin-bottom: 40px;
 }
-/* Line and Mortality Chart Section */
 /* Line and Mortality Chart Section */
 #line-chart-container {
     display: flex;
@@ -196,7 +198,7 @@ figcaption {
     height: 400px; /* Maintain consistent height */
     display: none; /* Hidden by default */
     opacity: 0; /* Fade-in effect */
-    transition: opacity 0.5s ease; /* Smooth fade-in animation */
+    transition: opacity 0.2s ease; /* Smooth fade-in animation */
 }
 
 #incidence-chart-container.show,
@@ -236,8 +238,16 @@ figcaption {
 
 /* Dot visualization section */
 #dot-visualization-section {
+    display: none; /* Initially hidden */
+    opacity: 0; /* Fully transparent initially */
+    transition: opacity 0.5s ease; /* Smooth fade-in */
     margin: 30px auto;
     text-align: center;
+}
+
+#dot-visualization-section.show {
+    display: block; /* Make it visible */
+    opacity: 1; /* Fully opaque */
 }
 
 #dot-visualization-section h2 {

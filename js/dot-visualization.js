@@ -78,17 +78,32 @@ function updateDotInfo(title, content) {
     setTimeout(() => (infoContainer.style.opacity = 1), 10); // Fade in
 }
 
-function visualizeCancerDots(cancerType) {
+export function visualizeCancerDots(cancerType) {
     const incidenceRate = calculateIncidence(cancerType); // Get predefined rate (per 100,000)
 
-    createDotVisualization(100, incidenceRate);
+    const dotVisualizationSection = document.getElementById("dot-visualization-section");
+    if (!dotVisualizationSection) {
+        console.error("#dot-visualization-section is missing.");
+        return;
+    }
 
-    // Add Dot info
-    updateDotInfo(
-        `Young People Incidence Rate of ${cancerType}`,
-        `The incidence rate for ${cancerType} is approximately ${incidenceRate} per 100,000 people.`
-    );
+    // Dynamically show the section by adding the "show" class
+    if (!dotVisualizationSection.classList.contains("show")) {
+        dotVisualizationSection.classList.add("show");
+    }
+
+    // Delay before creating the dots
+    setTimeout(() => {
+        createDotVisualization(100, incidenceRate);
+
+        // Add Dot info
+        updateDotInfo(
+            `Young People Incidence Rate of ${cancerType}`,
+            `The incidence rate for ${cancerType} is approximately ${incidenceRate} per 100,000 people.`
+        );
+    }, 500);
+
+
 }
 
-export { visualizeCancerDots };
 
