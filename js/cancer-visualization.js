@@ -1,4 +1,4 @@
-// import { drawUSMapAllCancers } from './map-visualization.js';
+import { drawUSMapAllCancers } from './map-visualization.js';
 import { drawIncidentStackedBarChart } from './incident-stacked-area-chart.js';
 import { drawMortalityStackedBarChart } from './mortality-stacked-area-chart.js';
 import { visualizeCancerRates } from './rate-visualization.js';
@@ -23,8 +23,9 @@ const svgMain = d3.select("#visualization") // Top-level SVG declaration
     .attr("width", 1000)
     .attr("height", 600);
 
+// Attach to DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
-    drawUSMapAllCancers("#us-map-container");
+    drawUSMap("#us-map-container");
 });
 
 // Function to draw the stacked area chart
@@ -205,7 +206,7 @@ function loadAndVisualize(displayName) {
             const mortalityChartData = aggregateDataByYear(filteredMortalityData, "Deaths");
             drawLineChart(mortalityChartData, "#mortality-chart-container", "Mortality Over Time", "Deaths", "red", "Deaths");
         }
-    });    
+    });
 }
 
 function handleVisualizations(cancerType, displayName, description, preventionDescriptions, imageFolderPath) {
