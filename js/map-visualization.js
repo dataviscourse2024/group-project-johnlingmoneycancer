@@ -1,6 +1,3 @@
-import { loadStateCancerDataAllCancers } from './data-loader.js';
-
-
 // FIPS-to-State mapping
 const fipsToState = {
     "01": "Alabama",
@@ -138,14 +135,17 @@ export function drawUSMap(containerID) {
         const legendWidth = 200;
         const legendHeight = 20;
 
-        const legendScale = d3.scaleLinear()
-            .domain(mortalityColorScale.domain())
-            .range([0, legendWidth]);
+        // legend title
+        svg.append("text")
+            .attr("x", width - 220 + 100)
+            .attr("y", 15) 
+            .attr("fill", "black")
+            .style("font-size", "14px")
+            .style("font-weight", "bold")
+            .style("text-anchor", "middle")
+            .text("Mortality Rate");
 
-        const legendAxis = d3.axisBottom(legendScale)
-            .ticks(5)
-            .tickFormat(d3.format(".1f"));
-
+        // legend gradient and box
         const gradient = svg.append("defs")
             .append("linearGradient")
             .attr("id", "legend-gradient")
@@ -162,9 +162,25 @@ export function drawUSMap(containerID) {
             .attr("height", legendHeight)
             .style("fill", "url(#legend-gradient)");
 
-        svg.append("g")
-            .attr("transform", `translate(${width - legendWidth - 20}, ${20 + legendHeight})`)
-            .call(legendAxis);
+        // legend end points
+        const minValue = d3.min(Object.values(mortalityRates));
+        const maxValue = d3.max(Object.values(mortalityRates));
+
+        svg.append("text")
+            .attr("x", width - 220)
+            .attr("y", 55)
+            .attr("fill", "black")
+            .style("font-size", "12px")
+            .style("text-anchor", "start")
+            .text(minValue.toFixed(1));
+
+        svg.append("text")
+            .attr("x", width - 20)
+            .attr("y", 55)
+            .attr("fill", "black")
+            .style("font-size", "12px")
+            .style("text-anchor", "end")
+            .text(maxValue.toFixed(1));
     }).catch(error => {
         console.error("Error loading data:", error);
     });
