@@ -1,0 +1,560 @@
+Leading Cancer Sites,Leading Cancer Sites Code,States,States Code,Count,Population,Age-Adjusted Rate
+Brain and Other Nervous System,31010-31040,Alabama,1.0,909.0,28997566.0,3.2
+Brain and Other Nervous System,31010-31040,Alaska,2.0,168.0,4705451.0,3.6
+Brain and Other Nervous System,31010-31040,Arizona,4.0,1266.0,39573555.0,3.3
+Brain and Other Nervous System,31010-31040,Arkansas,5.0,579.0,17479414.0,3.4
+Brain and Other Nervous System,31010-31040,California,6.0,6978.0,249898634.0,2.8
+Brain and Other Nervous System,31010-31040,Colorado,8.0,1129.0,34061590.0,3.3
+Brain and Other Nervous System,31010-31040,Connecticut,9.0,735.0,20581295.0,3.6
+Brain and Other Nervous System,31010-31040,Delaware,10.0,184.0,5382220.0,3.5
+Brain and Other Nervous System,31010-31040,District of Columbia,11.0,157.0,5328135.0,3.1
+Brain and Other Nervous System,31010-31040,Florida,12.0,3924.0,110596457.0,3.6
+Brain and Other Nervous System,31010-31040,Georgia,13.0,1787.0,62876539.0,2.9
+Brain and Other Nervous System,31010-31040,Hawaii,15.0,210.0,8626876.0,2.5
+Brain and Other Nervous System,31010-31040,Idaho,16.0,367.0,9552955.0,3.9
+Brain and Other Nervous System,31010-31040,Illinois,17.0,2566.0,81334472.0,3.2
+Brain and Other Nervous System,31010-31040,Indiana,18.0,1248.0,36168438.0,3.5
+Brain and Other Nervous System,31010-31040,Iowa,19.0,679.0,18190268.0,3.8
+Brain and Other Nervous System,31010-31040,Kansas,20.0,599.0,17494312.0,3.5
+Brain and Other Nervous System,31010-31040,Kentucky,21.0,1029.0,26621315.0,3.9
+Brain and Other Nervous System,31010-31040,Louisiana,22.0,775.0,28968702.0,2.7
+Brain and Other Nervous System,31010-31040,Maine,23.0,278.0,7245237.0,3.8
+Brain and Other Nervous System,31010-31040,Maryland,24.0,1111.0,35950945.0,3.1
+Brain and Other Nervous System,31010-31040,Massachusetts,25.0,1365.0,42061649.0,3.3
+Brain and Other Nervous System,31010-31040,Michigan,26.0,2050.0,59704901.0,3.5
+Brain and Other Nervous System,31010-31040,Minnesota,27.0,1285.0,32937615.0,4.0
+Brain and Other Nervous System,31010-31040,Mississippi,28.0,428.0,14938851.0,3.0
+Brain and Other Nervous System,31010-31040,Missouri,29.0,1251.0,36178526.0,3.5
+Brain and Other Nervous System,31010-31040,Montana,30.0,244.0,5763837.0,4.3
+Brain and Other Nervous System,31010-31040,Nebraska,31.0,412.0,11303444.0,3.7
+Brain and Other Nervous System,31010-31040,Nevada,32.0,445.0,17086433.0,2.6
+Brain and Other Nervous System,31010-31040,New Hampshire,33.0,278.0,7543351.0,3.7
+Brain and Other Nervous System,31010-31040,New Jersey,34.0,1872.0,53183792.0,3.5
+Brain and Other Nervous System,31010-31040,New Mexico,35.0,343.0,12231224.0,2.9
+Brain and Other Nervous System,31010-31040,New York,36.0,4123.0,125770212.0,3.3
+Brain and Other Nervous System,31010-31040,North Carolina,37.0,1957.0,59062909.0,3.4
+Brain and Other Nervous System,31010-31040,North Dakota,38.0,143.0,4554309.0,3.3
+Brain and Other Nervous System,31010-31040,Ohio,39.0,2377.0,68952169.0,3.5
+Brain and Other Nervous System,31010-31040,Oklahoma,40.0,819.0,23336136.0,3.6
+Brain and Other Nervous System,31010-31040,Oregon,41.0,866.0,24057977.0,3.7
+Brain and Other Nervous System,31010-31040,Pennsylvania,42.0,2517.0,74152178.0,3.5
+Brain and Other Nervous System,31010-31040,Rhode Island,44.0,230.0,6635725.0,3.6
+Brain and Other Nervous System,31010-31040,South Carolina,45.0,833.0,28154348.0,3.0
+Brain and Other Nervous System,31010-31040,South Dakota,46.0,137.0,4473609.0,3.2
+Brain and Other Nervous System,31010-31040,Tennessee,47.0,1294.0,39350613.0,3.3
+Brain and Other Nervous System,31010-31040,Texas,48.0,5065.0,168007785.0,3.1
+Brain and Other Nervous System,31010-31040,Utah,49.0,748.0,19487909.0,4.0
+Brain and Other Nervous System,31010-31040,Vermont,50.0,146.0,3578475.0,4.2
+Brain and Other Nervous System,31010-31040,Virginia,51.0,1528.0,51120481.0,3.0
+Brain and Other Nervous System,31010-31040,Washington,53.0,1598.0,43894632.0,3.7
+Brain and Other Nervous System,31010-31040,West Virginia,54.0,387.0,10480451.0,3.8
+Brain and Other Nervous System,31010-31040,Wisconsin,55.0,1225.0,34012129.0,3.7
+Brain and Other Nervous System,31010-31040,Wyoming,56.0,126.0,3354526.0,3.9
+Breast,26000,Alabama,1.0,3921.0,28997566.0,14.9
+Breast,26000,Alaska,2.0,528.0,4705451.0,12.3
+Breast,26000,Arizona,4.0,4226.0,39573555.0,11.8
+Breast,26000,Arkansas,5.0,2071.0,17479414.0,13.0
+Breast,26000,California,6.0,28757.0,249898634.0,12.5
+Breast,26000,Colorado,8.0,4040.0,34061590.0,12.7
+Breast,26000,Connecticut,9.0,3203.0,20581295.0,16.2
+Breast,26000,Delaware,10.0,765.0,5382220.0,15.4
+Breast,26000,District of Columbia,11.0,744.0,5328135.0,16.0
+Breast,26000,Florida,12.0,14933.0,110596457.0,14.4
+Breast,26000,Georgia,13.0,8759.0,62876539.0,14.9
+Breast,26000,Hawaii,15.0,1190.0,8626876.0,15.2
+Breast,26000,Idaho,16.0,1024.0,9552955.0,11.8
+Breast,26000,Illinois,17.0,10667.0,81334472.0,14.1
+Breast,26000,Indiana,18.0,4461.0,36168438.0,13.5
+Breast,26000,Iowa,19.0,2223.0,18190268.0,13.6
+Breast,26000,Kansas,20.0,2184.0,17494312.0,13.9
+Breast,26000,Kentucky,21.0,3281.0,26621315.0,13.4
+Breast,26000,Louisiana,22.0,3778.0,28968702.0,14.6
+Breast,26000,Maine,23.0,1029.0,7245237.0,14.7
+Breast,26000,Maryland,24.0,5362.0,35950945.0,15.6
+Breast,26000,Massachusetts,25.0,5805.0,42061649.0,15.0
+Breast,26000,Michigan,26.0,7720.0,59704901.0,14.1
+Breast,26000,Minnesota,27.0,4166.0,32937615.0,13.5
+Breast,26000,Mississippi,28.0,1932.0,14938851.0,14.6
+Breast,26000,Missouri,29.0,4577.0,36178526.0,13.8
+Breast,26000,Montana,30.0,647.0,5763837.0,12.6
+Breast,26000,Nebraska,31.0,1330.0,11303444.0,13.1
+Breast,26000,Nevada,32.0,1968.0,17086433.0,12.2
+Breast,26000,New Hampshire,33.0,990.0,7543351.0,13.7
+Breast,26000,New Jersey,34.0,8020.0,53183792.0,15.4
+Breast,26000,New Mexico,35.0,1358.0,12231224.0,12.3
+Breast,26000,New York,36.0,17750.0,125770212.0,15.3
+Breast,26000,North Carolina,37.0,8389.0,59062909.0,15.3
+Breast,26000,North Dakota,38.0,440.0,4554309.0,11.8
+Breast,26000,Ohio,39.0,8836.0,68952169.0,13.9
+Breast,26000,Oklahoma,40.0,2736.0,23336136.0,13.1
+Breast,26000,Oregon,41.0,2726.0,24057977.0,12.2
+Breast,26000,Pennsylvania,42.0,9943.0,74152178.0,14.5
+Breast,26000,Rhode Island,44.0,876.0,6635725.0,14.7
+Breast,26000,South Carolina,45.0,3995.0,28154348.0,15.6
+Breast,26000,South Dakota,46.0,533.0,4473609.0,13.5
+Breast,26000,Tennessee,47.0,5051.0,39350613.0,13.9
+Breast,26000,Texas,48.0,20249.0,168007785.0,13.1
+Breast,26000,Utah,49.0,1864.0,19487909.0,11.3
+Breast,26000,Vermont,50.0,439.0,3578475.0,13.4
+Breast,26000,Virginia,51.0,6789.0,51120481.0,14.2
+Breast,26000,Washington,53.0,5260.0,43894632.0,12.8
+Breast,26000,West Virginia,54.0,1294.0,10480451.0,13.4
+Breast,26000,Wisconsin,55.0,4399.0,34012129.0,14.0
+Breast,26000,Wyoming,56.0,326.0,3354526.0,10.8
+Cervix Uteri,27010,Alabama,1.0,1363.0,14659229.0,9.9
+Cervix Uteri,27010,Alaska,2.0,177.0,2199693.0,8.4
+Cervix Uteri,27010,Arizona,4.0,1373.0,19138210.0,7.6
+Cervix Uteri,27010,Arkansas,5.0,882.0,8685260.0,10.8
+Cervix Uteri,27010,California,6.0,9016.0,121503535.0,7.8
+Cervix Uteri,27010,Colorado,8.0,1146.0,16344812.0,7.2
+Cervix Uteri,27010,Connecticut,9.0,677.0,10267847.0,6.7
+Cervix Uteri,27010,Delaware,10.0,233.0,2708847.0,9.0
+Cervix Uteri,27010,District of Columbia,11.0,173.0,2795988.0,7.0
+Cervix Uteri,27010,Florida,12.0,5148.0,54680017.0,9.8
+Cervix Uteri,27010,Georgia,13.0,2661.0,31515377.0,8.8
+Cervix Uteri,27010,Hawaii,15.0,315.0,4096592.0,8.0
+Cervix Uteri,27010,Idaho,16.0,316.0,4655787.0,7.3
+Cervix Uteri,27010,Illinois,17.0,3029.0,40256633.0,7.8
+Cervix Uteri,27010,Indiana,18.0,1505.0,17924734.0,8.9
+Cervix Uteri,27010,Iowa,19.0,758.0,8880928.0,9.2
+Cervix Uteri,27010,Kansas,20.0,732.0,8516256.0,9.3
+Cervix Uteri,27010,Kentucky,21.0,1355.0,13150837.0,10.9
+Cervix Uteri,27010,Louisiana,22.0,1385.0,14554273.0,10.2
+Cervix Uteri,27010,Maine,23.0,292.0,3627664.0,8.2
+Cervix Uteri,27010,Maryland,24.0,1188.0,18211298.0,6.6
+Cervix Uteri,27010,Massachusetts,25.0,1100.0,21185711.0,5.4
+Cervix Uteri,27010,Michigan,26.0,2391.0,29627537.0,8.5
+Cervix Uteri,27010,Minnesota,27.0,1036.0,16174873.0,6.6
+Cervix Uteri,27010,Mississippi,28.0,684.0,7541792.0,9.8
+Cervix Uteri,27010,Missouri,29.0,1573.0,18030730.0,9.2
+Cervix Uteri,27010,Montana,30.0,224.0,2789909.0,8.5
+Cervix Uteri,27010,Nebraska,31.0,436.0,5517548.0,8.5
+Cervix Uteri,27010,Nevada,32.0,694.0,8297294.0,8.6
+Cervix Uteri,27010,New Hampshire,33.0,244.0,3733165.0,6.7
+Cervix Uteri,27010,New Jersey,34.0,2037.0,26422350.0,7.7
+Cervix Uteri,27010,New Mexico,35.0,528.0,5999232.0,9.3
+Cervix Uteri,27010,New York,36.0,4271.0,63262485.0,7.1
+Cervix Uteri,27010,North Carolina,37.0,2231.0,29397194.0,7.9
+Cervix Uteri,27010,North Dakota,38.0,135.0,2134807.0,7.1
+Cervix Uteri,27010,Ohio,39.0,2868.0,34404075.0,8.7
+Cervix Uteri,27010,Oklahoma,40.0,1234.0,11421885.0,11.6
+Cervix Uteri,27010,Oregon,41.0,902.0,11801225.0,8.0
+Cervix Uteri,27010,Pennsylvania,42.0,2894.0,36836596.0,8.2
+Cervix Uteri,27010,Rhode Island,44.0,272.0,3319014.0,8.8
+Cervix Uteri,27010,South Carolina,45.0,1223.0,14108606.0,9.2
+Cervix Uteri,27010,South Dakota,46.0,154.0,2154170.0,7.8
+Cervix Uteri,27010,Tennessee,47.0,1650.0,19714504.0,8.8
+Cervix Uteri,27010,Texas,48.0,8212.0,82589440.0,10.4
+Cervix Uteri,27010,Utah,49.0,483.0,9535458.0,5.7
+Cervix Uteri,27010,Vermont,50.0,110.0,1775484.0,6.5
+Cervix Uteri,27010,Virginia,51.0,1621.0,25284224.0,6.6
+Cervix Uteri,27010,Washington,53.0,1622.0,21352453.0,7.8
+Cervix Uteri,27010,West Virginia,54.0,544.0,5159510.0,11.1
+Cervix Uteri,27010,Wisconsin,55.0,1229.0,16683163.0,7.8
+Cervix Uteri,27010,Wyoming,56.0,157.0,1604774.0,10.5
+Colon and Rectum,21041-21052,Alabama,1.0,1600.0,28997566.0,5.9
+Colon and Rectum,21041-21052,Alaska,2.0,233.0,4705451.0,5.3
+Colon and Rectum,21041-21052,Arizona,4.0,1579.0,39573555.0,4.3
+Colon and Rectum,21041-21052,Arkansas,5.0,921.0,17479414.0,5.7
+Colon and Rectum,21041-21052,California,6.0,10198.0,249898634.0,4.3
+Colon and Rectum,21041-21052,Colorado,8.0,1441.0,34061590.0,4.4
+Colon and Rectum,21041-21052,Connecticut,9.0,1027.0,20581295.0,5.1
+Colon and Rectum,21041-21052,Delaware,10.0,249.0,5382220.0,4.9
+Colon and Rectum,21041-21052,District of Columbia,11.0,263.0,5328135.0,5.5
+Colon and Rectum,21041-21052,Florida,12.0,5338.0,110596457.0,5.1
+Colon and Rectum,21041-21052,Georgia,13.0,3142.0,62876539.0,5.3
+Colon and Rectum,21041-21052,Hawaii,15.0,484.0,8626876.0,6.0
+Colon and Rectum,21041-21052,Idaho,16.0,386.0,9552955.0,4.4
+Colon and Rectum,21041-21052,Illinois,17.0,3705.0,81334472.0,4.8
+Colon and Rectum,21041-21052,Indiana,18.0,1664.0,36168438.0,4.9
+Colon and Rectum,21041-21052,Iowa,19.0,888.0,18190268.0,5.3
+Colon and Rectum,21041-21052,Kansas,20.0,874.0,17494312.0,5.4
+Colon and Rectum,21041-21052,Kentucky,21.0,1595.0,26621315.0,6.3
+Colon and Rectum,21041-21052,Louisiana,22.0,1523.0,28968702.0,5.8
+Colon and Rectum,21041-21052,Maine,23.0,391.0,7245237.0,5.5
+Colon and Rectum,21041-21052,Maryland,24.0,1719.0,35950945.0,4.9
+Colon and Rectum,21041-21052,Massachusetts,25.0,1844.0,42061649.0,4.7
+Colon and Rectum,21041-21052,Michigan,26.0,2857.0,59704901.0,5.1
+Colon and Rectum,21041-21052,Minnesota,27.0,1548.0,32937615.0,4.9
+Colon and Rectum,21041-21052,Mississippi,28.0,859.0,14938851.0,6.4
+Colon and Rectum,21041-21052,Missouri,29.0,1850.0,36178526.0,5.5
+Colon and Rectum,21041-21052,Montana,30.0,252.0,5763837.0,4.7
+Colon and Rectum,21041-21052,Nebraska,31.0,570.0,11303444.0,5.4
+Colon and Rectum,21041-21052,Nevada,32.0,690.0,17086433.0,4.2
+Colon and Rectum,21041-21052,New Hampshire,33.0,438.0,7543351.0,6.0
+Colon and Rectum,21041-21052,New Jersey,34.0,2729.0,53183792.0,5.2
+Colon and Rectum,21041-21052,New Mexico,35.0,529.0,12231224.0,4.7
+Colon and Rectum,21041-21052,New York,36.0,6033.0,125770212.0,5.1
+Colon and Rectum,21041-21052,North Carolina,37.0,3015.0,59062909.0,5.4
+Colon and Rectum,21041-21052,North Dakota,38.0,192.0,4554309.0,4.9
+Colon and Rectum,21041-21052,Ohio,39.0,3378.0,68952169.0,5.2
+Colon and Rectum,21041-21052,Oklahoma,40.0,1275.0,23336136.0,6.0
+Colon and Rectum,21041-21052,Oregon,41.0,1044.0,24057977.0,4.6
+Colon and Rectum,21041-21052,Pennsylvania,42.0,3653.0,74152178.0,5.2
+Colon and Rectum,21041-21052,Rhode Island,44.0,298.0,6635725.0,4.9
+Colon and Rectum,21041-21052,South Carolina,45.0,1481.0,28154348.0,5.6
+Colon and Rectum,21041-21052,South Dakota,46.0,201.0,4473609.0,4.9
+Colon and Rectum,21041-21052,Tennessee,47.0,2054.0,39350613.0,5.6
+Colon and Rectum,21041-21052,Texas,48.0,7694.0,168007785.0,4.9
+Colon and Rectum,21041-21052,Utah,49.0,887.0,19487909.0,5.1
+Colon and Rectum,21041-21052,Vermont,50.0,174.0,3578475.0,5.2
+Colon and Rectum,21041-21052,Virginia,51.0,2296.0,51120481.0,4.7
+Colon and Rectum,21041-21052,Washington,53.0,2131.0,43894632.0,5.1
+Colon and Rectum,21041-21052,West Virginia,54.0,627.0,10480451.0,6.3
+Colon and Rectum,21041-21052,Wisconsin,55.0,1640.0,34012129.0,5.1
+Colon and Rectum,21041-21052,Wyoming,56.0,132.0,3354526.0,4.2
+Leukemias,35011-35043,Alabama,1.0,870.0,28997566.0,3.1
+Leukemias,35011-35043,Alaska,2.0,163.0,4705451.0,3.6
+Leukemias,35011-35043,Arizona,4.0,1322.0,39573555.0,3.4
+Leukemias,35011-35043,Arkansas,5.0,528.0,17479414.0,3.1
+Leukemias,35011-35043,California,6.0,8268.0,249898634.0,3.4
+Leukemias,35011-35043,Colorado,8.0,1027.0,34061590.0,3.1
+Leukemias,35011-35043,Connecticut,9.0,738.0,20581295.0,3.6
+Leukemias,35011-35043,Delaware,10.0,179.0,5382220.0,3.4
+Leukemias,35011-35043,District of Columbia,11.0,147.0,5328135.0,2.8
+Leukemias,35011-35043,Florida,12.0,4572.0,110596457.0,4.2
+Leukemias,35011-35043,Georgia,13.0,2016.0,62876539.0,3.3
+Leukemias,35011-35043,Hawaii,15.0,292.0,8626876.0,3.5
+Leukemias,35011-35043,Idaho,16.0,288.0,9552955.0,3.1
+Leukemias,35011-35043,Illinois,17.0,2544.0,81334472.0,3.2
+Leukemias,35011-35043,Indiana,18.0,1149.0,36168438.0,3.3
+Leukemias,35011-35043,Iowa,19.0,577.0,18190268.0,3.3
+Leukemias,35011-35043,Kansas,20.0,572.0,17494312.0,3.3
+Leukemias,35011-35043,Kentucky,21.0,935.0,26621315.0,3.6
+Leukemias,35011-35043,Louisiana,22.0,884.0,28968702.0,3.1
+Leukemias,35011-35043,Maine,23.0,210.0,7245237.0,2.9
+Leukemias,35011-35043,Maryland,24.0,1162.0,35950945.0,3.3
+Leukemias,35011-35043,Massachusetts,25.0,1236.0,42061649.0,3.0
+Leukemias,35011-35043,Michigan,26.0,1871.0,59704901.0,3.2
+Leukemias,35011-35043,Minnesota,27.0,1028.0,32937615.0,3.2
+Leukemias,35011-35043,Mississippi,28.0,459.0,14938851.0,3.2
+Leukemias,35011-35043,Missouri,29.0,1201.0,36178526.0,3.4
+Leukemias,35011-35043,Montana,30.0,198.0,5763837.0,3.5
+Leukemias,35011-35043,Nebraska,31.0,366.0,11303444.0,3.3
+Leukemias,35011-35043,Nevada,32.0,525.0,17086433.0,3.1
+Leukemias,35011-35043,New Hampshire,33.0,236.0,7543351.0,3.2
+Leukemias,35011-35043,New Jersey,34.0,1899.0,53183792.0,3.6
+Leukemias,35011-35043,New Mexico,35.0,434.0,12231224.0,3.6
+Leukemias,35011-35043,New York,36.0,4308.0,125770212.0,3.5
+Leukemias,35011-35043,North Carolina,37.0,1919.0,59062909.0,3.3
+Leukemias,35011-35043,North Dakota,38.0,123.0,4554309.0,2.9
+Leukemias,35011-35043,Ohio,39.0,2094.0,68952169.0,3.1
+Leukemias,35011-35043,Oklahoma,40.0,780.0,23336136.0,3.4
+Leukemias,35011-35043,Oregon,41.0,703.0,24057977.0,3.0
+Leukemias,35011-35043,Pennsylvania,42.0,2515.0,74152178.0,3.5
+Leukemias,35011-35043,Rhode Island,44.0,212.0,6635725.0,3.3
+Leukemias,35011-35043,South Carolina,45.0,850.0,28154348.0,3.1
+Leukemias,35011-35043,South Dakota,46.0,172.0,4473609.0,4.0
+Leukemias,35011-35043,Tennessee,47.0,1265.0,39350613.0,3.3
+Leukemias,35011-35043,Texas,48.0,5965.0,168007785.0,3.6
+Leukemias,35011-35043,Utah,49.0,580.0,19487909.0,3.1
+Leukemias,35011-35043,Vermont,50.0,114.0,3578475.0,3.3
+Leukemias,35011-35043,Virginia,51.0,1342.0,51120481.0,2.7
+Leukemias,35011-35043,Washington,53.0,1375.0,43894632.0,3.2
+Leukemias,35011-35043,West Virginia,54.0,418.0,10480451.0,4.1
+Leukemias,35011-35043,Wisconsin,55.0,1098.0,34012129.0,3.3
+Leukemias,35011-35043,Wyoming,56.0,87.0,3354526.0,2.6
+Liver,21071,Alabama,1.0,119.0,28997566.0,0.4
+Liver,21071,Alaska,2.0,22.0,4705451.0,0.5
+Liver,21071,Arizona,4.0,132.0,39573555.0,0.4
+Liver,21071,Arkansas,5.0,70.0,17479414.0,0.4
+Liver,21071,California,6.0,972.0,249898634.0,0.4
+Liver,21071,Colorado,8.0,110.0,34061590.0,0.3
+Liver,21071,Connecticut,9.0,84.0,20581295.0,0.4
+Liver,21071,Delaware,10.0,17.0,5382220.0,0.3
+Liver,21071,District of Columbia,11.0,25.0,5328135.0,0.5
+Liver,21071,Florida,12.0,466.0,110596457.0,0.4
+Liver,21071,Georgia,13.0,251.0,62876539.0,0.4
+Liver,21071,Hawaii,15.0,53.0,8626876.0,0.7
+Liver,21071,Idaho,16.0,27.0,9552955.0,0.3
+Liver,21071,Illinois,17.0,260.0,81334472.0,0.3
+Liver,21071,Indiana,18.0,95.0,36168438.0,0.3
+Liver,21071,Iowa,19.0,58.0,18190268.0,0.3
+Liver,21071,Kansas,20.0,46.0,17494312.0,0.3
+Liver,21071,Kentucky,21.0,86.0,26621315.0,0.3
+Liver,21071,Louisiana,22.0,115.0,28968702.0,0.4
+Liver,21071,Maryland,24.0,175.0,35950945.0,0.5
+Liver,21071,Massachusetts,25.0,159.0,42061649.0,0.4
+Liver,21071,Michigan,26.0,199.0,59704901.0,0.3
+Liver,21071,Minnesota,27.0,114.0,32937615.0,0.4
+Liver,21071,Mississippi,28.0,54.0,14938851.0,0.4
+Liver,21071,Missouri,29.0,105.0,36178526.0,0.3
+Liver,21071,Montana,30.0,16.0,5763837.0,0.3
+Liver,21071,Nebraska,31.0,31.0,11303444.0,0.3
+Liver,21071,Nevada,32.0,58.0,17086433.0,0.4
+Liver,21071,New Hampshire,33.0,20.0,7543351.0,0.3
+Liver,21071,New Jersey,34.0,204.0,53183792.0,0.4
+Liver,21071,New Mexico,35.0,39.0,12231224.0,0.3
+Liver,21071,New York,36.0,712.0,125770212.0,0.6
+Liver,21071,North Carolina,37.0,174.0,59062909.0,0.3
+Liver,21071,Ohio,39.0,203.0,68952169.0,0.3
+Liver,21071,Oklahoma,40.0,79.0,23336136.0,0.4
+Liver,21071,Oregon,41.0,86.0,24057977.0,0.4
+Liver,21071,Pennsylvania,42.0,279.0,74152178.0,0.4
+Liver,21071,Rhode Island,44.0,27.0,6635725.0,0.4
+Liver,21071,South Carolina,45.0,78.0,28154348.0,0.3
+Liver,21071,South Dakota,46.0,19.0,4473609.0,0.5
+Liver,21071,Tennessee,47.0,114.0,39350613.0,0.3
+Liver,21071,Texas,48.0,703.0,168007785.0,0.4
+Liver,21071,Utah,49.0,61.0,19487909.0,0.3
+Liver,21071,Virginia,51.0,150.0,51120481.0,0.3
+Liver,21071,Washington,53.0,178.0,43894632.0,0.4
+Liver,21071,West Virginia,54.0,26.0,10480451.0,0.3
+Liver,21071,Wisconsin,55.0,102.0,34012129.0,0.3
+Lung and Bronchus,22030,Alabama,1.0,477.0,28997566.0,1.8
+Lung and Bronchus,22030,Alaska,2.0,46.0,4705451.0,1.1
+Lung and Bronchus,22030,Arizona,4.0,407.0,39573555.0,1.1
+Lung and Bronchus,22030,Arkansas,5.0,322.0,17479414.0,2.0
+Lung and Bronchus,22030,California,6.0,2571.0,249898634.0,1.1
+Lung and Bronchus,22030,Colorado,8.0,320.0,34061590.0,1.0
+Lung and Bronchus,22030,Connecticut,9.0,333.0,20581295.0,1.7
+Lung and Bronchus,22030,Delaware,10.0,90.0,5382220.0,1.8
+Lung and Bronchus,22030,District of Columbia,11.0,61.0,5328135.0,1.4
+Lung and Bronchus,22030,Florida,12.0,1829.0,110596457.0,1.8
+Lung and Bronchus,22030,Georgia,13.0,894.0,62876539.0,1.5
+Lung and Bronchus,22030,Hawaii,15.0,101.0,8626876.0,1.3
+Lung and Bronchus,22030,Idaho,16.0,92.0,9552955.0,1.0
+Lung and Bronchus,22030,Illinois,17.0,1069.0,81334472.0,1.4
+Lung and Bronchus,22030,Indiana,18.0,653.0,36168438.0,2.0
+Lung and Bronchus,22030,Iowa,19.0,258.0,18190268.0,1.6
+Lung and Bronchus,22030,Kansas,20.0,218.0,17494312.0,1.4
+Lung and Bronchus,22030,Kentucky,21.0,600.0,26621315.0,2.5
+Lung and Bronchus,22030,Louisiana,22.0,497.0,28968702.0,1.9
+Lung and Bronchus,22030,Maine,23.0,153.0,7245237.0,2.2
+Lung and Bronchus,22030,Maryland,24.0,530.0,35950945.0,1.5
+Lung and Bronchus,22030,Massachusetts,25.0,637.0,42061649.0,1.6
+Lung and Bronchus,22030,Michigan,26.0,912.0,59704901.0,1.7
+Lung and Bronchus,22030,Minnesota,27.0,446.0,32937615.0,1.4
+Lung and Bronchus,22030,Mississippi,28.0,217.0,14938851.0,1.6
+Lung and Bronchus,22030,Missouri,29.0,579.0,36178526.0,1.8
+Lung and Bronchus,22030,Montana,30.0,61.0,5763837.0,1.2
+Lung and Bronchus,22030,Nebraska,31.0,129.0,11303444.0,1.3
+Lung and Bronchus,22030,Nevada,32.0,173.0,17086433.0,1.1
+Lung and Bronchus,22030,New Hampshire,33.0,123.0,7543351.0,1.7
+Lung and Bronchus,22030,New Jersey,34.0,827.0,53183792.0,1.6
+Lung and Bronchus,22030,New Mexico,35.0,102.0,12231224.0,0.9
+Lung and Bronchus,22030,New York,36.0,1942.0,125770212.0,1.7
+Lung and Bronchus,22030,North Carolina,37.0,922.0,59062909.0,1.7
+Lung and Bronchus,22030,North Dakota,38.0,40.0,4554309.0,1.0
+Lung and Bronchus,22030,Ohio,39.0,1195.0,68952169.0,1.9
+Lung and Bronchus,22030,Oklahoma,40.0,388.0,23336136.0,1.9
+Lung and Bronchus,22030,Oregon,41.0,288.0,24057977.0,1.3
+Lung and Bronchus,22030,Pennsylvania,42.0,1141.0,74152178.0,1.7
+Lung and Bronchus,22030,Rhode Island,44.0,101.0,6635725.0,1.7
+Lung and Bronchus,22030,South Carolina,45.0,464.0,28154348.0,1.8
+Lung and Bronchus,22030,South Dakota,46.0,39.0,4473609.0,1.0
+Lung and Bronchus,22030,Tennessee,47.0,644.0,39350613.0,1.8
+Lung and Bronchus,22030,Texas,48.0,1944.0,168007785.0,1.2
+Lung and Bronchus,22030,Utah,49.0,167.0,19487909.0,1.0
+Lung and Bronchus,22030,Vermont,50.0,67.0,3578475.0,2.0
+Lung and Bronchus,22030,Virginia,51.0,702.0,51120481.0,1.5
+Lung and Bronchus,22030,Washington,53.0,504.0,43894632.0,1.2
+Lung and Bronchus,22030,West Virginia,54.0,258.0,10480451.0,2.6
+Lung and Bronchus,22030,Wisconsin,55.0,453.0,34012129.0,1.4
+Lung and Bronchus,22030,Wyoming,56.0,42.0,3354526.0,1.4
+Melanoma of the Skin,25010,Alabama,1.0,2336.0,28997566.0,8.4
+Melanoma of the Skin,25010,Alaska,2.0,279.0,4705451.0,6.2
+Melanoma of the Skin,25010,Arizona,4.0,2752.0,39573555.0,7.3
+Melanoma of the Skin,25010,Arkansas,5.0,1183.0,17479414.0,7.1
+Melanoma of the Skin,25010,California,6.0,16222.0,249898634.0,6.7
+Melanoma of the Skin,25010,Colorado,8.0,3104.0,34061590.0,9.3
+Melanoma of the Skin,25010,Connecticut,9.0,1572.0,20581295.0,7.8
+Melanoma of the Skin,25010,Delaware,10.0,491.0,5382220.0,9.5
+Melanoma of the Skin,25010,District of Columbia,11.0,284.0,5328135.0,5.4
+Melanoma of the Skin,25010,Florida,12.0,7978.0,110596457.0,7.4
+Melanoma of the Skin,25010,Georgia,13.0,5595.0,62876539.0,9.2
+Melanoma of the Skin,25010,Hawaii,15.0,623.0,8626876.0,7.6
+Melanoma of the Skin,25010,Idaho,16.0,1087.0,9552955.0,12.0
+Melanoma of the Skin,25010,Illinois,17.0,6516.0,81334472.0,8.3
+Melanoma of the Skin,25010,Indiana,18.0,3079.0,36168438.0,8.9
+Melanoma of the Skin,25010,Iowa,19.0,2326.0,18190268.0,13.5
+Melanoma of the Skin,25010,Kansas,20.0,1974.0,17494312.0,11.9
+Melanoma of the Skin,25010,Kentucky,21.0,3048.0,26621315.0,11.9
+Melanoma of the Skin,25010,Louisiana,22.0,1753.0,28968702.0,6.3
+Melanoma of the Skin,25010,Maine,23.0,786.0,7245237.0,11.0
+Melanoma of the Skin,25010,Maryland,24.0,3012.0,35950945.0,8.5
+Melanoma of the Skin,25010,Massachusetts,25.0,3495.0,42061649.0,8.6
+Melanoma of the Skin,25010,Michigan,26.0,5639.0,59704901.0,9.8
+Melanoma of the Skin,25010,Minnesota,27.0,4348.0,32937615.0,13.6
+Melanoma of the Skin,25010,Mississippi,28.0,1054.0,14938851.0,7.5
+Melanoma of the Skin,25010,Missouri,29.0,2790.0,36178526.0,8.1
+Melanoma of the Skin,25010,Montana,30.0,643.0,5763837.0,11.8
+Melanoma of the Skin,25010,Nebraska,31.0,1210.0,11303444.0,11.2
+Melanoma of the Skin,25010,Nevada,32.0,972.0,17086433.0,5.8
+Melanoma of the Skin,25010,New Hampshire,33.0,912.0,7543351.0,12.3
+Melanoma of the Skin,25010,New Jersey,34.0,3673.0,53183792.0,7.0
+Melanoma of the Skin,25010,New Mexico,35.0,721.0,12231224.0,6.3
+Melanoma of the Skin,25010,New York,36.0,7695.0,125770212.0,6.3
+Melanoma of the Skin,25010,North Carolina,37.0,5365.0,59062909.0,9.4
+Melanoma of the Skin,25010,North Dakota,38.0,555.0,4554309.0,13.1
+Melanoma of the Skin,25010,Ohio,39.0,6759.0,68952169.0,10.1
+Melanoma of the Skin,25010,Oklahoma,40.0,1575.0,23336136.0,7.2
+Melanoma of the Skin,25010,Oregon,41.0,2806.0,24057977.0,12.0
+Melanoma of the Skin,25010,Pennsylvania,42.0,6497.0,74152178.0,9.1
+Melanoma of the Skin,25010,Rhode Island,44.0,562.0,6635725.0,9.0
+Melanoma of the Skin,25010,South Carolina,45.0,2515.0,28154348.0,9.3
+Melanoma of the Skin,25010,South Dakota,46.0,458.0,4473609.0,10.9
+Melanoma of the Skin,25010,Tennessee,47.0,2909.0,39350613.0,7.7
+Melanoma of the Skin,25010,Texas,48.0,8544.0,168007785.0,5.3
+Melanoma of the Skin,25010,Utah,49.0,2687.0,19487909.0,14.9
+Melanoma of the Skin,25010,Vermont,50.0,483.0,3578475.0,14.2
+Melanoma of the Skin,25010,Virginia,51.0,3737.0,51120481.0,7.5
+Melanoma of the Skin,25010,Washington,53.0,4919.0,43894632.0,11.5
+Melanoma of the Skin,25010,West Virginia,54.0,1107.0,10480451.0,11.0
+Melanoma of the Skin,25010,Wisconsin,55.0,3129.0,34012129.0,9.6
+Melanoma of the Skin,25010,Wyoming,56.0,339.0,3354526.0,10.6
+Non-Hodgkin Lymphoma,33041-33042,Alabama,1.0,1066.0,28997566.0,3.8
+Non-Hodgkin Lymphoma,33041-33042,Alaska,2.0,206.0,4705451.0,4.6
+Non-Hodgkin Lymphoma,33041-33042,Arizona,4.0,1372.0,39573555.0,3.6
+Non-Hodgkin Lymphoma,33041-33042,Arkansas,5.0,611.0,17479414.0,3.7
+Non-Hodgkin Lymphoma,33041-33042,California,6.0,10537.0,249898634.0,4.4
+Non-Hodgkin Lymphoma,33041-33042,Colorado,8.0,1340.0,34061590.0,4.0
+Non-Hodgkin Lymphoma,33041-33042,Connecticut,9.0,1079.0,20581295.0,5.3
+Non-Hodgkin Lymphoma,33041-33042,Delaware,10.0,245.0,5382220.0,4.7
+Non-Hodgkin Lymphoma,33041-33042,District of Columbia,11.0,316.0,5328135.0,6.3
+Non-Hodgkin Lymphoma,33041-33042,Florida,12.0,6499.0,110596457.0,6.0
+Non-Hodgkin Lymphoma,33041-33042,Georgia,13.0,2898.0,62876539.0,4.8
+Non-Hodgkin Lymphoma,33041-33042,Hawaii,15.0,315.0,8626876.0,3.8
+Non-Hodgkin Lymphoma,33041-33042,Idaho,16.0,341.0,9552955.0,3.7
+Non-Hodgkin Lymphoma,33041-33042,Illinois,17.0,3504.0,81334472.0,4.4
+Non-Hodgkin Lymphoma,33041-33042,Indiana,18.0,1447.0,36168438.0,4.2
+Non-Hodgkin Lymphoma,33041-33042,Iowa,19.0,766.0,18190268.0,4.4
+Non-Hodgkin Lymphoma,33041-33042,Kansas,20.0,704.0,17494312.0,4.2
+Non-Hodgkin Lymphoma,33041-33042,Kentucky,21.0,1110.0,26621315.0,4.3
+Non-Hodgkin Lymphoma,33041-33042,Louisiana,22.0,1376.0,28968702.0,5.0
+Non-Hodgkin Lymphoma,33041-33042,Maine,23.0,297.0,7245237.0,4.2
+Non-Hodgkin Lymphoma,33041-33042,Maryland,24.0,1653.0,35950945.0,4.7
+Non-Hodgkin Lymphoma,33041-33042,Massachusetts,25.0,1919.0,42061649.0,4.7
+Non-Hodgkin Lymphoma,33041-33042,Michigan,26.0,2743.0,59704901.0,4.8
+Non-Hodgkin Lymphoma,33041-33042,Minnesota,27.0,1377.0,32937615.0,4.3
+Non-Hodgkin Lymphoma,33041-33042,Mississippi,28.0,564.0,14938851.0,4.0
+Non-Hodgkin Lymphoma,33041-33042,Missouri,29.0,1372.0,36178526.0,3.9
+Non-Hodgkin Lymphoma,33041-33042,Montana,30.0,197.0,5763837.0,3.6
+Non-Hodgkin Lymphoma,33041-33042,Nebraska,31.0,464.0,11303444.0,4.3
+Non-Hodgkin Lymphoma,33041-33042,Nevada,32.0,662.0,17086433.0,4.0
+Non-Hodgkin Lymphoma,33041-33042,New Hampshire,33.0,349.0,7543351.0,4.7
+Non-Hodgkin Lymphoma,33041-33042,New Jersey,34.0,3002.0,53183792.0,5.7
+Non-Hodgkin Lymphoma,33041-33042,New Mexico,35.0,368.0,12231224.0,3.1
+Non-Hodgkin Lymphoma,33041-33042,New York,36.0,7005.0,125770212.0,5.8
+Non-Hodgkin Lymphoma,33041-33042,North Carolina,37.0,2552.0,59062909.0,4.5
+Non-Hodgkin Lymphoma,33041-33042,North Dakota,38.0,157.0,4554309.0,3.7
+Non-Hodgkin Lymphoma,33041-33042,Ohio,39.0,2945.0,68952169.0,4.4
+Non-Hodgkin Lymphoma,33041-33042,Oklahoma,40.0,833.0,23336136.0,3.8
+Non-Hodgkin Lymphoma,33041-33042,Oregon,41.0,954.0,24057977.0,4.1
+Non-Hodgkin Lymphoma,33041-33042,Pennsylvania,42.0,3434.0,74152178.0,4.8
+Non-Hodgkin Lymphoma,33041-33042,Rhode Island,44.0,296.0,6635725.0,4.7
+Non-Hodgkin Lymphoma,33041-33042,South Carolina,45.0,1139.0,28154348.0,4.2
+Non-Hodgkin Lymphoma,33041-33042,South Dakota,46.0,166.0,4473609.0,4.0
+Non-Hodgkin Lymphoma,33041-33042,Tennessee,47.0,1486.0,39350613.0,3.9
+Non-Hodgkin Lymphoma,33041-33042,Texas,48.0,7139.0,168007785.0,4.4
+Non-Hodgkin Lymphoma,33041-33042,Utah,49.0,747.0,19487909.0,4.1
+Non-Hodgkin Lymphoma,33041-33042,Vermont,50.0,132.0,3578475.0,3.8
+Non-Hodgkin Lymphoma,33041-33042,Virginia,51.0,2061.0,51120481.0,4.1
+Non-Hodgkin Lymphoma,33041-33042,Washington,53.0,1867.0,43894632.0,4.4
+Non-Hodgkin Lymphoma,33041-33042,West Virginia,54.0,419.0,10480451.0,4.1
+Non-Hodgkin Lymphoma,33041-33042,Wisconsin,55.0,1446.0,34012129.0,4.4
+Non-Hodgkin Lymphoma,33041-33042,Wyoming,56.0,103.0,3354526.0,3.2
+Pancreas,21100,Alabama,1.0,177.0,28997566.0,0.7
+Pancreas,21100,Alaska,2.0,19.0,4705451.0,0.4
+Pancreas,21100,Arizona,4.0,192.0,39573555.0,0.5
+Pancreas,21100,Arkansas,5.0,93.0,17479414.0,0.6
+Pancreas,21100,California,6.0,1264.0,249898634.0,0.5
+Pancreas,21100,Colorado,8.0,166.0,34061590.0,0.5
+Pancreas,21100,Connecticut,9.0,133.0,20581295.0,0.7
+Pancreas,21100,Delaware,10.0,29.0,5382220.0,0.6
+Pancreas,21100,District of Columbia,11.0,36.0,5328135.0,0.8
+Pancreas,21100,Florida,12.0,762.0,110596457.0,0.7
+Pancreas,21100,Georgia,13.0,371.0,62876539.0,0.6
+Pancreas,21100,Hawaii,15.0,66.0,8626876.0,0.8
+Pancreas,21100,Idaho,16.0,58.0,9552955.0,0.6
+Pancreas,21100,Illinois,17.0,479.0,81334472.0,0.6
+Pancreas,21100,Indiana,18.0,220.0,36168438.0,0.7
+Pancreas,21100,Iowa,19.0,105.0,18190268.0,0.6
+Pancreas,21100,Kansas,20.0,90.0,17494312.0,0.6
+Pancreas,21100,Kentucky,21.0,167.0,26621315.0,0.7
+Pancreas,21100,Louisiana,22.0,184.0,28968702.0,0.7
+Pancreas,21100,Maine,23.0,44.0,7245237.0,0.6
+Pancreas,21100,Maryland,24.0,216.0,35950945.0,0.6
+Pancreas,21100,Massachusetts,25.0,224.0,42061649.0,0.6
+Pancreas,21100,Michigan,26.0,366.0,59704901.0,0.7
+Pancreas,21100,Minnesota,27.0,195.0,32937615.0,0.6
+Pancreas,21100,Mississippi,28.0,112.0,14938851.0,0.8
+Pancreas,21100,Missouri,29.0,224.0,36178526.0,0.7
+Pancreas,21100,Montana,30.0,25.0,5763837.0,0.5
+Pancreas,21100,Nebraska,31.0,59.0,11303444.0,0.6
+Pancreas,21100,Nevada,32.0,76.0,17086433.0,0.5
+Pancreas,21100,New Hampshire,33.0,36.0,7543351.0,0.5
+Pancreas,21100,New Jersey,34.0,299.0,53183792.0,0.6
+Pancreas,21100,New Mexico,35.0,61.0,12231224.0,0.5
+Pancreas,21100,New York,36.0,778.0,125770212.0,0.7
+Pancreas,21100,North Carolina,37.0,355.0,59062909.0,0.6
+Pancreas,21100,Ohio,39.0,418.0,68952169.0,0.6
+Pancreas,21100,Oklahoma,40.0,120.0,23336136.0,0.6
+Pancreas,21100,Oregon,41.0,127.0,24057977.0,0.6
+Pancreas,21100,Pennsylvania,42.0,457.0,74152178.0,0.7
+Pancreas,21100,Rhode Island,44.0,39.0,6635725.0,0.6
+Pancreas,21100,South Carolina,45.0,159.0,28154348.0,0.6
+Pancreas,21100,South Dakota,46.0,25.0,4473609.0,0.6
+Pancreas,21100,Tennessee,47.0,251.0,39350613.0,0.7
+Pancreas,21100,Texas,48.0,1001.0,168007785.0,0.6
+Pancreas,21100,Utah,49.0,93.0,19487909.0,0.5
+Pancreas,21100,Vermont,50.0,16.0,3578475.0,0.5
+Pancreas,21100,Virginia,51.0,280.0,51120481.0,0.6
+Pancreas,21100,Washington,53.0,240.0,43894632.0,0.6
+Pancreas,21100,West Virginia,54.0,57.0,10480451.0,0.6
+Pancreas,21100,Wisconsin,55.0,194.0,34012129.0,0.6
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
