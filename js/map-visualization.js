@@ -138,7 +138,7 @@ export function drawUSMap(containerID) {
         // legend title
         svg.append("text")
             .attr("x", width - 220 + 100)
-            .attr("y", 15) 
+            .attr("y", 15)
             .attr("fill", "black")
             .style("font-size", "14px")
             .style("font-weight", "bold")
@@ -193,10 +193,15 @@ export function drawCancerTypeMap(containerID, cancerType) {
         d3.csv("data/states-csvs/States-Incidence-AgeAdjustedRates-BYCANCER.csv"),
         d3.json("data/us-states.json")
     ]).then(([mortalityData, incidenceData, geoData]) => {
+        console.log("Mortality Data:", mortalityData);
+        console.log("Incidence Data:", incidenceData);
+        console.log(cancerType);
         // Filter the datasets by the selected cancer type
         const filteredMortality = mortalityData.filter(d => d["Leading Cancer Sites"] === cancerType);
         const filteredIncidence = incidenceData.filter(d => d["Leading Cancer Sites"] === cancerType);
 
+        console.log("Filtered Mortality Data:", filteredMortality);
+        console.log("Filtered Incidence Data:", filteredIncidence);
         // Create lookup dictionaries for mortality and incidence rates
         const mortalityRates = {};
         const incidenceRates = {};
@@ -211,7 +216,7 @@ export function drawCancerTypeMap(containerID, cancerType) {
 
         console.log("Mortality Rates:", mortalityRates);
         console.log("Incidence Rates:", incidenceRates);
-        
+
         // Set up SVG dimensions and projection
         const width = 960;
         const height = 600;
@@ -257,8 +262,8 @@ export function drawCancerTypeMap(containerID, cancerType) {
                 tooltip.style("opacity", 1)
                     .html(`
                         <strong>${stateName}</strong><br>
-                        <span style="color: #0056b3;">Mortality Rate:</span> ${mortalityRate}<br>
-                        <span style="color: #ff6600;">Incidence Rate:</span> ${incidenceRate}
+                        <span style="color: orange;">Incidence Rate:</span> ${incidenceRate}<br>
+                        <span style="color: red;">Mortality Rate:</span> ${mortalityRate}
                     `)
                     .style("left", `${event.pageX + 10}px`)
                     .style("top", `${event.pageY + 10}px`);

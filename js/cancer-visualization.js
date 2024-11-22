@@ -245,9 +245,12 @@ function handleVisualizations(cancerType, displayName, description, preventionDe
     // Visualize rates
     visualizeCancerRates(cancerType);
 
+    // Get value for map functionality
+    const mappedCancerType = cancerTypeMapping[cancerType];
+
     setTimeout(() => {
         loadAndVisualize(displayName); // Load graphs
-        drawCancerTypeMap("#us-map-bycancer-container", cancerType); // Draw the map
+        drawCancerTypeMap("#us-map-bycancer-container", mappedCancerType); // Draw the map
     }, 500); // Adjusted delay for graphs
 
     addPreventionDescription(preventionDescriptions);
