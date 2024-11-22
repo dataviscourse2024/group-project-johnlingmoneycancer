@@ -1,5 +1,6 @@
 import { loadStateCancerDataAllCancers } from './data-loader.js';
 
+
 // FIPS-to-State mapping
 const fipsToState = {
     "01": "Alabama",
@@ -55,137 +56,116 @@ const fipsToState = {
     "56": "Wyoming"
 };
 
-export function drawUSMap(containerId) {
+export function drawUSMap(containerID) {
     const width = 960;
     const height = 600;
 
-    const svg = d3.select(containerId)
+    const svg = d3.select(`${containerID}`)
         .append("svg")
         .attr("width", width)
         .attr("height", height);
 
-    const projection = d3.geoAlbersUsa().scale(1000).translate([width / 2, height / 2]);
+    // projection and path generator
+    const projection = d3.geoAlbersUsa().translate([width / 2, height / 2]).scale(1000);
     const path = d3.geoPath().projection(projection);
 
-    // Load GeoJSON data for the US
-    d3.json("https://d3js.org/us-10m.v1.json").then(topojsonData => {
-        // Extract state features
-        const states = topojson.feature(topojsonData, topojsonData.objects.states).features;
+    // Load GeoJSON data and CSV data
+    Promise.all([
+        d3.json("data/us-states.json"),
+        d3.csv("data/states-csvs/States-Mortality-AgeAdjustedRates-ALLCANCERS.csv"),
+        d3.csv("data/states-csvs/States-Incidence-AgeAdjustedRates-ALLCANCERS.csv")
+    ]).then(([geoData, mortalityCSV, incidenceCSV]) => {
+        const states = geoData.features;
 
-        // Render the states on the map
-        svg.append("g")
-            .selectAll("path")
+        const mortalityRates = {};
+        const incidenceRates = {};
+
+        mortalityCSV.forEach(row => {
+            mortalityRates[row.States] = parseFloat(row["Age-Adjusted-Rate"]) || 0;
+        });
+
+        incidenceCSV.forEach(row => {
+            incidenceRates[row.States] = parseFloat(row["Age-Adjusted-Rate"]) || 0;
+        });
+
+        console.log("Mortality Rates:", mortalityRates);
+        console.log("Incidence Rates:", incidenceRates);
+
+        const mortalityColorScale = d3.scaleSequential()
+            .domain([d3.min(Object.values(mortalityRates)), d3.max(Object.values(mortalityRates))])
+            .interpolator(d3.interpolateReds);
+
+        // Tooltip setup
+        const tooltip = d3.select("body").append("div")
+            .attr("id", "map-tooltip")
+            .style("position", "absolute")
+            .style("background-color", "rgba(255, 255, 255, 0.8)")
+            .style("border", "1px solid #ccc")
+            .style("padding", "10px")
+            .style("border-radius", "5px")
+            .style("pointer-events", "none")
+            .style("opacity", 0);
+
+        // Add states to the map
+        svg.selectAll(".state")
             .data(states)
-            .join("path")
-            .attr("fill", "#cccccc") // Default fill color
-            .attr("stroke", "#333333") // Border color
-            .attr("stroke-width", 1)
-            .attr("d", path);
+            .enter()
+            .append("path")
+            .attr("class", "state")
+            .attr("d", path)
+            .attr("fill", d => mortalityColorScale(mortalityRates[d.properties.NAME] || 0))
+            .on("mouseover", function (event, d) {
+                const stateName = d.properties.NAME;
+                const mortalityRate = mortalityRates[stateName] || "N/A";
+                const incidenceRate = incidenceRates[stateName] || "N/A";
 
-        console.log("Map successfully rendered with state outlines.");
+                tooltip.style("opacity", 1)
+                    .html(`
+                        <strong>${stateName}</strong><br>
+                        <span style="color: orange;">Incidence Rate:</span> ${incidenceRate}<br>
+                        <span style="color: red;">Mortality Rate:</span> ${mortalityRate}
+                    `)
+                    .style("left", `${event.pageX + 10}px`)
+                    .style("top", `${event.pageY + 10}px`);
+                d3.select(this).attr("stroke", "#000").attr("stroke-width", 1);
+            })
+            .on("mouseout", function () {
+                tooltip.style("opacity", 0);
+                d3.select(this).attr("stroke", "none");
+            });
+
+        // legend for mortality rates
+        const legendWidth = 200;
+        const legendHeight = 20;
+
+        const legendScale = d3.scaleLinear()
+            .domain(mortalityColorScale.domain())
+            .range([0, legendWidth]);
+
+        const legendAxis = d3.axisBottom(legendScale)
+            .ticks(5)
+            .tickFormat(d3.format(".1f"));
+
+        const gradient = svg.append("defs")
+            .append("linearGradient")
+            .attr("id", "legend-gradient")
+            .attr("x1", "0%").attr("y1", "0%")
+            .attr("x2", "100%").attr("y2", "0%");
+
+        gradient.append("stop").attr("offset", "0%").attr("stop-color", d3.interpolateReds(0));
+        gradient.append("stop").attr("offset", "100%").attr("stop-color", d3.interpolateReds(1));
+
+        svg.append("rect")
+            .attr("x", width - legendWidth - 20)
+            .attr("y", 20)
+            .attr("width", legendWidth)
+            .attr("height", legendHeight)
+            .style("fill", "url(#legend-gradient)");
+
+        svg.append("g")
+            .attr("transform", `translate(${width - legendWidth - 20}, ${20 + legendHeight})`)
+            .call(legendAxis);
     }).catch(error => {
-        console.error("Error loading US map data:", error);
+        console.error("Error loading data:", error);
     });
 }
-
-// export function drawUSMapAllCancers(containerId) {
-//     const width = 960;
-//     const height = 600;
-
-//     const svg = d3.select(containerId)
-//         .append("svg")
-//         .attr("width", width)
-//         .attr("height", height);
-
-//     const projection = d3.geoAlbersUsa().scale(1000).translate([width / 2, height / 2]);
-//     const path = d3.geoPath().projection(projection);
-
-//     d3.json("https://d3js.org/us-10m.v1.json").then(topojsonData => {
-//         const states = topojson.feature(topojsonData, topojsonData.objects.states).features;
-
-//         // Populate properties with state names using FIPS-to-State mapping
-//         states.forEach(state => {
-//             const fipsCode = String(state.id).padStart(2, "0");
-//             const stateName = fipsToState[fipsCode];
-
-//             if (stateName) {
-//                 state.properties.name = stateName;
-//             } else {
-//                 console.warn(`No matching state name for FIPS code: ${fipsCode}`);
-//             }
-//         });
-
-//         console.log("Updated GeoJSON States:", states.map(state => ({
-//             id: state.id,
-//             name: state.properties.name
-//         })));
-
-//         // Load cancer data
-//         loadStateCancerDataAllCancers(data => {
-//             const mortalityRates = {};
-//             const incidenceRates = {};
-
-//             // Populate data dictionaries
-//             data.mortality.forEach(row => {
-//                 mortalityRates[row.States] = parseFloat(row["Age-Adjusted-Rate"]) || 0;
-//             });
-
-//             data.incidence.forEach(row => {
-//                 incidenceRates[row.States] = parseFloat(row["Age-Adjusted-Rate"]) || 0;
-//             });
-
-//             console.log("Mortality Rates:", mortalityRates);
-//             console.log("Incidence Rates:", incidenceRates);
-
-//             // Define color scales
-//             const mortalityColorScale = d3.scaleSequential()
-//                 .domain([0, d3.max(Object.values(mortalityRates))])
-//                 .interpolator(d3.interpolateBlues);
-
-//             const incidenceColorScale = d3.scaleSequential()
-//                 .domain([0, d3.max(Object.values(incidenceRates))])
-//                 .interpolator(d3.interpolateOranges);
-
-//             // Draw mortality map
-//             svg.append("g")
-//                 .selectAll("path")
-//                 .data(states)
-//                 .join("path")
-//                 .attr("fill", d => mortalityColorScale(mortalityRates[d.properties.name] || 0))
-//                 .attr("d", path)
-//                 .on("mouseover", function (event, d) {
-//                     const stateName = d.properties.name;
-//                     const mortalityRate = mortalityRates[stateName] || "N/A";
-//                     const incidenceRate = incidenceRates[stateName] || "N/A";
-
-//                     d3.select("#map-tooltip")
-//                         .style("opacity", 1)
-//                         .html(`<strong>${stateName}</strong><br>Mortality Rate: ${mortalityRate}<br>Incidence Rate: ${incidenceRate}`)
-//                         .style("left", `${event.pageX + 10}px`)
-//                         .style("top", `${event.pageY + 10}px`);
-//                 })
-//                 .on("mouseout", () => {
-//                     d3.select("#map-tooltip").style("opacity", 0);
-//                 });
-
-//             // Add legend for mortality rates
-//             svg.append("g")
-//                 .attr("transform", `translate(${width - 200}, 20)`)
-//                 .call(d3.legendColor()
-//                     .labelFormat(d3.format(".1f"))
-//                     .scale(mortalityColorScale)
-//                     .title("Mortality Rates"));
-
-//             // Add legend for incidence rates (optional or separate view)
-//             svg.append("g")
-//                 .attr("transform", `translate(${width - 200}, 120)`)
-//                 .call(d3.legendColor()
-//                     .labelFormat(d3.format(".1f"))
-//                     .scale(incidenceColorScale)
-//                     .title("Incidence Rates"));
-//         });
-//     }).catch(error => {
-//         console.error("Error loading US map data:", error);
-//     });
-// }
-

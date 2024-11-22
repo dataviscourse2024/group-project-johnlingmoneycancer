@@ -30,14 +30,16 @@
 
     <h2 id="bar-chart-title">A Snapshot of Cancer in Young People</h2>
 
-    <div id="us-map-container" style="position: relative;">
-        <div id="map-tooltip" style="position: absolute; background: #fff; padding: 10px; border: 1px solid #ccc; border-radius: 5px; pointer-events: none; opacity: 0;"></div>
-    </div>
+    <!-- Map Chart Container -->
+    <title>US Map</title>
+    <div id="us-map-container"></div>
+    <script type="module" src="js/map-visualization.js"></script>
 
+    <!-- Stacked Bar Charts Container -->
     <div id="charts-container">
         <!-- incident-stacked-area-chart-container -->
         <div id="incident-stacked-area-chart-container"></div>
-    
+
         <!-- mortality-stacked-area-chart-container -->
         <div id="mortality-stacked-area-chart-container"></div>
     </div>
@@ -185,6 +187,8 @@
         <div id="incidence-chart-container"></div>
         <div id="mortality-chart-container"></div>
     </div>
+
+    <!-- Prevention Description -->
     <div id="prevention-description"></div>
 
     <!-- Age Group Pyramid Container -->
@@ -193,10 +197,8 @@
     <!-- Visualization Container -->
     <div id="visualization"></div>
 
-    <!-- TopoJSON library (non-module) -->
-<script src="https://unpkg.com/topojson@3"></script>
-
     <!-- JS files -->
+
     <script type="module" src="js/data-loader.js"></script>
     <script type="module" src="js/chart-maker.js"></script>
     <script type="module" src="js/cancer-visualization.js"></script>
@@ -208,4 +210,3 @@
 </body>
 
 </html>
-
