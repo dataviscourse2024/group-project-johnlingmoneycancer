@@ -17,20 +17,19 @@ export function drawMortalityStackedBarChart(structuredData, containerId) {
         "Pancreas"
     ];
 
-    // Define a custom color palette for each cancer site
     const colorPalette = {
-        "Brain and Other Nervous System": "#1f77b4",
-        "Breast": "#ff7f0e",
-        "Cervix Uteri": "#2ca02c",
-        "Colon and Rectum": "#d62728",
-        "Leukemias": "#9467bd",
-        "Liver": "#8c564b",
-        "Lung and Bronchus": "#e377c2",
-        "Melanoma of the Skin": "#7f7f7f",
-        "Non-Hodgkin Lymphoma": "#bcbd22",
-        "Pancreas": "#17becf"
+        "Brain and Other Nervous System": "#a6cee3",
+        "Breast": "#1f78b4",
+        "Cervix Uteri": "#b2df8a",
+        "Colon and Rectum": "#33a02c",
+        "Leukemias": "#fb9a99",
+        "Liver": "#e31a1c",
+        "Lung and Bronchus": "#fdbf6f",
+        "Melanoma of the Skin": "#ff7f00",
+        "Non-Hodgkin Lymphoma": "#cab2d6",
+        "Pancreas": "#6a3d9a"
     };
-
+    
     // Filter structuredData to include only the selected cancer sites
     const filteredData = structuredData.filter(d => selectedCancerSites.includes(d.cancerSite));
 
