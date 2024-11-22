@@ -1,3 +1,4 @@
+import { drawUSMapAllCancers } from './map-visualization.js';
 import { drawIncidentStackedBarChart } from './incident-stacked-area-chart.js';
 import { drawMortalityStackedBarChart } from './mortality-stacked-area-chart.js';
 import { visualizeCancerRates } from './rate-visualization.js';
@@ -21,6 +22,10 @@ const svgMain = d3.select("#visualization") // Top-level SVG declaration
     .append("svg")
     .attr("width", 1000)
     .attr("height", 600);
+
+document.addEventListener("DOMContentLoaded", () => {
+    drawUSMapAllCancers("#us-map-container");
+});
 
 // Function to draw the stacked area chart
 document.addEventListener("DOMContentLoaded", () => {
