@@ -4,6 +4,7 @@ import { drawMortalityStackedBarChart } from './mortality-stacked-area-chart.js'
 import { visualizeCancerRates } from './rate-visualization.js';
 import { loadAllGroups } from './data-loader.js';
 import { drawLineChart } from './chart-maker.js';
+import { drawCancerTypeMap } from './map-visualization.js';
 
 const cancerTypeMapping = {                             // checks if cancer has appropriate image and description
     "Brain Cancer": "Brain and Other Nervous System",   // check
@@ -92,7 +93,7 @@ export function showDescription(title, content) {
 }
 
 // Function to add the Prevention Description
-function addPreventionDescription(preventionDescriptions, ) {
+function addPreventionDescription(preventionDescriptions,) {
     // Check if the description container already exists
     let descriptionDiv = document.getElementById("prevention-description");
 
@@ -132,7 +133,6 @@ function displayCancerImages(imageFolderPath) {
         imageContainer.style.display = "none"; // Hide the container if no images
     }
 }
-
 
 // Function to load and visualize the graphs
 function loadAndVisualize(displayName) {
@@ -247,11 +247,24 @@ function handleVisualizations(cancerType, displayName, description, preventionDe
 
     setTimeout(() => {
         loadAndVisualize(displayName); // Load graphs
+        drawCancerTypeMap("#us-map-bycancer-container", cancerType); // Draw the map
     }, 500); // Adjusted delay for graphs
 
     addPreventionDescription(preventionDescriptions);
     displayCancerImages(imageFolderPath)
 }
+
+function showMapContainer() {
+    const mapContainer = document.getElementById("us-map-bycancer-container");
+    if (mapContainer) {
+        mapContainer.classList.add("show"); // Add the "show" class to trigger the fade-in effect
+    }
+}
+
+// Call this function when rendering the map
+document.addEventListener("DOMContentLoaded", () => {
+    showMapContainer(); // Show the map container with a fade-in effect
+});
 
 // Function to apply filters to the dataset
 function applyFiltersToDataset(dataset, filters) {

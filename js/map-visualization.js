@@ -185,3 +185,136 @@ export function drawUSMap(containerID) {
         console.error("Error loading data:", error);
     });
 }
+
+export function drawCancerTypeMap(containerID, cancerType) {
+    // Load GeoJSON and cancer-specific datasets
+    Promise.all([
+        d3.csv("data/states-csvs/States-Mortality-AgeAdjustedRates-BYCANCER.csv"),
+        d3.csv("data/states-csvs/States-Incidence-AgeAdjustedRates-BYCANCER.csv"),
+        d3.json("data/us-states.json")
+    ]).then(([mortalityData, incidenceData, geoData]) => {
+        // Filter the datasets by the selected cancer type
+        const filteredMortality = mortalityData.filter(d => d["Leading Cancer Sites"] === cancerType);
+        const filteredIncidence = incidenceData.filter(d => d["Leading Cancer Sites"] === cancerType);
+
+        // Create lookup dictionaries for mortality and incidence rates
+        const mortalityRates = {};
+        const incidenceRates = {};
+
+        filteredMortality.forEach(row => {
+            mortalityRates[row.States] = parseFloat(row["Age-Adjusted-Rate"]) || 0;
+        });
+
+        filteredIncidence.forEach(row => {
+            incidenceRates[row.States] = parseFloat(row["Age-Adjusted-Rate"]) || 0;
+        });
+
+        console.log("Mortality Rates:", mortalityRates);
+        console.log("Incidence Rates:", incidenceRates);
+        
+        // Set up SVG dimensions and projection
+        const width = 960;
+        const height = 600;
+
+        const svg = d3.select(containerID)
+            .html("") // Clear the container for fresh rendering
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        const projection = d3.geoAlbersUsa().translate([width / 2, height / 2]).scale(1000);
+        const path = d3.geoPath().projection(projection);
+
+        // Define a color scale for mortality rates
+        const mortalityColorScale = d3.scaleSequential()
+            .domain([d3.min(Object.values(mortalityRates)), d3.max(Object.values(mortalityRates))])
+            .interpolator(d3.interpolateReds);
+
+        // Tooltip setup
+        const tooltip = d3.select("body").append("div")
+            .attr("id", "map-tooltip")
+            .style("position", "absolute")
+            .style("background-color", "rgba(255, 255, 255, 0.8)")
+            .style("border", "1px solid #ccc")
+            .style("padding", "10px")
+            .style("border-radius", "5px")
+            .style("pointer-events", "none")
+            .style("opacity", 0);
+
+        // Add states to the map
+        svg.selectAll(".state")
+            .data(geoData.features)
+            .enter()
+            .append("path")
+            .attr("class", "state")
+            .attr("d", path)
+            .attr("fill", d => mortalityColorScale(mortalityRates[d.properties.NAME] || 0))
+            .on("mouseover", function (event, d) {
+                const stateName = d.properties.NAME;
+                const mortalityRate = mortalityRates[stateName] || "N/A";
+                const incidenceRate = incidenceRates[stateName] || "N/A";
+
+                tooltip.style("opacity", 1)
+                    .html(`
+                        <strong>${stateName}</strong><br>
+                        <span style="color: #0056b3;">Mortality Rate:</span> ${mortalityRate}<br>
+                        <span style="color: #ff6600;">Incidence Rate:</span> ${incidenceRate}
+                    `)
+                    .style("left", `${event.pageX + 10}px`)
+                    .style("top", `${event.pageY + 10}px`);
+                d3.select(this).attr("stroke", "#000").attr("stroke-width", 1);
+            })
+            .on("mouseout", function () {
+                tooltip.style("opacity", 0);
+                d3.select(this).attr("stroke", "none");
+            });
+
+        // Add legend title
+        svg.append("text")
+            .attr("x", width - 220 + 100)
+            .attr("y", 15)
+            .attr("fill", "black")
+            .style("font-size", "14px")
+            .style("font-weight", "bold")
+            .style("text-anchor", "middle")
+            .text("Mortality Rate");
+
+        // Create legend gradient
+        const gradient = svg.append("defs")
+            .append("linearGradient")
+            .attr("id", "legend-gradient")
+            .attr("x1", "0%").attr("y1", "0%")
+            .attr("x2", "100%").attr("y2", "0%");
+
+        gradient.append("stop").attr("offset", "0%").attr("stop-color", d3.interpolateReds(0));
+        gradient.append("stop").attr("offset", "100%").attr("stop-color", d3.interpolateReds(1));
+
+        svg.append("rect")
+            .attr("x", width - 220)
+            .attr("y", 20)
+            .attr("width", 200)
+            .attr("height", 20)
+            .style("fill", "url(#legend-gradient)");
+
+        const minValue = d3.min(Object.values(mortalityRates));
+        const maxValue = d3.max(Object.values(mortalityRates));
+
+        svg.append("text")
+            .attr("x", width - 220)
+            .attr("y", 55)
+            .attr("fill", "black")
+            .style("font-size", "12px")
+            .style("text-anchor", "start")
+            .text(minValue.toFixed(1));
+
+        svg.append("text")
+            .attr("x", width - 20)
+            .attr("y", 55)
+            .attr("fill", "black")
+            .style("font-size", "12px")
+            .style("text-anchor", "end")
+            .text(maxValue.toFixed(1));
+    }).catch(error => {
+        console.error("Error loading data:", error);
+    });
+}
