@@ -414,6 +414,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (element) {
             element.addEventListener('click', () => {
                 handleVisualizations(link.cancerType, link.displayName, link.description, link.preventionDescriptions, link.imageFolderPath);
+                const nextSection = document.querySelector("#description");
+                nextSection.scrollIntoView({ behavior: "smooth" });
             });
         }
     });
