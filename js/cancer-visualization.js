@@ -1,4 +1,4 @@
-import { drawUSMap } from './map-visualization.js';
+import { drawUSMapAllCancers } from './map-visualization.js';
 import { drawIncidentStackedBarChart } from './incident-stacked-area-chart.js';
 import { drawMortalityStackedBarChart } from './mortality-stacked-area-chart.js';
 import { visualizeCancerRates } from './rate-visualization.js';
@@ -91,7 +91,8 @@ export function showDescription(title, content) {
     setTimeout(() => (description.style.opacity = 1), 10);
 }
 
-function addPreventionDescription(preventionDescriptions) {
+// Function to add the Prevention Description
+function addPreventionDescription(preventionDescriptions, ) {
     // Check if the description container already exists
     let descriptionDiv = document.getElementById("prevention-description");
 
@@ -104,6 +105,34 @@ function addPreventionDescription(preventionDescriptions) {
         descriptionDiv.style.opacity = 1; // Fade-in effect
     }, 10); // Small delay to ensure the transition applies
 }
+
+function displayCancerImages(imageFolderPath) {
+    const imageContainer = document.getElementById("cancer-image-container");
+
+    // Ensure the container exists
+    if (!imageContainer) {
+        console.error("Image container not found in the HTML.");
+        return;
+    }
+
+    // Clear any existing content
+    imageContainer.innerHTML = "";
+
+    // Check if there are images to display
+    if (imageFolderPath && imageFolderPath.length > 0) {
+        imageFolderPath.forEach(imagePath => {
+            const img = document.createElement("img");
+            img.src = imagePath;
+            img.alt = "Cancer Prevention Image";
+            imageContainer.appendChild(img);
+        });
+        imageContainer.style.display = "flex"; // Show the container
+    } else {
+        console.warn("No images available for this cancer type.");
+        imageContainer.style.display = "none"; // Hide the container if no images
+    }
+}
+
 
 // Function to load and visualize the graphs
 function loadAndVisualize(displayName) {
@@ -180,7 +209,7 @@ function loadAndVisualize(displayName) {
     });
 }
 
-function handleVisualizations(cancerType, displayName, description, preventionDescriptions) {
+function handleVisualizations(cancerType, displayName, description, preventionDescriptions, imageFolderPath) {
     // Reset filters when a new cancer type is selected
     resetFilters();
 
@@ -221,6 +250,7 @@ function handleVisualizations(cancerType, displayName, description, preventionDe
     }, 500); // Adjusted delay for graphs
 
     addPreventionDescription(preventionDescriptions);
+    displayCancerImages(imageFolderPath)
 }
 
 // Function to apply filters to the dataset
@@ -275,35 +305,47 @@ document.addEventListener('DOMContentLoaded', () => {
             cancerType: 'Brain Cancer',
             displayName: 'Brain Cancer',
             description: 'Brain cancer occurs when cells in the brain grow uncontrollably, disrupting brain function and causing neurological symptoms.',
-            preventionDescriptions: 'What are the signs and symptoms of Brain cancer?'
+            preventionDescriptions: 'What are the signs and symptoms of Brain cancer?',
+            imageFolderPath: [],
         },
         {
             id: 'breast-cancer-link',
             cancerType: 'Breast Cancer',
             displayName: 'Breast Cancer',
             description: 'Breast cancer occurs when cells in the breast tissue grow uncontrollably, often forming lumps or masses that can spread to other areas of the body.',
-            preventionDescriptions: 'What are the signs and symptoms of Breast cancer?'
+            preventionDescriptions: 'What are the signs and symptoms of Breast cancer?',
+            imageFolderPath: [
+                'photos/Breast-Cancer-Prevenstion-Images/BreastPrevention1.PNG',
+                'photos/Breast-Cancer-Prevenstion-Images/BreastPrevention2.PNG',
+                'photos/Breast-Cancer-Prevenstion-Images/BreastPrevention3.PNG',
+                'photos/Breast-Cancer-Prevenstion-Images/BreastPrevention4.PNG',
+                'photos/Breast-Cancer-Prevenstion-Images/BreastPrevention5.PNG',
+                'photos/Breast-Cancer-Prevenstion-Images/BreastPrevention6.PNG',
+            ],
         },
         {
             id: 'colon-cancer-link',
             cancerType: 'Colon Cancer',
             displayName: 'Colon Cancer',
             description: 'Colon cancer occurs when cells in the colon grow uncontrollably, often starting as polyps and potentially leading to symptoms like changes in bowel habits and abdominal discomfort.',
-            preventionDescriptions: 'What are the signs and symptoms of Colon cancer?'
+            preventionDescriptions: 'What are the signs and symptoms of Colon cancer?',
+            imageFolderPath: [],
         },
         {
             id: 'leukemia-cancer-link',
             cancerType: 'Leukemia',
             displayName: 'Leukemia',
             description: 'Leukemia cancer occurs when blood-forming tissues produce abnormal blood cells, impacting overall health.',
-            preventionDescriptions: 'What are the signs and symptoms of Leukemia cancer?'
+            preventionDescriptions: 'What are the signs and symptoms of Leukemia cancer?',
+            imageFolderPath: [],
         },
         {
             id: 'lung-cancer-link',
             cancerType: 'Lung Cancer',
             displayName: 'Lung Cancer',
             description: 'A disease where abnormal cells in the lungs grow uncontrollably, often caused by smoking, but it can affect non-smokers too.',
-            preventionDescriptions: 'What are the signs and symptoms of Lung cancer?'
+            preventionDescriptions: 'What are the signs and symptoms of Lung cancer?',
+            imageFolderPath: [],
         },
         {
             id: 'liver-cancer-link',
@@ -311,34 +353,45 @@ document.addEventListener('DOMContentLoaded', () => {
             displayName: 'Liver Cancer',
             description: 'Liver cancer starts in the liver cells and can cause symptoms like jaundice and abdominal pain as it progresses.',
             preventionDescriptions: 'What are the signs and symptoms of Leukemia cancer?',
+            imageFolderPath: [],
         },
         {
             id: 'lymphoma-cancer-link',
             cancerType: 'Non-Hodgkin Lymphoma',
             displayName: 'Non-Hodgkin Lymphoma',
             description: 'Non-Hodgkin Lymphoma occurs when the body produces abnormal lymphocytes, leading to swollen lymph nodes and other symptoms.',
-            preventionDescriptions: 'What are the signs and symptoms of Lymphoma cancer?'
+            preventionDescriptions: 'What are the signs and symptoms of Lymphoma cancer?',
+            imageFolderPath: [],
         },
         {
             id: 'pancreatic-cancer-link',
             cancerType: 'Pancreatic Cancer',
             displayName: 'Pancreatic Cancer',
             description: 'Pancreatic cancer occurs when cells in the pancreas grow uncontrollably, often without early symptoms, making it one of the deadliest cancers.',
-            preventionDescriptions: 'What are the signs and symptoms of Pancreatic cancer?'
+            preventionDescriptions: 'What are the signs and symptoms of Pancreatic cancer?',
+            imageFolderPath: [],
         },
         {
             id: 'skin-cancer-link',
             cancerType: 'Skin Cancer',
             displayName: 'Skin Cancer',
             description: 'Skin cancer occurs when skin cells grow uncontrollably, typically due to UV exposure, and can spread if not treated early.',
-            preventionDescriptions: 'What are the signs and symptoms of Skin cancer?'
+            preventionDescriptions: 'What are the signs and symptoms of Skin cancer?',
+            imageFolderPath: [
+                'photos/Skin-Cancer-Prevention-images/SkinPrevention1.PNG',
+                'photos/Skin-Cancer-Prevention-images/SkinPrevention2.PNG',
+                'photos/Skin-Cancer-Prevention-images/SkinPrevention3.PNG',
+                'photos/Skin-Cancer-Prevention-images/SkinPrevention4.PNG',
+                'photos/Skin-Cancer-Prevention-images/SkinPrevention5.PNG',
+            ],
         },
         {
             id: 'uterine-cancer-link',
             cancerType: 'Uterine Cancer',
             displayName: 'Uterine Cancer',
             description: 'Uterine cancer occurs when the cells in the lining of the uterus grow uncontrollably, commonly leading to abnormal bleeding and other symptoms.',
-            preventionDescriptions: 'What are the signs and symptoms of Uterine cancer?'
+            preventionDescriptions: 'What are the signs and symptoms of Uterine cancer?',
+            imageFolderPath: [],
         }
     ];
 
@@ -347,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const element = document.getElementById(link.id);
         if (element) {
             element.addEventListener('click', () => {
-                handleVisualizations(link.cancerType, link.displayName, link.description, link.preventionDescriptions);
+                handleVisualizations(link.cancerType, link.displayName, link.description, link.preventionDescriptions, link.imageFolderPath);
             });
         }
     });

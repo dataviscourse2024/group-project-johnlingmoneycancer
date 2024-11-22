@@ -286,17 +286,51 @@ figcaption {
     transition: opacity 1s ease; /* Smooth fade-in */
 }
 
-#prevention-description img {
+#prevention-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
     margin-top: 20px;
-    max-width: 100%;
+}
+
+#prevention-images img {
+    max-width: 200px;
     height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+#prevention-images img:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
 }
 
 #prevention-description.visible {
     opacity: 1; /* Fully visible */
+}
+
+#cancer-image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 15px; /* Adds spacing between images */
+}
+
+#cancer-image-container img {
+    width: 200px;
+    height: auto;
+    border: 2px solid #ccc; /* Optional border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover effect */
+}
+
+#cancer-image-container img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
 }
 
 #incidence-chart-container.show,
