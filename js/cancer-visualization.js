@@ -320,8 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'photos/Breast-Cancer-Prevenstion-Images/BreastPrevention3.PNG',
                 'photos/Breast-Cancer-Prevenstion-Images/BreastPrevention4.PNG',
                 'photos/Breast-Cancer-Prevenstion-Images/BreastPrevention5.PNG',
-                'photos/Breast-Cancer-Prevenstion-Images/BreastPrevention6.PNG',
-            ],
+                'photos/Breast-Cancer-Prevenstion-Images/BreastPrevention6.PNG',], 
         },
         {
             id: 'colon-cancer-link',
