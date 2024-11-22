@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cancerType: 'Breast Cancer',
             displayName: 'Breast Cancer',
             description: 'Breast cancer occurs when cells in the breast tissue grow uncontrollably, often forming lumps or masses that can spread to other areas of the body.',
-            preventionDescriptions: 'What are the signs and symptoms of breast cancer?'
+            preventionDescriptions: 'What are the signs and symptoms of Breast cancer?'
         },
         {
             id: 'colon-cancer-link',
