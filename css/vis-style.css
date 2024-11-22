@@ -1,10 +1,16 @@
 /* General body styling */
 body {
+    height: 80%;
     font-family: 'AcreMedium', sans-serif;
     overflow: auto;
     margin: 0;
     padding: 0;
     min-height: 100vh;
+}
+
+/* Expanded size of the page */
+body.expanded {
+    height: 100%; /* Increase to full width */
 }
 
 /* Header styling */
@@ -233,22 +239,44 @@ figcaption {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 10px;
+    gap: 20px;
+    margin-bottom: 20px; 
     flex-wrap: nowrap;
     max-width: 90%;
     margin: 0 auto;
+    text-align: center; 
 }
 
 #incidence-chart-container,
 #mortality-chart-container {
-    width: 90%;
-    height: 400px;
+    width: 48%; /* Adjust to fit side-by-side */
+    min-width: 400px; /* Minimum width for readability */
     display: none;
     margin-left: 5px;
     opacity: 0;
     /* Fade-in effect */
     transition: opacity 0.2s ease;
     /* Smooth fade-in animation */
+}
+
+/* Style the description */
+#prevention-description {
+    display: none; /* Initially hidden */
+    text-align: center; /* Center the text */
+    font-size: 32px;
+    font-style: italic;
+    font-weight: bold; /* Bold the text */
+    margin-top: 20px; /* Add space above the description */
+    padding: 20px; /* Add padding */
+    background-color: #f9f9f9; /* Light background color */
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+    opacity: 0; /* For fade-in effect */
+    transition: opacity 1s ease; /* Smooth fade-in */
+}
+
+#prevention-description.visible {
+    opacity: 1; /* Fully visible */
 }
 
 #incidence-chart-container.show,
