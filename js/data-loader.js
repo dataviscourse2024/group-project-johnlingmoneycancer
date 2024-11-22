@@ -96,6 +96,32 @@ export function loadCombinedAges(callback) {
         });
 }
 
+export function loadStateCancerDataAllCancers(callback) {
+    const files = [
+        { name: "mortality", path: "data/states-csvs/States-Mortality-AgeAdjustedRates-ALLCANCERS.csv" },
+        { name: "incidence", path: "data/states-csvs/States-Incidence-AgeAdjustedRates-ALLCANCERS.csv" }
+    ];
+
+    const dataPromises = files.map(file =>
+        d3.csv(file.path).then(data => ({
+            name: file.name,
+            data
+        }))
+    );
+
+    Promise.all(dataPromises)
+        .then(results => {
+            const data = {};
+            results.forEach(result => {
+                data[result.name] = result.data;
+            });
+            callback(data);
+        })
+        .catch(error => {
+            console.error("Error loading state cancer data:", error);
+        });
+}
+
 export function loadGroup(groupName, fileMappings) {
     const promises = Object.keys(fileMappings).map(key => {
         return fetch(fileMappings[key])
