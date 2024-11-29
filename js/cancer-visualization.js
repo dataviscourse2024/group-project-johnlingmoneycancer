@@ -322,7 +322,13 @@ document.addEventListener('DOMContentLoaded', () => {
             displayName: 'Brain Cancer',
             description: 'Brain cancer occurs when cells in the brain grow uncontrollably, disrupting brain function and causing neurological symptoms.',
             preventionDescriptions: 'What are the signs and symptoms of Brain cancer?',
-            imageFolderPath: [],
+            imageFolderPath: [
+                'photos/Brain-Cancer-Prevention-Images/BrainPrevention1.PNG',
+                'photos/Brain-Cancer-Prevention-Images/BrainPrevention2.PNG',
+                'photos/Brain-Cancer-Prevention-Images/BrainPrevention3.PNG',
+                'photos/Brain-Cancer-Prevention-Images/BrainPrevention4.PNG',
+                'photos/Brain-Cancer-Prevention-Images/BrainPrevention5.PNG',
+                'photos/Brain-Cancer-Prevention-Images/BrainPrevention6.PNG',]
         },
         {
             id: 'breast-cancer-link',
@@ -336,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'photos/Breast-Cancer-Prevenstion-Images/BreastPrevention3.PNG',
                 'photos/Breast-Cancer-Prevenstion-Images/BreastPrevention4.PNG',
                 'photos/Breast-Cancer-Prevenstion-Images/BreastPrevention5.PNG',
-                'photos/Breast-Cancer-Prevenstion-Images/BreastPrevention6.PNG',], 
+                'photos/Breast-Cancer-Prevenstion-Images/BreastPrevention6.PNG',]
         },
         {
             id: 'colon-cancer-link',
@@ -397,8 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'photos/Skin-Cancer-Prevention-images/SkinPrevention2.PNG',
                 'photos/Skin-Cancer-Prevention-images/SkinPrevention3.PNG',
                 'photos/Skin-Cancer-Prevention-images/SkinPrevention4.PNG',
-                'photos/Skin-Cancer-Prevention-images/SkinPrevention5.PNG',
-            ],
+                'photos/Skin-Cancer-Prevention-images/SkinPrevention5.PNG',]
         },
         {
             id: 'uterine-cancer-link',
