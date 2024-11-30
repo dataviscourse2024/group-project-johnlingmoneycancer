@@ -350,7 +350,13 @@ document.addEventListener('DOMContentLoaded', () => {
             displayName: 'Colon Cancer',
             description: 'Colon cancer occurs when cells in the colon grow uncontrollably, often starting as polyps and potentially leading to symptoms like changes in bowel habits and abdominal discomfort.',
             preventionDescriptions: 'What are the signs and symptoms of Colon cancer?',
-            imageFolderPath: [],
+            imageFolderPath: [
+                'photos/Colon-Cancer-Prevention-Images/ColonPrevention1.PNG',
+                'photos/Colon-Cancer-Prevention-Images/ColonPrevention2.PNG',
+                'photos/Colon-Cancer-Prevention-Images/ColonPrevention3.PNG',
+                'photos/Colon-Cancer-Prevention-Images/ColonPrevention4.PNG',
+                'photos/Colon-Cancer-Prevention-Images/ColonPrevention5.PNG',
+                'photos/Colon-Cancer-Prevention-Images/ColonPrevention6.PNG',]
         },
         {
             id: 'leukemia-cancer-link',
