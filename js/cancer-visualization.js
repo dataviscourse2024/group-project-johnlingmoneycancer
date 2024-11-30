@@ -378,7 +378,13 @@ document.addEventListener('DOMContentLoaded', () => {
             displayName: 'Lung Cancer',
             description: 'A disease where abnormal cells in the lungs grow uncontrollably, often caused by smoking, but it can affect non-smokers too.',
             preventionDescriptions: 'What are the signs and symptoms of Lung cancer?',
-            imageFolderPath: [],
+            imageFolderPath: [
+                'photos/Lung-Cancer-Prevention-Images/LungPrevention1.PNG',
+                'photos/Lung-Cancer-Prevention-Images/LungPrevention2.PNG',
+                'photos/Lung-Cancer-Prevention-Images/LungPrevention3.PNG',
+                'photos/Lung-Cancer-Prevention-Images/LungPrevention4.PNG',
+                'photos/Lung-Cancer-Prevention-Images/LungPrevention5.PNG',
+                'photos/Lung-Cancer-Prevention-Images/LungPrevention6.PNG',]
         },
         {
             id: 'liver-cancer-link',
