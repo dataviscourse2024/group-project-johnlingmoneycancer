@@ -6,17 +6,17 @@ import { loadAllGroups } from './data-loader.js';
 import { drawLineChart } from './chart-maker.js';
 import { drawCancerTypeMap } from './map-visualization.js';
 
-const cancerTypeMapping = {                             // checks if cancer has appropriate image and description
-    "Brain Cancer": "Brain and Other Nervous System",   // check
-    "Breast Cancer": "Breast",                          // check
-    "Colon Cancer": "Colon and Rectum",                 // check
-    "Leukemia": "Leukemias",                            // check
-    "Liver Cancer": "Liver",                            // check
-    "Lung Cancer": "Lung and Bronchus",                 // check
-    "Non-Hodgkin Lymphoma": "Non-Hodgkin Lymphoma",     // check
-    "Pancreatic Cancer": "Pancreas",                    // check
-    "Skin Cancer": "Melanoma of the Skin",              // check
-    "Uterine Cancer": "Cervix Uteri"                    // check 
+const cancerTypeMapping = {
+    "Brain Cancer": "Brain and Other Nervous System",
+    "Breast Cancer": "Breast",
+    "Colon Cancer": "Colon and Rectum",
+    "Leukemia": "Leukemias",
+    "Liver Cancer": "Liver",
+    "Lung Cancer": "Lung and Bronchus",
+    "Non-Hodgkin Lymphoma": "Non-Hodgkin Lymphoma",
+    "Pancreatic Cancer": "Pancreas",
+    "Skin Cancer": "Melanoma of the Skin",
+    "Uterine Cancer": "Cervix Uteri"
 };
 
 const svgMain = d3.select("#visualization") // Top-level SVG declaration
