@@ -110,6 +110,8 @@ export function drawUSMap(containerID) {
             .append("path")
             .attr("class", "state")
             .attr("d", path)
+            .attr("stroke", "#000")
+            .attr("stroke-width", 0.5)
             .attr("fill", d => mortalityColorScale(mortalityRates[d.properties.NAME] || 0))
             .on("mouseover", function (event, d) {
                 const stateName = d.properties.NAME;
@@ -124,11 +126,11 @@ export function drawUSMap(containerID) {
                     `)
                     .style("left", `${event.pageX + 10}px`)
                     .style("top", `${event.pageY + 10}px`);
-                d3.select(this).attr("stroke", "#000").attr("stroke-width", 1);
+                d3.select(this).attr("stroke", "#000").attr("stroke-width", 2.5);
             })
             .on("mouseout", function () {
                 tooltip.style("opacity", 0);
-                d3.select(this).attr("stroke", "none");
+                d3.select(this).attr("stroke", "#000").attr("stroke-width", 0.5);;
             });
 
         // legend for mortality rates
