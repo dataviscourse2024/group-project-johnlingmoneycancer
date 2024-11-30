@@ -364,7 +364,13 @@ document.addEventListener('DOMContentLoaded', () => {
             displayName: 'Leukemia',
             description: 'Leukemia cancer occurs when blood-forming tissues produce abnormal blood cells, impacting overall health.',
             preventionDescriptions: 'What are the signs and symptoms of Leukemia cancer?',
-            imageFolderPath: [],
+            imageFolderPath: [
+                'photos/Leukemia-Cancer-Prevention-Images/LeukemiaPrevention1.PNG',
+                'photos/Leukemia-Cancer-Prevention-Images/LeukemiaPrevention2.PNG',
+                'photos/Leukemia-Cancer-Prevention-Images/LeukemiaPrevention3.PNG',
+                'photos/Leukemia-Cancer-Prevention-Images/LeukemiaPrevention4.PNG',
+                'photos/Leukemia-Cancer-Prevention-Images/LeukemiaPrevention5.PNG',
+                'photos/Leukemia-Cancer-Prevention-Images/LeukemiaPrevention6.PNG',]
         },
         {
             id: 'lung-cancer-link',
