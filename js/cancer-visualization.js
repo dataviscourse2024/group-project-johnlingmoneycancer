@@ -392,7 +392,13 @@ document.addEventListener('DOMContentLoaded', () => {
             displayName: 'Liver Cancer',
             description: 'Liver cancer starts in the liver cells and can cause symptoms like jaundice and abdominal pain as it progresses.',
             preventionDescriptions: 'What are the signs and symptoms of Leukemia cancer?',
-            imageFolderPath: [],
+            imageFolderPath: [
+                'photos/Liver-Cancer-Prevention-Images/LiverPrevention1.PNG',
+                'photos/Liver-Cancer-Prevention-Images/LiverPrevention2.PNG',
+                'photos/Liver-Cancer-Prevention-Images/LiverPrevention3.PNG',
+                'photos/Liver-Cancer-Prevention-Images/LiverPrevention4.PNG',
+                'photos/Liver-Cancer-Prevention-Images/LiverPrevention5.PNG',
+                'photos/Liver-Cancer-Prevention-Images/LiverPrevention6.PNG',]
         },
         {
             id: 'lymphoma-cancer-link',
@@ -400,7 +406,12 @@ document.addEventListener('DOMContentLoaded', () => {
             displayName: 'Non-Hodgkin Lymphoma',
             description: 'Non-Hodgkin Lymphoma occurs when the body produces abnormal lymphocytes, leading to swollen lymph nodes and other symptoms.',
             preventionDescriptions: 'What are the signs and symptoms of Lymphoma cancer?',
-            imageFolderPath: [],
+            imageFolderPath: [
+                'photos/Non-Hodgkin Lymphoma-Prevention-Images/LymphomaPreventions1.PNG',
+                'photos/Non-Hodgkin Lymphoma-Prevention-Images/LymphomaPreventions2.PNG',
+                'photos/Non-Hodgkin Lymphoma-Prevention-Images/LymphomaPreventions3.PNG',
+                'photos/Non-Hodgkin Lymphoma-Prevention-Images/LymphomaPreventions4.PNG',
+                'photos/Non-Hodgkin Lymphoma-Prevention-Images/LymphomaPreventions5.PNG',]
         },
         {
             id: 'pancreatic-cancer-link',
@@ -408,7 +419,13 @@ document.addEventListener('DOMContentLoaded', () => {
             displayName: 'Pancreatic Cancer',
             description: 'Pancreatic cancer occurs when cells in the pancreas grow uncontrollably, often without early symptoms, making it one of the deadliest cancers.',
             preventionDescriptions: 'What are the signs and symptoms of Pancreatic cancer?',
-            imageFolderPath: [],
+            imageFolderPath: [
+                'photos/Pancreatic-Cancer-Prevention-Images/PancreaticPrevention1.PNG',
+                'photos/Pancreatic-Cancer-Prevention-Images/PancreaticPrevention2.PNG',
+                'photos/Pancreatic-Cancer-Prevention-Images/PancreaticPrevention3.PNG',
+                'photos/Pancreatic-Cancer-Prevention-Images/PancreaticPrevention4.PNG',
+                'photos/Pancreatic-Cancer-Prevention-Images/PancreaticPrevention5.PNG',
+                'photos/Pancreatic-Cancer-Prevention-Images/PancreaticPrevention6.PNG',]
         },
         {
             id: 'skin-cancer-link',
@@ -429,7 +446,13 @@ document.addEventListener('DOMContentLoaded', () => {
             displayName: 'Uterine Cancer',
             description: 'Uterine cancer occurs when the cells in the lining of the uterus grow uncontrollably, commonly leading to abnormal bleeding and other symptoms.',
             preventionDescriptions: 'What are the signs and symptoms of Uterine cancer?',
-            imageFolderPath: [],
+            imageFolderPath: [
+                'photos/Uterine-Cancer-Prevention-Images/UterinePrevention1.PNG',
+                'photos/Uterine-Cancer-Prevention-Images/UterinePrevention2.PNG',
+                'photos/Uterine-Cancer-Prevention-Images/UterinePrevention3.PNG',
+                'photos/Uterine-Cancer-Prevention-Images/UterinePrevention4.PNG',
+                'photos/Uterine-Cancer-Prevention-Images/UterinePrevention5.PNG',
+                'photos/Uterine-Cancer-Prevention-Images/UterinePrevention6.PNG',]
         }
     ];
 
