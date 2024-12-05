@@ -110,6 +110,8 @@ export function drawUSMap(containerID) {
             .append("path")
             .attr("class", "state")
             .attr("d", path)
+            .attr("stroke", "#000")
+            .attr("stroke-width", 0.5)
             .attr("fill", d => mortalityColorScale(mortalityRates[d.properties.NAME] || 0))
             .on("mouseover", function (event, d) {
                 const stateName = d.properties.NAME;
@@ -124,11 +126,11 @@ export function drawUSMap(containerID) {
                     `)
                     .style("left", `${event.pageX + 10}px`)
                     .style("top", `${event.pageY + 10}px`);
-                d3.select(this).attr("stroke", "#000").attr("stroke-width", 1);
+                d3.select(this).attr("stroke", "#000").attr("stroke-width", 2.5);
             })
             .on("mouseout", function () {
                 tooltip.style("opacity", 0);
-                d3.select(this).attr("stroke", "none");
+                d3.select(this).attr("stroke", "#000").attr("stroke-width", 0.5);;
             });
 
         // legend for mortality rates
@@ -231,9 +233,10 @@ export function drawCancerTypeMap(containerID, cancerType) {
         const path = d3.geoPath().projection(projection);
 
         // Define a color scale for mortality rates
+        // Define a color scale for mortality rates
         const mortalityColorScale = d3.scaleSequential()
             .domain([d3.min(Object.values(mortalityRates)), d3.max(Object.values(mortalityRates))])
-            .interpolator(d3.interpolateReds);
+            .interpolator(d3.interpolateBlues);
 
         // Tooltip setup
         const tooltip = d3.select("body").append("div")
@@ -253,6 +256,8 @@ export function drawCancerTypeMap(containerID, cancerType) {
             .append("path")
             .attr("class", "state")
             .attr("d", path)
+            .attr("stroke", "#000")
+            .attr("stroke-width", 0.5)
             .attr("fill", d => mortalityColorScale(mortalityRates[d.properties.NAME] || 0))
             .on("mouseover", function (event, d) {
                 const stateName = d.properties.NAME;
@@ -267,11 +272,11 @@ export function drawCancerTypeMap(containerID, cancerType) {
                     `)
                     .style("left", `${event.pageX + 10}px`)
                     .style("top", `${event.pageY + 10}px`);
-                d3.select(this).attr("stroke", "#000").attr("stroke-width", 1);
+                d3.select(this).attr("stroke", "#000").attr("stroke-width", 2);
             })
             .on("mouseout", function () {
                 tooltip.style("opacity", 0);
-                d3.select(this).attr("stroke", "none");
+                d3.select(this).attr("stroke", "#000").attr("stroke-width", 0.5);
             });
 
         // Add legend title
@@ -291,8 +296,8 @@ export function drawCancerTypeMap(containerID, cancerType) {
             .attr("x1", "0%").attr("y1", "0%")
             .attr("x2", "100%").attr("y2", "0%");
 
-        gradient.append("stop").attr("offset", "0%").attr("stop-color", d3.interpolateReds(0));
-        gradient.append("stop").attr("offset", "100%").attr("stop-color", d3.interpolateReds(1));
+        gradient.append("stop").attr("offset", "0%").attr("stop-color", d3.interpolateBlues(0));
+        gradient.append("stop").attr("offset", "100%").attr("stop-color", d3.interpolateBlues(1));
 
         svg.append("rect")
             .attr("x", width - 220)
