@@ -28,7 +28,8 @@ This project provides an interactive visualization platform to explore increased
     - Providing descriptions for each cancer type.
 
 ### 2. **Data Files**
-This project includes several datasets in CSV format:
+This project includes several datasets providing comprehensive details on cancer trends, filtered by attributes: age, race, and gender.
+Below are all the datasets in CSV format:
 - **Incidence Data**:
     - `LeadingCancerIncidence-ALLGROUPS.csv`
     - `LeadingCancerIncidence-COMBINEDAGES.csv`
@@ -51,9 +52,11 @@ This project includes several datasets in CSV format:
     - `States-Incidence-AgeAdjustedRates-BYCANCER.csv`
     - `States-Mortality-AgeAdjustedRates-ALLCANCERS.csv`
     - `States-Mortality-AgeAdjustedRates-BYCANCER.csv`
-
-These datasets provide comprehensive details on cancer trends, filtered by attributes such as age, race, and gender.
-The adjusted ages are crucial for standardizing our data and ensuring it is proportional given the low rates of cancer in these younger age groups.
+    The adjusted ages are crucial for standardizing our data and ensuring it is proportional given the low rates of cancer in these younger age groups.
+- **U.S. States JSON**;
+    - `us-states.json`
+    This file contains the GEOJSON representation of boundaries and geometries for each state in the U.S.
+    Using this, FIPS code were mapped to States to link State Data to the GEOJSON. Found in `map-visualization.js`
 
 ---
 
