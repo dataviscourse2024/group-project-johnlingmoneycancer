@@ -210,6 +210,7 @@ export function drawLineChart(data, containerId, chartTitle, yAxisTitle, lineCol
             .style("text-anchor", "end");
     }
 
+    // Mouseout function for hiding the hover line and tooltip text
     function onMouseOut() {
         svg.select(".hover-line").style("opacity", 0);
         svg.select(".tooltip").style("opacity", 0);
