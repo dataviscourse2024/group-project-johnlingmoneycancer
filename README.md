@@ -41,8 +41,19 @@ This project includes several datasets in CSV format:
     - `LeadingCancerMortality-RACE.csv`
     - `LeadingCancerMortality-SEX.csv`
     - `LeadingCancerMortality-YEAR.csv`
+- **State Data**;
+    - `State-LeadingCancerIncidence-ALLCANCERS.csv`
+    - `State-LeadingCancerIncidence-BYCANCER.csv`
+    - `State-LeadingCancerMortality-ALLCANCERS.csv`
+    - `State-LeadingCancerMortality-BYCANCER.csv`
+- **State Data - Adjusted Rates**;
+    - `States-Incidence-AgeAdjustedRates-ALLCANCERS.csv`
+    - `States-Incidence-AgeAdjustedRates-BYCANCER.csv`
+    - `States-Mortality-AgeAdjustedRates-ALLCANCERS.csv`
+    - `States-Mortality-AgeAdjustedRates-BYCANCER.csv`
 
 These datasets provide comprehensive details on cancer trends, filtered by attributes such as age, race, and gender.
+The adjusted ages are crucial for standardizing our data and ensuring it is proportional given the low rates of cancer in these younger age groups.
 
 ---
 
@@ -50,16 +61,16 @@ These datasets provide comprehensive details on cancer trends, filtered by attri
 - **D3.js**: Used for creating dynamic and interactive visualizations.
 - **Browser Native Features**: JavaScript (ES6+), HTML5, CSS3.
 
-All additional dependencies are included via CDN links, ensuring seamless setup.
+All additional dependencies are included via CDN links, for seamless setup.
 
 ---
 
 ## URLs
 ### Project Website
-[Hosted Project](#) *(actual project URL)*
+[Hosted Project](#) *(project URL)*
 
-### Screencast Videos
-[Project Demonstration Video](#) *(screencast URL)*
+### Screencast Video
+[Project Demonstration Video](#) *https://youtu.be/7vjTjrNw6eo*
 
 ---
 
@@ -68,26 +79,26 @@ All additional dependencies are included via CDN links, ensuring seamless setup.
    - Click on a cancer image to explore its incidence and mortality trends.
    - Visualizations update dynamically to highlight the selected cancer.
 
-2. **Dot-Based Visualization**:
-   - Displays incidence rates using dots, simulating affected individuals in a population of 100,000.
+2. **Icon-Based Visualization**:
+   - Displays incidence and mortality rates using people, simulating affected individuals in a population of 100,000.
 
 3. **Dynamic Filtering**:
    - Filters data by gender, age group, and race using dropdown menus.
    - Updates charts and visualizations based on selected filters.
 
-4. **Responsive Design**:
-   - Adapts layout for optimal viewing on various devices.
-
-5. **Interactive Charts**:
-   - Line charts display trends over time.
+4. **Interactive Charts**:
+   - U.S. maps display rates for each state.
+   - Line charts display trends over time for each age group.
    - Bar charts provide detailed yearly breakdowns.
    - Hover functionality to emphasize specific data points.
+
+5. **Responsive Design**:
+   - Adapts layout for optimal viewing on various devices.
 
 ---
 
 ## Implementation Notes
 1. **Non-Obvious Features**:
-   - **Dot Visualization Timing**: Affected dots transition into view with a delay for a smoother animation.
    - **Filter-Dependent Data Loading**: Adjusts datasets dynamically based on user-selected filters.
 
 2. **Data Mapping**:
@@ -97,7 +108,7 @@ All additional dependencies are included via CDN links, ensuring seamless setup.
    - Scripts log errors if datasets or containers are unavailable, ensuring a smoother debugging process.
 
 4. **Customization**:
-   - Add more cancer types by extending the `cancerTypeMapping` in `cancer-visualization.js` and updating datasets accordingly.
+   - Can add more cancer types by extending the `cancerTypeMapping` in `cancer-visualization.js` and updating datasets accordingly.
 
 ---
 
