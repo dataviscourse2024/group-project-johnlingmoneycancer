@@ -272,6 +272,21 @@ figcaption {
     /* Fade-in effect */
     transition: opacity 0.2s ease;
     /* Smooth fade-in animation */
+} 
+
+#Cancer-Mortality-and-Incident-by-State {
+    display: none; /* Initially hidden */
+    text-align: center;
+    font-size: 28px;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 20px; 
+    background-color: #f9f9f9; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; /* Rounded corners */
+    opacity: 0; /* For fade-in effect */
+    transition: opacity 1s ease; /* Smooth fade-in */
 }
 
 /* Style the description */
