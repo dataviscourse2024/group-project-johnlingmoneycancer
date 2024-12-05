@@ -96,12 +96,12 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%; /* Adjust as necessary */
-    width: 100%; /* Adjust as necessary */
+    height: 100%; 
+    width: 100%; 
     position: relative;
     margin-top: 150px;
-    transform: translateY(10px); /* Start with slight vertical offset */
-    transition: opacity 0.6s ease, transform 0.6s ease; /* Smooth transition for fade-in and position */
+    transform: translateY(10px); /* Vertical offset */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Transition for fade-in and position */
 }
 
 /* Fade-in Animation */
@@ -129,43 +129,33 @@ svg {
 /* Stacked Area Chart Section */
 #charts-container {
     display: flex;
-    justify-content: space-between; /* Adjust space between charts */
-    align-items: flex-start; /* Align charts at the same vertical level */
-    gap: 40px; /* Add spacing between the charts */
+    justify-content: space-between; 
+    align-items: flex-start; 
+    gap: 40px; 
     margin-left: 20px !important;
 }
 #incident-stacked-area-chart-container,
 #mortality-stacked-area-chart-container {
     flex: 1; /* Allow both charts to take equal width */
-    max-width: 48%; /* Optional: Control max width for each chart */
+    max-width: 48%; 
 }
 
 /* Exploration section */
 #exploration-text {
     text-align: center;
-    /* Centers the text */
     margin: 50px auto;
-    /* Adds vertical spacing */
     padding: 10px 20px;
-    /* Adds space around the text */
     max-width: 800px;
-    /* Restricts the width of the section */
     font-family: 'AcreMedium', sans-serif;
-    /* Matches your site's font */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* Subtle shadow for depth */
     margin-top: 100px;
 }
 
 #exploration-text h2 {
     font-size: 20px;
-    /* Adjust font size as needed */
     font-weight: bold;
-    /* Makes the text stand out */
     color: #333;
-    /* Darker text color for contrast */
-    margin: 0;
-    /* Removes default margin */
+    margin: 0; /* Remove default margin */
 }
 
 /* Image container styling */
@@ -181,68 +171,51 @@ svg {
 /* Individual figure styling */
 figure {
     text-align: center;
-    /* Centers the caption and image within each figure */
     margin: 10px 0;
-    /* Adjusts vertical spacing for better alignment */
 }
 
 figcaption {
     font-family: 'AcreMedium', sans-serif;
     font-size: 16px;
-    margin-top: 5px;
-    /* Adds a little space between the image and caption */
+    margin-top: 5px; /* Adds a little space between the image and caption */
 }
 
 /* Styling for images */
 .image-container img {
-    transition: transform 0.3s ease;
-    /* Smooth transition for the hover effect */
-    cursor: pointer;
-    /* Makes the image act like a button */
+    transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+    cursor: pointer; /* Makes the image act like a button */
     background-color: transparent;
 }
 
 .image-container img:hover {
-    transform: scale(1.1);
-    /* Increases the size by 10% on hover */
+    transform: scale(1.1); /* Increases size on hover */
 }
 
 /* Description section */
 #description {
-    display: none;
-    /* Initially hidden */
-    opacity: 0;
-    /* Fully transparent initially */
+    display: none; /* Initially hidden */
+    opacity: 0; /* Fully transparent initially */
     background: linear-gradient(to bottom, #8ebef4, #ffffff);
     margin-top: 50px;
     text-align: center;
     transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
-    /* Smooth transition for both opacity and visibility */
     padding: 40px 40px;
 }
 
 /* Title styling for description */
 #description .title {
     font-size: 28px;
-    /* Larger font size for the title */
     font-weight: bold;
-    /* Make the title bold */
     text-decoration: underline;
-    /* Underline the title */
     margin-bottom: 20px;
-    /* Adds space between the title and content */
 }
 
 /* Content styling for description */
 #description .content {
     font-size: 18px;
-    /* Smaller font size for the description */
     line-height: 1.5;
-    /* Better line spacing for readability */
     max-width: 600px;
-    /* Limits the width of the content */
     margin: 0 auto;
-    /* Centers the content horizontally */
 }
 
 #filters {
@@ -304,14 +277,14 @@ figcaption {
 /* Style the description */
 #prevention-description {
     display: none; /* Initially hidden */
-    text-align: center; /* Center the text */
+    text-align: center;
     font-size: 32px;
     font-style: italic;
-    font-weight: bold; /* Bold the text */
-    margin-top: 20px; /* Add space above the description */
-    padding: 20px; /* Add padding */
-    background-color: #f9f9f9; /* Light background color */
-    border: 1px solid #ddd; /* Subtle border */
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 20px; 
+    background-color: #f9f9f9; 
+    border: 1px solid #ddd; 
     border-radius: 8px; /* Rounded corners */
     opacity: 0; /* For fade-in effect */
     transition: opacity 1s ease; /* Smooth fade-in */
@@ -353,9 +326,9 @@ figcaption {
 #cancer-image-container img {
     width: 200px;
     height: auto;
-    border: 2px solid #ccc; /* Optional border */
+    border: 2px solid #ccc;
     border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow */
     transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover effect */
 }
 
@@ -377,33 +350,26 @@ figcaption {
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
-        /* Spacing when charts are stacked */
     }
 
     #incidence-chart-container,
     #mortality-chart-container {
         width: 45%;
-        /* Reduce width for smaller screens */
         height: 350px;
-        /* Slightly smaller height for better fit */
     }
 }
 
 /* Responsive Design: Small screens (600px and smaller) */
 @media (max-width: 600px) {
     #line-chart-container {
-        flex-direction: column;
-        /* Stack charts vertically */
+        flex-direction: column; /* Stack charts vertically */
         gap: 15px;
-        /* Add more space between stacked charts */
     }
 
     #incidence-chart-container,
     #mortality-chart-container {
         width: 90%;
-        /* Use most of the screen width */
         height: 300px;
-        /* Further reduce height for small screens */
     }
 }
 
@@ -413,8 +379,7 @@ figcaption {
     justify-content: center;
     gap: 40px;
     margin-top: 30px;
-    flex-wrap: wrap;
-    /* Allow wrapping on smaller screens */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 /* Individual rate block (incidence/mortality) */
@@ -473,17 +438,12 @@ figcaption {
 /* Visualization container (dot chart) */
 #visualization {
     margin-bottom: 10px;
-    /* Add space below the visualization */
-    opacity: 0;
-    /* Initially hidden */
-    transition: opacity 0.5s ease;
-    /* Fade-in effect */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease; /* Fade-in effect */
     height: auto;
-    /* Adjust height dynamically */
 }
 
 #visualization.show {
     display: block;
-    opacity: 1;
-    /* Fully visible */
+    opacity: 1; /* Fully visible */
 }
