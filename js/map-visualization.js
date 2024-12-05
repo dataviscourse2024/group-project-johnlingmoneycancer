@@ -188,6 +188,7 @@ export function drawUSMap(containerID) {
     });
 }
 
+
 export function drawCancerTypeMap(containerID, cancerType) {
     // Load GeoJSON and cancer-specific datasets
     Promise.all([
