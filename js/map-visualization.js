@@ -265,6 +265,7 @@ export function drawCancerTypeMap(containerID, cancerType) {
                 const mortalityRate = mortalityRates[stateName] || "N/A";
                 const incidenceRate = incidenceRates[stateName] || "N/A";
 
+                // show tooltip for mortality and incidence rates
                 tooltip.style("opacity", 1)
                     .html(`
                         <strong>${stateName}</strong><br>
