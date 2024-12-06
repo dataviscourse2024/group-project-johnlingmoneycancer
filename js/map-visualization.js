@@ -188,7 +188,6 @@ export function drawUSMap(containerID) {
     });
 }
 
-
 export function drawCancerTypeMap(containerID, cancerType) {
     // Load GeoJSON and cancer-specific datasets
     Promise.all([
@@ -280,7 +279,11 @@ export function drawCancerTypeMap(containerID, cancerType) {
                 d3.select(this).attr("stroke", "#000").attr("stroke-width", 0.5);
             });
 
-        // Add legend title
+        // legend for mortality rates
+        const legendWidth = 200;
+        const legendHeight = 20;
+
+        // Legend title
         svg.append("text")
             .attr("x", width - 220 + 100)
             .attr("y", 15)
@@ -300,18 +303,17 @@ export function drawCancerTypeMap(containerID, cancerType) {
         gradient.append("stop").attr("offset", "0%").attr("stop-color", d3.interpolateBlues(0));
         gradient.append("stop").attr("offset", "100%").attr("stop-color", d3.interpolateBlues(1));
 
+        // Add legend rectangle
         svg.append("rect")
-            .attr("x", width - 220)
+            .attr("x", width - legendWidth - 20)
             .attr("y", 20)
-            .attr("width", 200)
-            .attr("height", 20)
+            .attr("width", legendWidth)
+            .attr("height", legendHeight)
             .style("fill", "url(#legend-gradient)");
 
-        const minValue = d3.min(Object.values(mortalityRates));
-        const maxValue = d3.max(Object.values(mortalityRates));
-
+        // Legend end points
         svg.append("text")
-            .attr("x", width - 220)
+            .attr("x", width - legendWidth - 20)
             .attr("y", 55)
             .attr("fill", "black")
             .style("font-size", "12px")
@@ -325,6 +327,7 @@ export function drawCancerTypeMap(containerID, cancerType) {
             .style("font-size", "12px")
             .style("text-anchor", "end")
             .text(maxValue.toFixed(1));
+
     }).catch(error => {
         console.error("Error loading data:", error);
     });
