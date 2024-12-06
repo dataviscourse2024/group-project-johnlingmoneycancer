@@ -55,31 +55,27 @@ header h3 {
     text-align: center;
 }
 
-/* Position the Button to the Right */
 .youtube-button {
-    position: absolute; /* Absolute position relative to header container */
+    position: absolute; 
     top: 20px; 
     right: 20px;
     background: none;
     border: none;
     cursor: pointer;
 }
-
 .youtube-button img {
     width: 40px;
     height: 40px;
 }
 
-/* Position the Button to the Right */
 .BookIcon {
-    position: absolute; /* Absolute position relative to header container */
-    top: 20px; 
-    right: 20px;
+    position: absolute;
+    right: 20px; 
+    top: 80px; 
     background: none;
     border: none;
     cursor: pointer;
 }
-
 .BookIcon img {
     width: 40px;
     height: 40px;
