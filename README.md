@@ -69,12 +69,16 @@ All additional dependencies are included via CDN links, for seamless setup.
 ---
 
 ## URLs
-### Project Website
-[Hosted Project](#) *(project URL)*
+### Project Website 
+*https://dataviscourse2024.github.io/group-project-johnlingmoneycancer/*
 
 ### Screencast Video
-[Project Demonstration Video](#) *https://youtu.be/7vjTjrNw6eo*
+Found by clicking on Youtube Button in top right of title header.
+Also found here: *https://youtu.be/7vjTjrNw6eo*
 
+### Process Book PDF
+Found by clicking on Book Button in top right of title header.
+Also found here: `Proposal-and-Process-Book/PROCESS-BOOK.pdf`
 ---
 
 ## Features and Usage
