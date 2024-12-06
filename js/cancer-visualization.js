@@ -1,6 +1,5 @@
 import { drawUSMap } from './map-visualization.js';
-import { drawIncidentStackedBarChart } from './incident-stacked-area-chart.js';
-import { drawMortalityStackedBarChart } from './mortality-stacked-area-chart.js';
+import { drawIncidentStackedBarChart, drawMortalityStackedBarChart} from './incident-mortality-stacked-bar-chart.js'
 import { visualizeCancerRates } from './rate-visualization.js';
 import { loadAllGroups } from './data-loader.js';
 import { drawLineChart } from './chart-maker.js';
