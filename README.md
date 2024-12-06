@@ -111,7 +111,7 @@ All additional dependencies are included via CDN links, for seamless setup.
 1. **Non-Obvious Features**:
    - **Filter-Dependent Data Loading**: Adjusts datasets dynamically based on user-selected filters.
    - **Cancer-Specific Map Views**: Interactive maps allow users to explore incidence and mortality rates for specific cancer types by state, with dynamic tooltips displaying these unique rates.
-   
+
 2. **Data Mapping**:
    - Mappings between cancer types and dataset labels are handled in `cancer-visualization.js` for consistency across visualizations.
 
