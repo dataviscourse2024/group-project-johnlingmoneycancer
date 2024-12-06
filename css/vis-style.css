@@ -58,14 +58,29 @@ header h3 {
 /* Position the Button to the Right */
 .youtube-button {
     position: absolute; /* Absolute position relative to header container */
-    top: 20px; /* Position button vertically */
-    right: 20px; /* Position button to the right */
+    top: 20px; 
+    right: 20px;
     background: none;
     border: none;
     cursor: pointer;
 }
 
 .youtube-button img {
+    width: 40px;
+    height: 40px;
+}
+
+/* Position the Button to the Right */
+.BookIcon {
+    position: absolute; /* Absolute position relative to header container */
+    top: 20px; 
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.BookIcon img {
     width: 40px;
     height: 40px;
 }
