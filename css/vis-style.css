@@ -10,20 +10,20 @@ body {
 
 /* Expanded size of the page */
 body.expanded {
-    height: 100%; /* Increase to full width */
+    height: 100%;
 }
 
 /* Updated Header Container */
 .header-container {
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center elements horizontally */
+    flex-direction: column; 
+    align-items: center; 
     background-image: url('../photos/Translational-Research-Banner.avif');
     background-size: cover;
     background-position: center;
     padding: 10px;
     margin-bottom: 20px;
-    position: relative; /* For button absolute positioning */
+    position: relative;
 }
 
 /* Header Text Styling */
@@ -41,7 +41,7 @@ header h1 {
     padding: 10px 15px;
     border-radius: 8px;
     text-align: center;
-    margin: 0 auto 20px auto; /* Center title with margin */
+    margin: 0 auto 20px auto; 
 }
 
 /* Subtext Styling */
@@ -138,14 +138,14 @@ header h3 {
     width: 100%; 
     position: relative;
     margin-top: 150px;
-    transform: translateY(10px); /* Vertical offset */
-    transition: opacity 0.6s ease, transform 0.6s ease; /* Transition for fade-in and position */
+    transform: translateY(10px); 
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 /* Fade-in Animation */
 #us-map-bycancer-container.show {
-    opacity: 1; /* Fully visible */
-    transform: translateY(0); /* Reset vertical offset */
+    opacity: 1;
+    transform: translateY(0); 
 }
 
 /* Tooltip Styling */
@@ -156,8 +156,8 @@ header h3 {
     padding: 10px;
     border-radius: 5px;
     pointer-events: none;
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.2s ease-in-out; /* Smooth fade-in/out for tooltip */
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out; 
 }
 
 svg {
@@ -174,7 +174,7 @@ svg {
 }
 #incident-stacked-area-chart-container,
 #mortality-stacked-area-chart-container {
-    flex: 1; /* Allow both charts to take equal width */
+    flex: 1;
     max-width: 48%; 
 }
 
@@ -193,7 +193,7 @@ svg {
     font-size: 20px;
     font-weight: bold;
     color: #333;
-    margin: 0; /* Remove default margin */
+    margin: 0; 
 }
 
 /* Image container styling */
@@ -215,13 +215,13 @@ figure {
 figcaption {
     font-family: 'AcreMedium', sans-serif;
     font-size: 16px;
-    margin-top: 5px; /* Adds a little space between the image and caption */
+    margin-top: 5px;
 }
 
 /* Styling for images */
 .image-container img {
-    transition: transform 0.3s ease; /* Smooth transition for the hover effect */
-    cursor: pointer; /* Makes the image act like a button */
+    transition: transform 0.3s ease;
+    cursor: pointer;
     background-color: transparent;
 }
 
@@ -231,8 +231,8 @@ figcaption {
 
 /* Description section */
 #description {
-    display: none; /* Initially hidden */
-    opacity: 0; /* Fully transparent initially */
+    display: none; 
+    opacity: 0;
     background: linear-gradient(to bottom, #8ebef4, #ffffff);
     margin-top: 50px;
     text-align: center;
