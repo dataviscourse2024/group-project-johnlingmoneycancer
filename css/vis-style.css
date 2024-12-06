@@ -13,44 +13,61 @@ body.expanded {
     height: 100%; /* Increase to full width */
 }
 
-/* Header styling */
-header {
-    text-align: center;
+/* Updated Header Container */
+.header-container {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center elements horizontally */
     background-image: url('../photos/Translational-Research-Banner.avif');
     background-size: cover;
     background-position: center;
-    margin-bottom: 20px;
     padding: 10px;
+    margin-bottom: 20px;
+    position: relative; /* For button absolute positioning */
 }
 
-/* Header styling */
-header {
+/* Header Text Styling */
+.header-text {
     text-align: center;
-    background-image: url('../photos/Translational-Research-Banner.avif');
-    background-size: cover;
-    background-position: center;
-    margin-bottom: 20px;
-    padding: 10px;
+    margin-bottom: 10px;
 }
 
-h1 {
+/* Title Styling */
+header h1 {
     font-size: 42px;
+    font-weight: bold;
     background-color: rgba(255, 255, 255, 0.4);
     display: inline-block;
     padding: 10px 15px;
     border-radius: 8px;
-    margin-bottom: 10px;
+    text-align: center;
+    margin: 0 auto 20px auto; /* Center title with margin */
 }
 
-h3 {
-    font-size: 14px;
-    margin: 5px auto;
-    width: 20%;
+/* Subtext Styling */
+header h3 {
+    font-size: 18px;
+    margin: 5px 0;
     background-color: rgba(255, 255, 255, 0.4);
-    display: block;
+    display: inline-block;
     padding: 5px 10px;
     border-radius: 8px;
     text-align: center;
+}
+
+/* Position the Button to the Right */
+.youtube-button {
+    position: absolute; /* Absolute position relative to header container */
+    top: 20px; /* Position button vertically */
+    right: 20px; /* Position button to the right */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.youtube-button img {
+    width: 40px;
+    height: 40px;
 }
 
 /* Introduction Section Styling */
