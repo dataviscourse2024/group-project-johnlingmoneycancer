@@ -5,7 +5,7 @@ import { visualizeCancerRates } from './rate-visualization.js';
 import { loadAllGroups } from './data-loader.js';
 import { drawLineChart } from './chart-maker.js';
 import { drawCancerTypeMap } from './map-visualization.js';
-import { displayCancerImages } from './display-cancer-symptiom.js';
+import { displayCancerImages, addPreventionDescription } from './display-cancer-symptiom.js';
 
 const cancerTypeMapping = {
     "Brain Cancer": "Brain and Other Nervous System",
@@ -91,21 +91,6 @@ export function showDescription(title, content) {
     `;
     description.style.display = 'block';
     setTimeout(() => (description.style.opacity = 1), 10);
-}
-
-// Function to add the Prevention Description
-function addPreventionDescription(preventionDescriptions) {
-    // Check if the description container already exists
-    let descriptionDiv = document.getElementById("prevention-description");
-
-    // Update the content of the description
-    descriptionDiv.textContent = preventionDescriptions;
-
-    // Make the description visible
-    descriptionDiv.style.display = "block"; // Show the block
-    setTimeout(() => {
-        descriptionDiv.style.opacity = 1; // Fade-in effect
-    }, 10); // Small delay to ensure the transition applies
 }
 
 // Function to add the Prevention Description
