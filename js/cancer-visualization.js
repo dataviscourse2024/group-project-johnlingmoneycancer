@@ -198,6 +198,7 @@ function loadAndVisualize(displayName) {
     });
 }
 
+// Function to handle the visualization of cancer data based on the selected cancer type
 function handleVisualizations(cancerType, displayName, description, preventionDescriptions, imageFolderPath, cancerMortalityRateByStateDescriptions) {
     // Reset filters when a new cancer type is selected
     resetFilters();
@@ -252,7 +253,7 @@ function handleVisualizations(cancerType, displayName, description, preventionDe
 function showMapContainer() {
     const mapContainer = document.getElementById("us-map-bycancer-container");
     if (mapContainer) {
-        mapContainer.classList.add("show"); // Add the "show" class to trigger the fade-in effect
+        mapContainer.classList.add("show"); // Trigger the fade-in effect
     }
 }
 
@@ -285,10 +286,10 @@ function resetFilters() {
     const ageFilter = document.getElementById("age-filter");
     const raceFilter = document.getElementById("race-filter");
 
-    // Reset each filter to its default value
-    if (genderFilter) genderFilter.value = "All"; // Default to "All" or the first option
-    if (ageFilter) ageFilter.value = "All"; // Default to "All" or the first option
-    if (raceFilter) raceFilter.value = "All"; // Default to "All" or the first option
+    // Reset each filter to default value - "All"
+    if (genderFilter) genderFilter.value = "All";
+    if (ageFilter) ageFilter.value = "All";
+    if (raceFilter) raceFilter.value = "All"; 
 }
 
 function aggregateDataByYear(data, valueKey) {
@@ -471,6 +472,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Event listener for filters
 document.addEventListener('DOMContentLoaded', () => {
     ["gender-filter", "age-filter", "race-filter"].forEach(filterId => {
         const filterElement = document.getElementById(filterId);
@@ -484,6 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Function to display the dropdown menu
 document.addEventListener("DOMContentLoaded", () => {
     const dropdownContainer = document.getElementById("dropdown-menu-container");
 
