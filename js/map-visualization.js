@@ -195,15 +195,10 @@ export function drawCancerTypeMap(containerID, cancerType) {
         d3.csv("data/states-csvs/States-Incidence-AgeAdjustedRates-BYCANCER.csv"),
         d3.json("data/us-states.json")
     ]).then(([mortalityData, incidenceData, geoData]) => {
-        console.log("Mortality Data:", mortalityData);
-        console.log("Incidence Data:", incidenceData);
-        console.log(cancerType);
         // Filter the datasets by the selected cancer type
         const filteredMortality = mortalityData.filter(d => d["Leading Cancer Sites"] === cancerType);
         const filteredIncidence = incidenceData.filter(d => d["Leading Cancer Sites"] === cancerType);
 
-        console.log("Filtered Mortality Data:", filteredMortality);
-        console.log("Filtered Incidence Data:", filteredIncidence);
         // Create lookup dictionaries for mortality and incidence rates
         const mortalityRates = {};
         const incidenceRates = {};
@@ -215,9 +210,6 @@ export function drawCancerTypeMap(containerID, cancerType) {
         filteredIncidence.forEach(row => {
             incidenceRates[row.States] = parseFloat(row["Age-Adjusted-Rate"]) || 0;
         });
-
-        console.log("Mortality Rates:", mortalityRates);
-        console.log("Incidence Rates:", incidenceRates);
 
         // Set up SVG dimensions and projection
         const width = 960;
@@ -232,7 +224,6 @@ export function drawCancerTypeMap(containerID, cancerType) {
         const projection = d3.geoAlbersUsa().translate([width / 2, height / 2]).scale(1000);
         const path = d3.geoPath().projection(projection);
 
-        // Define a color scale for mortality rates
         // Define a color scale for mortality rates
         const mortalityColorScale = d3.scaleSequential()
             .domain([d3.min(Object.values(mortalityRates)), d3.max(Object.values(mortalityRates))])
@@ -264,7 +255,7 @@ export function drawCancerTypeMap(containerID, cancerType) {
                 const mortalityRate = mortalityRates[stateName] || "N/A";
                 const incidenceRate = incidenceRates[stateName] || "N/A";
 
-                // show tooltip for mortality and incidence rates
+                // Show tooltip for mortality and incidence rates
                 tooltip.style("opacity", 1)
                     .html(`
                         <strong>${stateName}</strong><br>
@@ -280,7 +271,7 @@ export function drawCancerTypeMap(containerID, cancerType) {
                 d3.select(this).attr("stroke", "#000").attr("stroke-width", 0.5);
             });
 
-        // legend for mortality rates
+        // Legend for mortality rates
         const legendWidth = 200;
         const legendHeight = 20;
 
@@ -294,10 +285,10 @@ export function drawCancerTypeMap(containerID, cancerType) {
             .style("text-anchor", "middle")
             .text("Mortality Rate");
 
-        // Create legend gradient
+        // Create a unique legend gradient
         const gradient = svg.append("defs")
             .append("linearGradient")
-            .attr("id", "legend-gradient")
+            .attr("id", "legend-gradient-cancer") // Unique ID
             .attr("x1", "0%").attr("y1", "0%")
             .attr("x2", "100%").attr("y2", "0%");
 
@@ -310,9 +301,12 @@ export function drawCancerTypeMap(containerID, cancerType) {
             .attr("y", 20)
             .attr("width", legendWidth)
             .attr("height", legendHeight)
-            .style("fill", "url(#legend-gradient)");
+            .style("fill", "url(#legend-gradient-cancer)"); // Use unique gradient
 
         // Legend end points
+        const minValue = d3.min(Object.values(mortalityRates));
+        const maxValue = d3.max(Object.values(mortalityRates));
+
         svg.append("text")
             .attr("x", width - legendWidth - 20)
             .attr("y", 55)
@@ -328,7 +322,6 @@ export function drawCancerTypeMap(containerID, cancerType) {
             .style("font-size", "12px")
             .style("text-anchor", "end")
             .text(maxValue.toFixed(1));
-
     }).catch(error => {
         console.error("Error loading data:", error);
     });

@@ -1,10 +1,9 @@
-import { drawUSMap } from './map-visualization.js';
 import { drawIncidentStackedBarChart, drawMortalityStackedBarChart} from './incident-mortality-stacked-bar-chart.js'
+import { drawUSMap, drawCancerTypeMap } from './map-visualization.js';
+import { displayCancerImages, addPreventionDescription } from './display-cancer-symptiom.js';
 import { visualizeCancerRates } from './rate-visualization.js';
 import { loadAllGroups } from './data-loader.js';
 import { drawLineChart } from './chart-maker.js';
-import { drawCancerTypeMap } from './map-visualization.js';
-import { displayCancerImages, addPreventionDescription } from './display-cancer-symptiom.js';
 
 const cancerTypeMapping = {
     "Brain Cancer": "Brain and Other Nervous System",
